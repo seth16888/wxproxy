@@ -71,9 +71,6 @@ log:
   max_age: 30
   max_backups: 3
   compress: false
-database:
-  driver: mysql
-  source: root:123456@tcp(127.0.0.1:3306)/wxproxy?parseTime=True&loc=Local&multiStatements=true&charset=utf8mb4
 redis:
   addr: 127.0.0.1:6379
   bd: 0

@@ -1,0 +1,18 @@
+server:
+  addr: 0.0.0.0:9010
+  timeout: 15
+log:
+  level: debug
+  filename: app.log
+  max_size: 100
+  max_age: 30
+  max_backups: 3
+  compress: false
+redis:
+  addr: 127.0.0.1:6379
+  bd: 0
+  password:
+  username:
+  read_timeout: 3
+  write_timeout: 3
+

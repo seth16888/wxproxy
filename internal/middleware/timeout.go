@@ -11,7 +11,7 @@ import (
 )
 
 // TimeoutInterceptor 超时拦截器
-// 当请求处理时间超过300毫秒时，返回超时错误
+// 当请求处理时间超过10秒时，返回超时错误
 // 超时错误的状态码为codes.DeadlineExceeded
 // 超时错误的消息为"Deadline exceeded"
 func TimeoutInterceptor() grpc.UnaryServerInterceptor {
@@ -20,13 +20,13 @@ func TimeoutInterceptor() grpc.UnaryServerInterceptor {
 		info *grpc.UnaryServerInfo,
 		handler grpc.UnaryHandler,
 	) (resp any, err error) {
-		ctxWithTimeout, cancel := context.WithTimeout(ctx, 300*time.Millisecond)
+		ctxWithTimeout, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
-		ch := make(chan error)
+		ch := make(chan struct{})
 		go func() {
 			resp, err = handler(ctxWithTimeout, req)
-			ch <- err
+			close(ch)
 		}()
 
 		select {

@@ -47,7 +47,7 @@ func Start(deps *di.Container) error {
 
 	deps.Log.Info("starting grpc server", zap.String("addr", listenAddr))
 	errCh := make(chan error, 1)
-	defer func() {
+	go func() {
 		if err := s.Serve(listener); err != grpc.ErrServerStopped {
 			deps.Log.Error("failed to serve", zap.Error(err))
 			errCh <- err

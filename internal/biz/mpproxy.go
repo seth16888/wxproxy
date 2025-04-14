@@ -149,7 +149,8 @@ type MPProxyUsecase struct {
 func NewMPProxyUsecase(hc *hc.Client, logger *zap.Logger) *MPProxyUsecase {
 	return &MPProxyUsecase{
 		hc:  hc,
-		log: logger}
+		log: logger,
+	}
 }
 
 // GetMaterialCoount
@@ -178,7 +179,8 @@ func (m *MPProxyUsecase) GetMaterialCoount(ctx context.Context, token string) (*
 }
 
 func (m *MPProxyUsecase) GetMaterialList(ctx context.Context, token string, mediaType string,
-	offset int64, count int64) (*GetMaterialListRes, error) {
+	offset int64, count int64,
+) (*GetMaterialListRes, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Batch_Get_Material,
@@ -717,7 +719,8 @@ func (m *MPProxyUsecase) BatchUntaggingMembers(ctx context.Context, token string
 
 // CreateLimitQRCode
 func (m *MPProxyUsecase) CreateLimitQRCode(ctx context.Context, token string,
-	scene interface{}, expireSeconds int64) (*Ticket, error) {
+	scene interface{}, expireSeconds int64,
+) (*Ticket, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Create_QRCode,
@@ -777,7 +780,8 @@ func (m *MPProxyUsecase) CreateLimitQRCode(ctx context.Context, token string,
 
 // CreateTemporaryQRCode
 func (m *MPProxyUsecase) CreateTemporaryQRCode(ctx context.Context, token string,
-	scene interface{}, expireSeconds int64) (*Ticket, error) {
+	scene interface{}, expireSeconds int64,
+) (*Ticket, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Create_QRCode,
@@ -838,7 +842,8 @@ func (m *MPProxyUsecase) CreateTemporaryQRCode(ctx context.Context, token string
 
 // GenShorten
 func (m *MPProxyUsecase) GenShorten(ctx context.Context, token string, longData string,
-	expireSeconds int64) (*string, error) {
+	expireSeconds int64,
+) (*string, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Gen_Shorten,
@@ -961,7 +966,8 @@ func (m *MPProxyUsecase) GetMenuInfo(ctx context.Context, token string) (*MenuRe
 
 // CreateMenu
 func (m *MPProxyUsecase) CreateMenu(ctx context.Context, token string,
-	buttons []*v1.MenuButton) error {
+	buttons []*v1.MenuButton,
+) error {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Create_Menu,

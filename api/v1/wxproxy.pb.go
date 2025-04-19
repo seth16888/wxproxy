@@ -22,6 +22,58 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type BlockMemberReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=AccessToken,proto3" json:"AccessToken,omitempty"`
+	OpenIds       []string               `protobuf:"bytes,2,rep,name=OpenIds,proto3" json:"OpenIds,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BlockMemberReq) Reset() {
+	*x = BlockMemberReq{}
+	mi := &file_v1_wxproxy_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BlockMemberReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BlockMemberReq) ProtoMessage() {}
+
+func (x *BlockMemberReq) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_wxproxy_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BlockMemberReq.ProtoReflect.Descriptor instead.
+func (*BlockMemberReq) Descriptor() ([]byte, []int) {
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *BlockMemberReq) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *BlockMemberReq) GetOpenIds() []string {
+	if x != nil {
+		return x.OpenIds
+	}
+	return nil
+}
+
 type SendKFMiniProgramMsgRequest struct {
 	state           protoimpl.MessageState                        `protogen:"open.v1"`
 	AccessToken     string                                        `protobuf:"bytes,1,opt,name=AccessToken,proto3" json:"AccessToken,omitempty"`
@@ -34,7 +86,7 @@ type SendKFMiniProgramMsgRequest struct {
 
 func (x *SendKFMiniProgramMsgRequest) Reset() {
 	*x = SendKFMiniProgramMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[0]
+	mi := &file_v1_wxproxy_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +98,7 @@ func (x *SendKFMiniProgramMsgRequest) String() string {
 func (*SendKFMiniProgramMsgRequest) ProtoMessage() {}
 
 func (x *SendKFMiniProgramMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[0]
+	mi := &file_v1_wxproxy_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +111,7 @@ func (x *SendKFMiniProgramMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMiniProgramMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFMiniProgramMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SendKFMiniProgramMsgRequest) GetAccessToken() string {
@@ -102,7 +154,7 @@ type SendKFCardMsgRequest struct {
 
 func (x *SendKFCardMsgRequest) Reset() {
 	*x = SendKFCardMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[1]
+	mi := &file_v1_wxproxy_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -114,7 +166,7 @@ func (x *SendKFCardMsgRequest) String() string {
 func (*SendKFCardMsgRequest) ProtoMessage() {}
 
 func (x *SendKFCardMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[1]
+	mi := &file_v1_wxproxy_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -127,7 +179,7 @@ func (x *SendKFCardMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFCardMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFCardMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{1}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SendKFCardMsgRequest) GetAccessToken() string {
@@ -170,7 +222,7 @@ type SendKFMenuMsgRequest struct {
 
 func (x *SendKFMenuMsgRequest) Reset() {
 	*x = SendKFMenuMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[2]
+	mi := &file_v1_wxproxy_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +234,7 @@ func (x *SendKFMenuMsgRequest) String() string {
 func (*SendKFMenuMsgRequest) ProtoMessage() {}
 
 func (x *SendKFMenuMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[2]
+	mi := &file_v1_wxproxy_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +247,7 @@ func (x *SendKFMenuMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMenuMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFMenuMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{2}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SendKFMenuMsgRequest) GetCommon() *KFMessageCommon {
@@ -238,7 +290,7 @@ type SendKFToArticleMsgRequest struct {
 
 func (x *SendKFToArticleMsgRequest) Reset() {
 	*x = SendKFToArticleMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[3]
+	mi := &file_v1_wxproxy_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -250,7 +302,7 @@ func (x *SendKFToArticleMsgRequest) String() string {
 func (*SendKFToArticleMsgRequest) ProtoMessage() {}
 
 func (x *SendKFToArticleMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[3]
+	mi := &file_v1_wxproxy_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -263,7 +315,7 @@ func (x *SendKFToArticleMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFToArticleMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFToArticleMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{3}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SendKFToArticleMsgRequest) GetAccessToken() string {
@@ -306,7 +358,7 @@ type SendKFNewsPageMsgRequest struct {
 
 func (x *SendKFNewsPageMsgRequest) Reset() {
 	*x = SendKFNewsPageMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[4]
+	mi := &file_v1_wxproxy_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -318,7 +370,7 @@ func (x *SendKFNewsPageMsgRequest) String() string {
 func (*SendKFNewsPageMsgRequest) ProtoMessage() {}
 
 func (x *SendKFNewsPageMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[4]
+	mi := &file_v1_wxproxy_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -331,7 +383,7 @@ func (x *SendKFNewsPageMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFNewsPageMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFNewsPageMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{4}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SendKFNewsPageMsgRequest) GetAccessToken() string {
@@ -374,7 +426,7 @@ type SendKFNewsCardMsgRequest struct {
 
 func (x *SendKFNewsCardMsgRequest) Reset() {
 	*x = SendKFNewsCardMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[5]
+	mi := &file_v1_wxproxy_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -386,7 +438,7 @@ func (x *SendKFNewsCardMsgRequest) String() string {
 func (*SendKFNewsCardMsgRequest) ProtoMessage() {}
 
 func (x *SendKFNewsCardMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[5]
+	mi := &file_v1_wxproxy_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -399,7 +451,7 @@ func (x *SendKFNewsCardMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFNewsCardMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFNewsCardMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{5}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SendKFNewsCardMsgRequest) GetAccessToken() string {
@@ -442,7 +494,7 @@ type SendKFMusicMsgRequest struct {
 
 func (x *SendKFMusicMsgRequest) Reset() {
 	*x = SendKFMusicMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[6]
+	mi := &file_v1_wxproxy_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -454,7 +506,7 @@ func (x *SendKFMusicMsgRequest) String() string {
 func (*SendKFMusicMsgRequest) ProtoMessage() {}
 
 func (x *SendKFMusicMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[6]
+	mi := &file_v1_wxproxy_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -467,7 +519,7 @@ func (x *SendKFMusicMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMusicMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFMusicMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{6}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *SendKFMusicMsgRequest) GetAccessToken() string {
@@ -510,7 +562,7 @@ type SendKFVideoMsgRequest struct {
 
 func (x *SendKFVideoMsgRequest) Reset() {
 	*x = SendKFVideoMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[7]
+	mi := &file_v1_wxproxy_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -522,7 +574,7 @@ func (x *SendKFVideoMsgRequest) String() string {
 func (*SendKFVideoMsgRequest) ProtoMessage() {}
 
 func (x *SendKFVideoMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[7]
+	mi := &file_v1_wxproxy_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -535,7 +587,7 @@ func (x *SendKFVideoMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFVideoMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFVideoMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{7}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SendKFVideoMsgRequest) GetAccessToken() string {
@@ -578,7 +630,7 @@ type SendKFVoiceMsgRequest struct {
 
 func (x *SendKFVoiceMsgRequest) Reset() {
 	*x = SendKFVoiceMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[8]
+	mi := &file_v1_wxproxy_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -590,7 +642,7 @@ func (x *SendKFVoiceMsgRequest) String() string {
 func (*SendKFVoiceMsgRequest) ProtoMessage() {}
 
 func (x *SendKFVoiceMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[8]
+	mi := &file_v1_wxproxy_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -603,7 +655,7 @@ func (x *SendKFVoiceMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFVoiceMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFVoiceMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{8}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SendKFVoiceMsgRequest) GetAccessToken() string {
@@ -646,7 +698,7 @@ type SendKFImageMsgRequest struct {
 
 func (x *SendKFImageMsgRequest) Reset() {
 	*x = SendKFImageMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[9]
+	mi := &file_v1_wxproxy_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +710,7 @@ func (x *SendKFImageMsgRequest) String() string {
 func (*SendKFImageMsgRequest) ProtoMessage() {}
 
 func (x *SendKFImageMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[9]
+	mi := &file_v1_wxproxy_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,7 +723,7 @@ func (x *SendKFImageMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFImageMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFImageMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{9}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SendKFImageMsgRequest) GetAccessToken() string {
@@ -713,7 +765,7 @@ type KFMessageCommon struct {
 
 func (x *KFMessageCommon) Reset() {
 	*x = KFMessageCommon{}
-	mi := &file_v1_wxproxy_proto_msgTypes[10]
+	mi := &file_v1_wxproxy_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -725,7 +777,7 @@ func (x *KFMessageCommon) String() string {
 func (*KFMessageCommon) ProtoMessage() {}
 
 func (x *KFMessageCommon) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[10]
+	mi := &file_v1_wxproxy_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -738,7 +790,7 @@ func (x *KFMessageCommon) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KFMessageCommon.ProtoReflect.Descriptor instead.
 func (*KFMessageCommon) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{10}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *KFMessageCommon) GetToUser() string {
@@ -774,7 +826,7 @@ type SendKFTextMsgRequest struct {
 
 func (x *SendKFTextMsgRequest) Reset() {
 	*x = SendKFTextMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[11]
+	mi := &file_v1_wxproxy_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -786,7 +838,7 @@ func (x *SendKFTextMsgRequest) String() string {
 func (*SendKFTextMsgRequest) ProtoMessage() {}
 
 func (x *SendKFTextMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[11]
+	mi := &file_v1_wxproxy_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -799,7 +851,7 @@ func (x *SendKFTextMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFTextMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendKFTextMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{11}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SendKFTextMsgRequest) GetAccessToken() string {
@@ -841,7 +893,7 @@ type NewKFSessionRequest struct {
 
 func (x *NewKFSessionRequest) Reset() {
 	*x = NewKFSessionRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[12]
+	mi := &file_v1_wxproxy_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -853,7 +905,7 @@ func (x *NewKFSessionRequest) String() string {
 func (*NewKFSessionRequest) ProtoMessage() {}
 
 func (x *NewKFSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[12]
+	mi := &file_v1_wxproxy_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -866,7 +918,7 @@ func (x *NewKFSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewKFSessionRequest.ProtoReflect.Descriptor instead.
 func (*NewKFSessionRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{12}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *NewKFSessionRequest) GetAccessToken() string {
@@ -901,7 +953,7 @@ type CloseKFSessionRequest struct {
 
 func (x *CloseKFSessionRequest) Reset() {
 	*x = CloseKFSessionRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[13]
+	mi := &file_v1_wxproxy_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -913,7 +965,7 @@ func (x *CloseKFSessionRequest) String() string {
 func (*CloseKFSessionRequest) ProtoMessage() {}
 
 func (x *CloseKFSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[13]
+	mi := &file_v1_wxproxy_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -926,7 +978,7 @@ func (x *CloseKFSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CloseKFSessionRequest.ProtoReflect.Descriptor instead.
 func (*CloseKFSessionRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{13}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CloseKFSessionRequest) GetAccessToken() string {
@@ -960,7 +1012,7 @@ type GetKFSessionUnacceptedReply struct {
 
 func (x *GetKFSessionUnacceptedReply) Reset() {
 	*x = GetKFSessionUnacceptedReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[14]
+	mi := &file_v1_wxproxy_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -972,7 +1024,7 @@ func (x *GetKFSessionUnacceptedReply) String() string {
 func (*GetKFSessionUnacceptedReply) ProtoMessage() {}
 
 func (x *GetKFSessionUnacceptedReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[14]
+	mi := &file_v1_wxproxy_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -985,7 +1037,7 @@ func (x *GetKFSessionUnacceptedReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFSessionUnacceptedReply.ProtoReflect.Descriptor instead.
 func (*GetKFSessionUnacceptedReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{14}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetKFSessionUnacceptedReply) GetCount() int64 {
@@ -1012,7 +1064,7 @@ type GetKFSessionStatusReply struct {
 
 func (x *GetKFSessionStatusReply) Reset() {
 	*x = GetKFSessionStatusReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[15]
+	mi := &file_v1_wxproxy_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1024,7 +1076,7 @@ func (x *GetKFSessionStatusReply) String() string {
 func (*GetKFSessionStatusReply) ProtoMessage() {}
 
 func (x *GetKFSessionStatusReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[15]
+	mi := &file_v1_wxproxy_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1037,7 +1089,7 @@ func (x *GetKFSessionStatusReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFSessionStatusReply.ProtoReflect.Descriptor instead.
 func (*GetKFSessionStatusReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{15}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetKFSessionStatusReply) GetKfAccount() string {
@@ -1064,7 +1116,7 @@ type GetKFSessionStatusRequest struct {
 
 func (x *GetKFSessionStatusRequest) Reset() {
 	*x = GetKFSessionStatusRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[16]
+	mi := &file_v1_wxproxy_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1076,7 +1128,7 @@ func (x *GetKFSessionStatusRequest) String() string {
 func (*GetKFSessionStatusRequest) ProtoMessage() {}
 
 func (x *GetKFSessionStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[16]
+	mi := &file_v1_wxproxy_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1089,7 +1141,7 @@ func (x *GetKFSessionStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFSessionStatusRequest.ProtoReflect.Descriptor instead.
 func (*GetKFSessionStatusRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{16}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetKFSessionStatusRequest) GetAccessToken() string {
@@ -1115,7 +1167,7 @@ type GetKFSessionListReply struct {
 
 func (x *GetKFSessionListReply) Reset() {
 	*x = GetKFSessionListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[17]
+	mi := &file_v1_wxproxy_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1127,7 +1179,7 @@ func (x *GetKFSessionListReply) String() string {
 func (*GetKFSessionListReply) ProtoMessage() {}
 
 func (x *GetKFSessionListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[17]
+	mi := &file_v1_wxproxy_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1140,7 +1192,7 @@ func (x *GetKFSessionListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFSessionListReply.ProtoReflect.Descriptor instead.
 func (*GetKFSessionListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{17}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetKFSessionListReply) GetSessionList() []*KFSession {
@@ -1160,7 +1212,7 @@ type KFSession struct {
 
 func (x *KFSession) Reset() {
 	*x = KFSession{}
-	mi := &file_v1_wxproxy_proto_msgTypes[18]
+	mi := &file_v1_wxproxy_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1172,7 +1224,7 @@ func (x *KFSession) String() string {
 func (*KFSession) ProtoMessage() {}
 
 func (x *KFSession) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[18]
+	mi := &file_v1_wxproxy_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1185,7 +1237,7 @@ func (x *KFSession) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KFSession.ProtoReflect.Descriptor instead.
 func (*KFSession) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{18}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *KFSession) GetOpenId() string {
@@ -1212,7 +1264,7 @@ type GetKFSessionListRequest struct {
 
 func (x *GetKFSessionListRequest) Reset() {
 	*x = GetKFSessionListRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[19]
+	mi := &file_v1_wxproxy_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1224,7 +1276,7 @@ func (x *GetKFSessionListRequest) String() string {
 func (*GetKFSessionListRequest) ProtoMessage() {}
 
 func (x *GetKFSessionListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[19]
+	mi := &file_v1_wxproxy_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1237,7 +1289,7 @@ func (x *GetKFSessionListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFSessionListRequest.ProtoReflect.Descriptor instead.
 func (*GetKFSessionListRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{19}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetKFSessionListRequest) GetAccessToken() string {
@@ -1265,7 +1317,7 @@ type UpdateKFTypingRequest struct {
 
 func (x *UpdateKFTypingRequest) Reset() {
 	*x = UpdateKFTypingRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[20]
+	mi := &file_v1_wxproxy_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1277,7 +1329,7 @@ func (x *UpdateKFTypingRequest) String() string {
 func (*UpdateKFTypingRequest) ProtoMessage() {}
 
 func (x *UpdateKFTypingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[20]
+	mi := &file_v1_wxproxy_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1290,7 +1342,7 @@ func (x *UpdateKFTypingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateKFTypingRequest.ProtoReflect.Descriptor instead.
 func (*UpdateKFTypingRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{20}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *UpdateKFTypingRequest) GetAccessToken() string {
@@ -1325,7 +1377,7 @@ type UpdateKFAvatarRequest struct {
 
 func (x *UpdateKFAvatarRequest) Reset() {
 	*x = UpdateKFAvatarRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[21]
+	mi := &file_v1_wxproxy_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1337,7 +1389,7 @@ func (x *UpdateKFAvatarRequest) String() string {
 func (*UpdateKFAvatarRequest) ProtoMessage() {}
 
 func (x *UpdateKFAvatarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[21]
+	mi := &file_v1_wxproxy_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1350,7 +1402,7 @@ func (x *UpdateKFAvatarRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateKFAvatarRequest.ProtoReflect.Descriptor instead.
 func (*UpdateKFAvatarRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{21}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UpdateKFAvatarRequest) GetAccessToken() string {
@@ -1385,7 +1437,7 @@ type InviteKFWorkerRequest struct {
 
 func (x *InviteKFWorkerRequest) Reset() {
 	*x = InviteKFWorkerRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[22]
+	mi := &file_v1_wxproxy_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1397,7 +1449,7 @@ func (x *InviteKFWorkerRequest) String() string {
 func (*InviteKFWorkerRequest) ProtoMessage() {}
 
 func (x *InviteKFWorkerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[22]
+	mi := &file_v1_wxproxy_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1410,7 +1462,7 @@ func (x *InviteKFWorkerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InviteKFWorkerRequest.ProtoReflect.Descriptor instead.
 func (*InviteKFWorkerRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{22}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *InviteKFWorkerRequest) GetAccessToken() string {
@@ -1444,7 +1496,7 @@ type DelKFAccountRequest struct {
 
 func (x *DelKFAccountRequest) Reset() {
 	*x = DelKFAccountRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[23]
+	mi := &file_v1_wxproxy_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1456,7 +1508,7 @@ func (x *DelKFAccountRequest) String() string {
 func (*DelKFAccountRequest) ProtoMessage() {}
 
 func (x *DelKFAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[23]
+	mi := &file_v1_wxproxy_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1469,7 +1521,7 @@ func (x *DelKFAccountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DelKFAccountRequest.ProtoReflect.Descriptor instead.
 func (*DelKFAccountRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{23}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *DelKFAccountRequest) GetAccessToken() string {
@@ -1498,7 +1550,7 @@ type UpdateKFAccountRequest struct {
 
 func (x *UpdateKFAccountRequest) Reset() {
 	*x = UpdateKFAccountRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[24]
+	mi := &file_v1_wxproxy_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1510,7 +1562,7 @@ func (x *UpdateKFAccountRequest) String() string {
 func (*UpdateKFAccountRequest) ProtoMessage() {}
 
 func (x *UpdateKFAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[24]
+	mi := &file_v1_wxproxy_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1523,7 +1575,7 @@ func (x *UpdateKFAccountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateKFAccountRequest.ProtoReflect.Descriptor instead.
 func (*UpdateKFAccountRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{24}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *UpdateKFAccountRequest) GetAccessToken() string {
@@ -1566,7 +1618,7 @@ type AddKFAccountRequest struct {
 
 func (x *AddKFAccountRequest) Reset() {
 	*x = AddKFAccountRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[25]
+	mi := &file_v1_wxproxy_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1578,7 +1630,7 @@ func (x *AddKFAccountRequest) String() string {
 func (*AddKFAccountRequest) ProtoMessage() {}
 
 func (x *AddKFAccountRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[25]
+	mi := &file_v1_wxproxy_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1591,7 +1643,7 @@ func (x *AddKFAccountRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddKFAccountRequest.ProtoReflect.Descriptor instead.
 func (*AddKFAccountRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{25}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *AddKFAccountRequest) GetAccessToken() string {
@@ -1633,7 +1685,7 @@ type GetKFMsgHistoryReply struct {
 
 func (x *GetKFMsgHistoryReply) Reset() {
 	*x = GetKFMsgHistoryReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[26]
+	mi := &file_v1_wxproxy_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1645,7 +1697,7 @@ func (x *GetKFMsgHistoryReply) String() string {
 func (*GetKFMsgHistoryReply) ProtoMessage() {}
 
 func (x *GetKFMsgHistoryReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[26]
+	mi := &file_v1_wxproxy_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1658,7 +1710,7 @@ func (x *GetKFMsgHistoryReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFMsgHistoryReply.ProtoReflect.Descriptor instead.
 func (*GetKFMsgHistoryReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{26}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *GetKFMsgHistoryReply) GetMsgId() int64 {
@@ -1695,7 +1747,7 @@ type KFMsgHistory struct {
 
 func (x *KFMsgHistory) Reset() {
 	*x = KFMsgHistory{}
-	mi := &file_v1_wxproxy_proto_msgTypes[27]
+	mi := &file_v1_wxproxy_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1707,7 +1759,7 @@ func (x *KFMsgHistory) String() string {
 func (*KFMsgHistory) ProtoMessage() {}
 
 func (x *KFMsgHistory) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[27]
+	mi := &file_v1_wxproxy_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1720,7 +1772,7 @@ func (x *KFMsgHistory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KFMsgHistory.ProtoReflect.Descriptor instead.
 func (*KFMsgHistory) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{27}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *KFMsgHistory) GetWorker() string {
@@ -1771,7 +1823,7 @@ type GetKFMsgHistoryRequest struct {
 
 func (x *GetKFMsgHistoryRequest) Reset() {
 	*x = GetKFMsgHistoryRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[28]
+	mi := &file_v1_wxproxy_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1783,7 +1835,7 @@ func (x *GetKFMsgHistoryRequest) String() string {
 func (*GetKFMsgHistoryRequest) ProtoMessage() {}
 
 func (x *GetKFMsgHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[28]
+	mi := &file_v1_wxproxy_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1796,7 +1848,7 @@ func (x *GetKFMsgHistoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFMsgHistoryRequest.ProtoReflect.Descriptor instead.
 func (*GetKFMsgHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{28}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *GetKFMsgHistoryRequest) GetAccessToken() string {
@@ -1843,7 +1895,7 @@ type GetKFOnlineListReply struct {
 
 func (x *GetKFOnlineListReply) Reset() {
 	*x = GetKFOnlineListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[29]
+	mi := &file_v1_wxproxy_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1855,7 +1907,7 @@ func (x *GetKFOnlineListReply) String() string {
 func (*GetKFOnlineListReply) ProtoMessage() {}
 
 func (x *GetKFOnlineListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[29]
+	mi := &file_v1_wxproxy_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1868,7 +1920,7 @@ func (x *GetKFOnlineListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFOnlineListReply.ProtoReflect.Descriptor instead.
 func (*GetKFOnlineListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{29}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *GetKFOnlineListReply) GetKfOnlineList() []*KFOnlineInfo {
@@ -1890,7 +1942,7 @@ type KFOnlineInfo struct {
 
 func (x *KFOnlineInfo) Reset() {
 	*x = KFOnlineInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[30]
+	mi := &file_v1_wxproxy_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1902,7 +1954,7 @@ func (x *KFOnlineInfo) String() string {
 func (*KFOnlineInfo) ProtoMessage() {}
 
 func (x *KFOnlineInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[30]
+	mi := &file_v1_wxproxy_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1915,7 +1967,7 @@ func (x *KFOnlineInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KFOnlineInfo.ProtoReflect.Descriptor instead.
 func (*KFOnlineInfo) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{30}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *KFOnlineInfo) GetKfAccount() string {
@@ -1955,7 +2007,7 @@ type GetKFListReply struct {
 
 func (x *GetKFListReply) Reset() {
 	*x = GetKFListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[31]
+	mi := &file_v1_wxproxy_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1967,7 +2019,7 @@ func (x *GetKFListReply) String() string {
 func (*GetKFListReply) ProtoMessage() {}
 
 func (x *GetKFListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[31]
+	mi := &file_v1_wxproxy_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1980,7 +2032,7 @@ func (x *GetKFListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetKFListReply.ProtoReflect.Descriptor instead.
 func (*GetKFListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{31}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *GetKFListReply) GetKfList() []*KeFuInfo {
@@ -2006,7 +2058,7 @@ type KeFuInfo struct {
 
 func (x *KeFuInfo) Reset() {
 	*x = KeFuInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[32]
+	mi := &file_v1_wxproxy_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2018,7 +2070,7 @@ func (x *KeFuInfo) String() string {
 func (*KeFuInfo) ProtoMessage() {}
 
 func (x *KeFuInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[32]
+	mi := &file_v1_wxproxy_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2031,7 +2083,7 @@ func (x *KeFuInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KeFuInfo.ProtoReflect.Descriptor instead.
 func (*KeFuInfo) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{32}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *KeFuInfo) GetKfAccount() string {
@@ -2104,7 +2156,7 @@ type SendSubscribeMessageRequest struct {
 
 func (x *SendSubscribeMessageRequest) Reset() {
 	*x = SendSubscribeMessageRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[33]
+	mi := &file_v1_wxproxy_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2116,7 +2168,7 @@ func (x *SendSubscribeMessageRequest) String() string {
 func (*SendSubscribeMessageRequest) ProtoMessage() {}
 
 func (x *SendSubscribeMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[33]
+	mi := &file_v1_wxproxy_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2129,7 +2181,7 @@ func (x *SendSubscribeMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendSubscribeMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendSubscribeMessageRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{33}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *SendSubscribeMessageRequest) GetAccessToken() string {
@@ -2183,7 +2235,7 @@ type GetSubscribePrivateTplReply struct {
 
 func (x *GetSubscribePrivateTplReply) Reset() {
 	*x = GetSubscribePrivateTplReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[34]
+	mi := &file_v1_wxproxy_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2195,7 +2247,7 @@ func (x *GetSubscribePrivateTplReply) String() string {
 func (*GetSubscribePrivateTplReply) ProtoMessage() {}
 
 func (x *GetSubscribePrivateTplReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[34]
+	mi := &file_v1_wxproxy_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2208,7 +2260,7 @@ func (x *GetSubscribePrivateTplReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribePrivateTplReply.ProtoReflect.Descriptor instead.
 func (*GetSubscribePrivateTplReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{34}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *GetSubscribePrivateTplReply) GetData() []*GetSubscribePrivateTplReply_Item {
@@ -2228,7 +2280,7 @@ type GetSubscribeTplTitlesReply struct {
 
 func (x *GetSubscribeTplTitlesReply) Reset() {
 	*x = GetSubscribeTplTitlesReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[35]
+	mi := &file_v1_wxproxy_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2240,7 +2292,7 @@ func (x *GetSubscribeTplTitlesReply) String() string {
 func (*GetSubscribeTplTitlesReply) ProtoMessage() {}
 
 func (x *GetSubscribeTplTitlesReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[35]
+	mi := &file_v1_wxproxy_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2253,7 +2305,7 @@ func (x *GetSubscribeTplTitlesReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeTplTitlesReply.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplTitlesReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{35}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *GetSubscribeTplTitlesReply) GetCount() int64 {
@@ -2282,7 +2334,7 @@ type GetSubscribeTplTitlesRequest struct {
 
 func (x *GetSubscribeTplTitlesRequest) Reset() {
 	*x = GetSubscribeTplTitlesRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[36]
+	mi := &file_v1_wxproxy_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2294,7 +2346,7 @@ func (x *GetSubscribeTplTitlesRequest) String() string {
 func (*GetSubscribeTplTitlesRequest) ProtoMessage() {}
 
 func (x *GetSubscribeTplTitlesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[36]
+	mi := &file_v1_wxproxy_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2307,7 +2359,7 @@ func (x *GetSubscribeTplTitlesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeTplTitlesRequest.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplTitlesRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{36}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *GetSubscribeTplTitlesRequest) GetAccessToken() string {
@@ -2348,7 +2400,7 @@ type GetSubscribeTplKeywordsReply struct {
 
 func (x *GetSubscribeTplKeywordsReply) Reset() {
 	*x = GetSubscribeTplKeywordsReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[37]
+	mi := &file_v1_wxproxy_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2360,7 +2412,7 @@ func (x *GetSubscribeTplKeywordsReply) String() string {
 func (*GetSubscribeTplKeywordsReply) ProtoMessage() {}
 
 func (x *GetSubscribeTplKeywordsReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[37]
+	mi := &file_v1_wxproxy_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2373,7 +2425,7 @@ func (x *GetSubscribeTplKeywordsReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeTplKeywordsReply.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplKeywordsReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{37}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *GetSubscribeTplKeywordsReply) GetCount() int64 {
@@ -2400,7 +2452,7 @@ type GetSubscribeTplKeywordsRequest struct {
 
 func (x *GetSubscribeTplKeywordsRequest) Reset() {
 	*x = GetSubscribeTplKeywordsRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[38]
+	mi := &file_v1_wxproxy_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2412,7 +2464,7 @@ func (x *GetSubscribeTplKeywordsRequest) String() string {
 func (*GetSubscribeTplKeywordsRequest) ProtoMessage() {}
 
 func (x *GetSubscribeTplKeywordsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[38]
+	mi := &file_v1_wxproxy_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2425,7 +2477,7 @@ func (x *GetSubscribeTplKeywordsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeTplKeywordsRequest.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplKeywordsRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{38}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *GetSubscribeTplKeywordsRequest) GetAccessToken() string {
@@ -2451,7 +2503,7 @@ type GetSubscribeCategoryReply struct {
 
 func (x *GetSubscribeCategoryReply) Reset() {
 	*x = GetSubscribeCategoryReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[39]
+	mi := &file_v1_wxproxy_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2463,7 +2515,7 @@ func (x *GetSubscribeCategoryReply) String() string {
 func (*GetSubscribeCategoryReply) ProtoMessage() {}
 
 func (x *GetSubscribeCategoryReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[39]
+	mi := &file_v1_wxproxy_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2528,7 @@ func (x *GetSubscribeCategoryReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeCategoryReply.ProtoReflect.Descriptor instead.
 func (*GetSubscribeCategoryReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{39}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *GetSubscribeCategoryReply) GetData() []*GetSubscribeCategoryReply_Category {
@@ -2496,7 +2548,7 @@ type DelSubscribeTplRequest struct {
 
 func (x *DelSubscribeTplRequest) Reset() {
 	*x = DelSubscribeTplRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[40]
+	mi := &file_v1_wxproxy_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2508,7 +2560,7 @@ func (x *DelSubscribeTplRequest) String() string {
 func (*DelSubscribeTplRequest) ProtoMessage() {}
 
 func (x *DelSubscribeTplRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[40]
+	mi := &file_v1_wxproxy_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2521,7 +2573,7 @@ func (x *DelSubscribeTplRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DelSubscribeTplRequest.ProtoReflect.Descriptor instead.
 func (*DelSubscribeTplRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{40}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *DelSubscribeTplRequest) GetAccessToken() string {
@@ -2550,7 +2602,7 @@ type AddSubscribeTplRequest struct {
 
 func (x *AddSubscribeTplRequest) Reset() {
 	*x = AddSubscribeTplRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[41]
+	mi := &file_v1_wxproxy_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2562,7 +2614,7 @@ func (x *AddSubscribeTplRequest) String() string {
 func (*AddSubscribeTplRequest) ProtoMessage() {}
 
 func (x *AddSubscribeTplRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[41]
+	mi := &file_v1_wxproxy_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2575,7 +2627,7 @@ func (x *AddSubscribeTplRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSubscribeTplRequest.ProtoReflect.Descriptor instead.
 func (*AddSubscribeTplRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{41}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *AddSubscribeTplRequest) GetAccessToken() string {
@@ -2615,7 +2667,7 @@ type AddSubscribeTplReply struct {
 
 func (x *AddSubscribeTplReply) Reset() {
 	*x = AddSubscribeTplReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[42]
+	mi := &file_v1_wxproxy_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2627,7 +2679,7 @@ func (x *AddSubscribeTplReply) String() string {
 func (*AddSubscribeTplReply) ProtoMessage() {}
 
 func (x *AddSubscribeTplReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[42]
+	mi := &file_v1_wxproxy_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2640,7 +2692,7 @@ func (x *AddSubscribeTplReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddSubscribeTplReply.ProtoReflect.Descriptor instead.
 func (*AddSubscribeTplReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{42}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *AddSubscribeTplReply) GetTemplateId() string {
@@ -2662,7 +2714,7 @@ type GetBlockedTplRequest struct {
 
 func (x *GetBlockedTplRequest) Reset() {
 	*x = GetBlockedTplRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[43]
+	mi := &file_v1_wxproxy_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2674,7 +2726,7 @@ func (x *GetBlockedTplRequest) String() string {
 func (*GetBlockedTplRequest) ProtoMessage() {}
 
 func (x *GetBlockedTplRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[43]
+	mi := &file_v1_wxproxy_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2687,7 +2739,7 @@ func (x *GetBlockedTplRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBlockedTplRequest.ProtoReflect.Descriptor instead.
 func (*GetBlockedTplRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{43}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *GetBlockedTplRequest) GetAccessToken() string {
@@ -2727,7 +2779,7 @@ type GetBlockedTplMsgReply struct {
 
 func (x *GetBlockedTplMsgReply) Reset() {
 	*x = GetBlockedTplMsgReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[44]
+	mi := &file_v1_wxproxy_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2739,7 +2791,7 @@ func (x *GetBlockedTplMsgReply) String() string {
 func (*GetBlockedTplMsgReply) ProtoMessage() {}
 
 func (x *GetBlockedTplMsgReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[44]
+	mi := &file_v1_wxproxy_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2752,7 +2804,7 @@ func (x *GetBlockedTplMsgReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBlockedTplMsgReply.ProtoReflect.Descriptor instead.
 func (*GetBlockedTplMsgReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{44}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *GetBlockedTplMsgReply) GetMsginfo() []*GetBlockedTplMsgReply_BlockedMsgInfo {
@@ -2779,7 +2831,7 @@ type SendSubscribeMsgRequest struct {
 
 func (x *SendSubscribeMsgRequest) Reset() {
 	*x = SendSubscribeMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[45]
+	mi := &file_v1_wxproxy_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2791,7 +2843,7 @@ func (x *SendSubscribeMsgRequest) String() string {
 func (*SendSubscribeMsgRequest) ProtoMessage() {}
 
 func (x *SendSubscribeMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[45]
+	mi := &file_v1_wxproxy_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2804,7 +2856,7 @@ func (x *SendSubscribeMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendSubscribeMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendSubscribeMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{45}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *SendSubscribeMsgRequest) GetAccessToken() string {
@@ -2879,7 +2931,7 @@ type SendTplMsgReply struct {
 
 func (x *SendTplMsgReply) Reset() {
 	*x = SendTplMsgReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[46]
+	mi := &file_v1_wxproxy_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2891,7 +2943,7 @@ func (x *SendTplMsgReply) String() string {
 func (*SendTplMsgReply) ProtoMessage() {}
 
 func (x *SendTplMsgReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[46]
+	mi := &file_v1_wxproxy_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2904,7 +2956,7 @@ func (x *SendTplMsgReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendTplMsgReply.ProtoReflect.Descriptor instead.
 func (*SendTplMsgReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{46}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *SendTplMsgReply) GetMsgid() int64 {
@@ -2929,7 +2981,7 @@ type SendTplMsgRequest struct {
 
 func (x *SendTplMsgRequest) Reset() {
 	*x = SendTplMsgRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[47]
+	mi := &file_v1_wxproxy_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2941,7 +2993,7 @@ func (x *SendTplMsgRequest) String() string {
 func (*SendTplMsgRequest) ProtoMessage() {}
 
 func (x *SendTplMsgRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[47]
+	mi := &file_v1_wxproxy_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2954,7 +3006,7 @@ func (x *SendTplMsgRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendTplMsgRequest.ProtoReflect.Descriptor instead.
 func (*SendTplMsgRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{47}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *SendTplMsgRequest) GetAccessToken() string {
@@ -3016,7 +3068,7 @@ type MiniProgram struct {
 
 func (x *MiniProgram) Reset() {
 	*x = MiniProgram{}
-	mi := &file_v1_wxproxy_proto_msgTypes[48]
+	mi := &file_v1_wxproxy_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3028,7 +3080,7 @@ func (x *MiniProgram) String() string {
 func (*MiniProgram) ProtoMessage() {}
 
 func (x *MiniProgram) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[48]
+	mi := &file_v1_wxproxy_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3041,7 +3093,7 @@ func (x *MiniProgram) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MiniProgram.ProtoReflect.Descriptor instead.
 func (*MiniProgram) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{48}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *MiniProgram) GetAppid() string {
@@ -3068,7 +3120,7 @@ type DeleteMessageTplRequest struct {
 
 func (x *DeleteMessageTplRequest) Reset() {
 	*x = DeleteMessageTplRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[49]
+	mi := &file_v1_wxproxy_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3080,7 +3132,7 @@ func (x *DeleteMessageTplRequest) String() string {
 func (*DeleteMessageTplRequest) ProtoMessage() {}
 
 func (x *DeleteMessageTplRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[49]
+	mi := &file_v1_wxproxy_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3093,7 +3145,7 @@ func (x *DeleteMessageTplRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteMessageTplRequest.ProtoReflect.Descriptor instead.
 func (*DeleteMessageTplRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{49}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *DeleteMessageTplRequest) GetAccessToken() string {
@@ -3121,7 +3173,7 @@ type AddTemplateRequest struct {
 
 func (x *AddTemplateRequest) Reset() {
 	*x = AddTemplateRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[50]
+	mi := &file_v1_wxproxy_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3133,7 +3185,7 @@ func (x *AddTemplateRequest) String() string {
 func (*AddTemplateRequest) ProtoMessage() {}
 
 func (x *AddTemplateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[50]
+	mi := &file_v1_wxproxy_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3146,7 +3198,7 @@ func (x *AddTemplateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddTemplateRequest.ProtoReflect.Descriptor instead.
 func (*AddTemplateRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{50}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *AddTemplateRequest) GetAccessToken() string {
@@ -3179,7 +3231,7 @@ type AddMessageTplReply struct {
 
 func (x *AddMessageTplReply) Reset() {
 	*x = AddMessageTplReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[51]
+	mi := &file_v1_wxproxy_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3191,7 +3243,7 @@ func (x *AddMessageTplReply) String() string {
 func (*AddMessageTplReply) ProtoMessage() {}
 
 func (x *AddMessageTplReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[51]
+	mi := &file_v1_wxproxy_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3204,7 +3256,7 @@ func (x *AddMessageTplReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddMessageTplReply.ProtoReflect.Descriptor instead.
 func (*AddMessageTplReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{51}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *AddMessageTplReply) GetTemplateId() string {
@@ -3223,7 +3275,7 @@ type GetAllPrivateTplReply struct {
 
 func (x *GetAllPrivateTplReply) Reset() {
 	*x = GetAllPrivateTplReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[52]
+	mi := &file_v1_wxproxy_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3235,7 +3287,7 @@ func (x *GetAllPrivateTplReply) String() string {
 func (*GetAllPrivateTplReply) ProtoMessage() {}
 
 func (x *GetAllPrivateTplReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[52]
+	mi := &file_v1_wxproxy_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3248,7 +3300,7 @@ func (x *GetAllPrivateTplReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPrivateTplReply.ProtoReflect.Descriptor instead.
 func (*GetAllPrivateTplReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{52}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *GetAllPrivateTplReply) GetTemplateList() []*GetAllPrivateTplReply_TplInfo {
@@ -3269,7 +3321,7 @@ type SetIndustryRequest struct {
 
 func (x *SetIndustryRequest) Reset() {
 	*x = SetIndustryRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[53]
+	mi := &file_v1_wxproxy_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3281,7 +3333,7 @@ func (x *SetIndustryRequest) String() string {
 func (*SetIndustryRequest) ProtoMessage() {}
 
 func (x *SetIndustryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[53]
+	mi := &file_v1_wxproxy_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3294,7 +3346,7 @@ func (x *SetIndustryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetIndustryRequest.ProtoReflect.Descriptor instead.
 func (*SetIndustryRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{53}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *SetIndustryRequest) GetAccessToken() string {
@@ -3328,7 +3380,7 @@ type GetIndustryReply struct {
 
 func (x *GetIndustryReply) Reset() {
 	*x = GetIndustryReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[54]
+	mi := &file_v1_wxproxy_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3340,7 +3392,7 @@ func (x *GetIndustryReply) String() string {
 func (*GetIndustryReply) ProtoMessage() {}
 
 func (x *GetIndustryReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[54]
+	mi := &file_v1_wxproxy_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3353,7 +3405,7 @@ func (x *GetIndustryReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIndustryReply.ProtoReflect.Descriptor instead.
 func (*GetIndustryReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{54}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *GetIndustryReply) GetPrimaryIndustry() *GetIndustryReply_Industry {
@@ -3380,7 +3432,7 @@ type DeleteConditionalMenuRequest struct {
 
 func (x *DeleteConditionalMenuRequest) Reset() {
 	*x = DeleteConditionalMenuRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[55]
+	mi := &file_v1_wxproxy_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3392,7 +3444,7 @@ func (x *DeleteConditionalMenuRequest) String() string {
 func (*DeleteConditionalMenuRequest) ProtoMessage() {}
 
 func (x *DeleteConditionalMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[55]
+	mi := &file_v1_wxproxy_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3405,7 +3457,7 @@ func (x *DeleteConditionalMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteConditionalMenuRequest.ProtoReflect.Descriptor instead.
 func (*DeleteConditionalMenuRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{55}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{56}
 }
 
 func (x *DeleteConditionalMenuRequest) GetAccessToken() string {
@@ -3433,7 +3485,7 @@ type CreateMenuRequest struct {
 
 func (x *CreateMenuRequest) Reset() {
 	*x = CreateMenuRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[56]
+	mi := &file_v1_wxproxy_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3445,7 +3497,7 @@ func (x *CreateMenuRequest) String() string {
 func (*CreateMenuRequest) ProtoMessage() {}
 
 func (x *CreateMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[56]
+	mi := &file_v1_wxproxy_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3458,7 +3510,7 @@ func (x *CreateMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateMenuRequest.ProtoReflect.Descriptor instead.
 func (*CreateMenuRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{56}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{57}
 }
 
 func (x *CreateMenuRequest) GetAccessToken() string {
@@ -3492,7 +3544,7 @@ type SelfMenuReply struct {
 
 func (x *SelfMenuReply) Reset() {
 	*x = SelfMenuReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[57]
+	mi := &file_v1_wxproxy_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3504,7 +3556,7 @@ func (x *SelfMenuReply) String() string {
 func (*SelfMenuReply) ProtoMessage() {}
 
 func (x *SelfMenuReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[57]
+	mi := &file_v1_wxproxy_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3517,7 +3569,7 @@ func (x *SelfMenuReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfMenuReply.ProtoReflect.Descriptor instead.
 func (*SelfMenuReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{57}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{58}
 }
 
 func (x *SelfMenuReply) GetIsMenuOpen() int64 {
@@ -3549,7 +3601,7 @@ type SelfMenuButton struct {
 
 func (x *SelfMenuButton) Reset() {
 	*x = SelfMenuButton{}
-	mi := &file_v1_wxproxy_proto_msgTypes[58]
+	mi := &file_v1_wxproxy_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3561,7 +3613,7 @@ func (x *SelfMenuButton) String() string {
 func (*SelfMenuButton) ProtoMessage() {}
 
 func (x *SelfMenuButton) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[58]
+	mi := &file_v1_wxproxy_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3574,7 +3626,7 @@ func (x *SelfMenuButton) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfMenuButton.ProtoReflect.Descriptor instead.
 func (*SelfMenuButton) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{58}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{59}
 }
 
 func (x *SelfMenuButton) GetType() string {
@@ -3641,7 +3693,7 @@ type NewsButton struct {
 
 func (x *NewsButton) Reset() {
 	*x = NewsButton{}
-	mi := &file_v1_wxproxy_proto_msgTypes[59]
+	mi := &file_v1_wxproxy_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3653,7 +3705,7 @@ func (x *NewsButton) String() string {
 func (*NewsButton) ProtoMessage() {}
 
 func (x *NewsButton) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[59]
+	mi := &file_v1_wxproxy_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3666,7 +3718,7 @@ func (x *NewsButton) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NewsButton.ProtoReflect.Descriptor instead.
 func (*NewsButton) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{59}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{60}
 }
 
 func (x *NewsButton) GetTitle() string {
@@ -3728,7 +3780,7 @@ type TryMatchMenuRequest struct {
 
 func (x *TryMatchMenuRequest) Reset() {
 	*x = TryMatchMenuRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[60]
+	mi := &file_v1_wxproxy_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3740,7 +3792,7 @@ func (x *TryMatchMenuRequest) String() string {
 func (*TryMatchMenuRequest) ProtoMessage() {}
 
 func (x *TryMatchMenuRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[60]
+	mi := &file_v1_wxproxy_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3753,7 +3805,7 @@ func (x *TryMatchMenuRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TryMatchMenuRequest.ProtoReflect.Descriptor instead.
 func (*TryMatchMenuRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{60}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{61}
 }
 
 func (x *TryMatchMenuRequest) GetAccessToken() string {
@@ -3779,7 +3831,7 @@ type TryMatchMenuReply struct {
 
 func (x *TryMatchMenuReply) Reset() {
 	*x = TryMatchMenuReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[61]
+	mi := &file_v1_wxproxy_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3791,7 +3843,7 @@ func (x *TryMatchMenuReply) String() string {
 func (*TryMatchMenuReply) ProtoMessage() {}
 
 func (x *TryMatchMenuReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[61]
+	mi := &file_v1_wxproxy_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3804,7 +3856,7 @@ func (x *TryMatchMenuReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TryMatchMenuReply.ProtoReflect.Descriptor instead.
 func (*TryMatchMenuReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{61}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{62}
 }
 
 func (x *TryMatchMenuReply) GetButton() []*MenuButton {
@@ -3824,7 +3876,7 @@ type MenuInfoReply struct {
 
 func (x *MenuInfoReply) Reset() {
 	*x = MenuInfoReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[62]
+	mi := &file_v1_wxproxy_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3836,7 +3888,7 @@ func (x *MenuInfoReply) String() string {
 func (*MenuInfoReply) ProtoMessage() {}
 
 func (x *MenuInfoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[62]
+	mi := &file_v1_wxproxy_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3849,7 +3901,7 @@ func (x *MenuInfoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MenuInfoReply.ProtoReflect.Descriptor instead.
 func (*MenuInfoReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{62}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{63}
 }
 
 func (x *MenuInfoReply) GetMenu() *MenuInfoReply_MenuType {
@@ -3882,7 +3934,7 @@ type MenuButton struct {
 
 func (x *MenuButton) Reset() {
 	*x = MenuButton{}
-	mi := &file_v1_wxproxy_proto_msgTypes[63]
+	mi := &file_v1_wxproxy_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3894,7 +3946,7 @@ func (x *MenuButton) String() string {
 func (*MenuButton) ProtoMessage() {}
 
 func (x *MenuButton) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[63]
+	mi := &file_v1_wxproxy_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3907,7 +3959,7 @@ func (x *MenuButton) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MenuButton.ProtoReflect.Descriptor instead.
 func (*MenuButton) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{63}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{64}
 }
 
 func (x *MenuButton) GetType() string {
@@ -3977,7 +4029,7 @@ type ConditionalMenu struct {
 
 func (x *ConditionalMenu) Reset() {
 	*x = ConditionalMenu{}
-	mi := &file_v1_wxproxy_proto_msgTypes[64]
+	mi := &file_v1_wxproxy_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3989,7 +4041,7 @@ func (x *ConditionalMenu) String() string {
 func (*ConditionalMenu) ProtoMessage() {}
 
 func (x *ConditionalMenu) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[64]
+	mi := &file_v1_wxproxy_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4002,7 +4054,7 @@ func (x *ConditionalMenu) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConditionalMenu.ProtoReflect.Descriptor instead.
 func (*ConditionalMenu) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{64}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{65}
 }
 
 func (x *ConditionalMenu) GetMenuid() int64 {
@@ -4036,7 +4088,7 @@ type ConditionalMatchRule struct {
 
 func (x *ConditionalMatchRule) Reset() {
 	*x = ConditionalMatchRule{}
-	mi := &file_v1_wxproxy_proto_msgTypes[65]
+	mi := &file_v1_wxproxy_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4048,7 +4100,7 @@ func (x *ConditionalMatchRule) String() string {
 func (*ConditionalMatchRule) ProtoMessage() {}
 
 func (x *ConditionalMatchRule) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[65]
+	mi := &file_v1_wxproxy_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4061,7 +4113,7 @@ func (x *ConditionalMatchRule) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConditionalMatchRule.ProtoReflect.Descriptor instead.
 func (*ConditionalMatchRule) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{65}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{66}
 }
 
 func (x *ConditionalMatchRule) GetTagId() string {
@@ -4088,7 +4140,7 @@ type FetchShortenRequest struct {
 
 func (x *FetchShortenRequest) Reset() {
 	*x = FetchShortenRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[66]
+	mi := &file_v1_wxproxy_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4100,7 +4152,7 @@ func (x *FetchShortenRequest) String() string {
 func (*FetchShortenRequest) ProtoMessage() {}
 
 func (x *FetchShortenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[66]
+	mi := &file_v1_wxproxy_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4113,7 +4165,7 @@ func (x *FetchShortenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FetchShortenRequest.ProtoReflect.Descriptor instead.
 func (*FetchShortenRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{66}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{67}
 }
 
 func (x *FetchShortenRequest) GetShortKey() string {
@@ -4141,7 +4193,7 @@ type FetchShortenReply struct {
 
 func (x *FetchShortenReply) Reset() {
 	*x = FetchShortenReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[67]
+	mi := &file_v1_wxproxy_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4153,7 +4205,7 @@ func (x *FetchShortenReply) String() string {
 func (*FetchShortenReply) ProtoMessage() {}
 
 func (x *FetchShortenReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[67]
+	mi := &file_v1_wxproxy_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4166,7 +4218,7 @@ func (x *FetchShortenReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FetchShortenReply.ProtoReflect.Descriptor instead.
 func (*FetchShortenReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{67}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{68}
 }
 
 func (x *FetchShortenReply) GetLongData() string {
@@ -4201,7 +4253,7 @@ type GenShortenRequest struct {
 
 func (x *GenShortenRequest) Reset() {
 	*x = GenShortenRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[68]
+	mi := &file_v1_wxproxy_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4213,7 +4265,7 @@ func (x *GenShortenRequest) String() string {
 func (*GenShortenRequest) ProtoMessage() {}
 
 func (x *GenShortenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[68]
+	mi := &file_v1_wxproxy_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4226,7 +4278,7 @@ func (x *GenShortenRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenShortenRequest.ProtoReflect.Descriptor instead.
 func (*GenShortenRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{68}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{69}
 }
 
 func (x *GenShortenRequest) GetAccessToken() string {
@@ -4259,7 +4311,7 @@ type GenShortenReply struct {
 
 func (x *GenShortenReply) Reset() {
 	*x = GenShortenReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[69]
+	mi := &file_v1_wxproxy_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4271,7 +4323,7 @@ func (x *GenShortenReply) String() string {
 func (*GenShortenReply) ProtoMessage() {}
 
 func (x *GenShortenReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[69]
+	mi := &file_v1_wxproxy_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4284,7 +4336,7 @@ func (x *GenShortenReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GenShortenReply.ProtoReflect.Descriptor instead.
 func (*GenShortenReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{69}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{70}
 }
 
 func (x *GenShortenReply) GetShortKey() string {
@@ -4305,7 +4357,7 @@ type CreateQRCodeReply struct {
 
 func (x *CreateQRCodeReply) Reset() {
 	*x = CreateQRCodeReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[70]
+	mi := &file_v1_wxproxy_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4317,7 +4369,7 @@ func (x *CreateQRCodeReply) String() string {
 func (*CreateQRCodeReply) ProtoMessage() {}
 
 func (x *CreateQRCodeReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[70]
+	mi := &file_v1_wxproxy_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4330,7 +4382,7 @@ func (x *CreateQRCodeReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQRCodeReply.ProtoReflect.Descriptor instead.
 func (*CreateQRCodeReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{70}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{71}
 }
 
 func (x *CreateQRCodeReply) GetTicket() string {
@@ -4365,7 +4417,7 @@ type CreateQRCodeRequest struct {
 
 func (x *CreateQRCodeRequest) Reset() {
 	*x = CreateQRCodeRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[71]
+	mi := &file_v1_wxproxy_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4377,7 +4429,7 @@ func (x *CreateQRCodeRequest) String() string {
 func (*CreateQRCodeRequest) ProtoMessage() {}
 
 func (x *CreateQRCodeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[71]
+	mi := &file_v1_wxproxy_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4390,7 +4442,7 @@ func (x *CreateQRCodeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateQRCodeRequest.ProtoReflect.Descriptor instead.
 func (*CreateQRCodeRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{71}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{72}
 }
 
 func (x *CreateQRCodeRequest) GetAccessToken() string {
@@ -4425,7 +4477,7 @@ type BatchUnTaggingMembersRequest struct {
 
 func (x *BatchUnTaggingMembersRequest) Reset() {
 	*x = BatchUnTaggingMembersRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[72]
+	mi := &file_v1_wxproxy_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4437,7 +4489,7 @@ func (x *BatchUnTaggingMembersRequest) String() string {
 func (*BatchUnTaggingMembersRequest) ProtoMessage() {}
 
 func (x *BatchUnTaggingMembersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[72]
+	mi := &file_v1_wxproxy_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4450,7 +4502,7 @@ func (x *BatchUnTaggingMembersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchUnTaggingMembersRequest.ProtoReflect.Descriptor instead.
 func (*BatchUnTaggingMembersRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{72}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{73}
 }
 
 func (x *BatchUnTaggingMembersRequest) GetAccessToken() string {
@@ -4485,7 +4537,7 @@ type BatchTaggingMembersRequest struct {
 
 func (x *BatchTaggingMembersRequest) Reset() {
 	*x = BatchTaggingMembersRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[73]
+	mi := &file_v1_wxproxy_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4497,7 +4549,7 @@ func (x *BatchTaggingMembersRequest) String() string {
 func (*BatchTaggingMembersRequest) ProtoMessage() {}
 
 func (x *BatchTaggingMembersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[73]
+	mi := &file_v1_wxproxy_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4510,7 +4562,7 @@ func (x *BatchTaggingMembersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchTaggingMembersRequest.ProtoReflect.Descriptor instead.
 func (*BatchTaggingMembersRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{73}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{74}
 }
 
 func (x *BatchTaggingMembersRequest) GetAccessToken() string {
@@ -4545,7 +4597,7 @@ type GetTagMembersReply struct {
 
 func (x *GetTagMembersReply) Reset() {
 	*x = GetTagMembersReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[74]
+	mi := &file_v1_wxproxy_proto_msgTypes[75]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4557,7 +4609,7 @@ func (x *GetTagMembersReply) String() string {
 func (*GetTagMembersReply) ProtoMessage() {}
 
 func (x *GetTagMembersReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[74]
+	mi := &file_v1_wxproxy_proto_msgTypes[75]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4570,7 +4622,7 @@ func (x *GetTagMembersReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTagMembersReply.ProtoReflect.Descriptor instead.
 func (*GetTagMembersReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{74}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{75}
 }
 
 func (x *GetTagMembersReply) GetCount() int64 {
@@ -4605,7 +4657,7 @@ type GetTagMembersRequest struct {
 
 func (x *GetTagMembersRequest) Reset() {
 	*x = GetTagMembersRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[75]
+	mi := &file_v1_wxproxy_proto_msgTypes[76]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4617,7 +4669,7 @@ func (x *GetTagMembersRequest) String() string {
 func (*GetTagMembersRequest) ProtoMessage() {}
 
 func (x *GetTagMembersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[75]
+	mi := &file_v1_wxproxy_proto_msgTypes[76]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4630,7 +4682,7 @@ func (x *GetTagMembersRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTagMembersRequest.ProtoReflect.Descriptor instead.
 func (*GetTagMembersRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{75}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{76}
 }
 
 func (x *GetTagMembersRequest) GetAccessToken() string {
@@ -4664,7 +4716,7 @@ type DeleteTagRequest struct {
 
 func (x *DeleteTagRequest) Reset() {
 	*x = DeleteTagRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[76]
+	mi := &file_v1_wxproxy_proto_msgTypes[77]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4676,7 +4728,7 @@ func (x *DeleteTagRequest) String() string {
 func (*DeleteTagRequest) ProtoMessage() {}
 
 func (x *DeleteTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[76]
+	mi := &file_v1_wxproxy_proto_msgTypes[77]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4689,7 +4741,7 @@ func (x *DeleteTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteTagRequest.ProtoReflect.Descriptor instead.
 func (*DeleteTagRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{76}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{77}
 }
 
 func (x *DeleteTagRequest) GetAccessToken() string {
@@ -4717,7 +4769,7 @@ type UpdateTagRequest struct {
 
 func (x *UpdateTagRequest) Reset() {
 	*x = UpdateTagRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[77]
+	mi := &file_v1_wxproxy_proto_msgTypes[78]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4729,7 +4781,7 @@ func (x *UpdateTagRequest) String() string {
 func (*UpdateTagRequest) ProtoMessage() {}
 
 func (x *UpdateTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[77]
+	mi := &file_v1_wxproxy_proto_msgTypes[78]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4742,7 +4794,7 @@ func (x *UpdateTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateTagRequest.ProtoReflect.Descriptor instead.
 func (*UpdateTagRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{77}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{78}
 }
 
 func (x *UpdateTagRequest) GetAccessToken() string {
@@ -4776,7 +4828,7 @@ type CreateTagRequest struct {
 
 func (x *CreateTagRequest) Reset() {
 	*x = CreateTagRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[78]
+	mi := &file_v1_wxproxy_proto_msgTypes[79]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4788,7 +4840,7 @@ func (x *CreateTagRequest) String() string {
 func (*CreateTagRequest) ProtoMessage() {}
 
 func (x *CreateTagRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[78]
+	mi := &file_v1_wxproxy_proto_msgTypes[79]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4801,7 +4853,7 @@ func (x *CreateTagRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTagRequest.ProtoReflect.Descriptor instead.
 func (*CreateTagRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{78}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{79}
 }
 
 func (x *CreateTagRequest) GetAccessToken() string {
@@ -4827,7 +4879,7 @@ type CreateTagReply struct {
 
 func (x *CreateTagReply) Reset() {
 	*x = CreateTagReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[79]
+	mi := &file_v1_wxproxy_proto_msgTypes[80]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4839,7 +4891,7 @@ func (x *CreateTagReply) String() string {
 func (*CreateTagReply) ProtoMessage() {}
 
 func (x *CreateTagReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[79]
+	mi := &file_v1_wxproxy_proto_msgTypes[80]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4852,7 +4904,7 @@ func (x *CreateTagReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTagReply.ProtoReflect.Descriptor instead.
 func (*CreateTagReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{79}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{80}
 }
 
 func (x *CreateTagReply) GetTag() *Tag {
@@ -4871,7 +4923,7 @@ type GetTagListReply struct {
 
 func (x *GetTagListReply) Reset() {
 	*x = GetTagListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[80]
+	mi := &file_v1_wxproxy_proto_msgTypes[81]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4883,7 +4935,7 @@ func (x *GetTagListReply) String() string {
 func (*GetTagListReply) ProtoMessage() {}
 
 func (x *GetTagListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[80]
+	mi := &file_v1_wxproxy_proto_msgTypes[81]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4896,7 +4948,7 @@ func (x *GetTagListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTagListReply.ProtoReflect.Descriptor instead.
 func (*GetTagListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{80}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{81}
 }
 
 func (x *GetTagListReply) GetTags() []*Tag {
@@ -4917,7 +4969,7 @@ type Tag struct {
 
 func (x *Tag) Reset() {
 	*x = Tag{}
-	mi := &file_v1_wxproxy_proto_msgTypes[81]
+	mi := &file_v1_wxproxy_proto_msgTypes[82]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4929,7 +4981,7 @@ func (x *Tag) String() string {
 func (*Tag) ProtoMessage() {}
 
 func (x *Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[81]
+	mi := &file_v1_wxproxy_proto_msgTypes[82]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4942,7 +4994,7 @@ func (x *Tag) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Tag.ProtoReflect.Descriptor instead.
 func (*Tag) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{81}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{82}
 }
 
 func (x *Tag) GetId() int64 {
@@ -4977,7 +5029,7 @@ type UpdateMemberRemarkRequest struct {
 
 func (x *UpdateMemberRemarkRequest) Reset() {
 	*x = UpdateMemberRemarkRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[82]
+	mi := &file_v1_wxproxy_proto_msgTypes[83]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4989,7 +5041,7 @@ func (x *UpdateMemberRemarkRequest) String() string {
 func (*UpdateMemberRemarkRequest) ProtoMessage() {}
 
 func (x *UpdateMemberRemarkRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[82]
+	mi := &file_v1_wxproxy_proto_msgTypes[83]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5002,7 +5054,7 @@ func (x *UpdateMemberRemarkRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMemberRemarkRequest.ProtoReflect.Descriptor instead.
 func (*UpdateMemberRemarkRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{82}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{83}
 }
 
 func (x *UpdateMemberRemarkRequest) GetAccessToken() string {
@@ -5036,7 +5088,7 @@ type WXErrorReply struct {
 
 func (x *WXErrorReply) Reset() {
 	*x = WXErrorReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[83]
+	mi := &file_v1_wxproxy_proto_msgTypes[84]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5048,7 +5100,7 @@ func (x *WXErrorReply) String() string {
 func (*WXErrorReply) ProtoMessage() {}
 
 func (x *WXErrorReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[83]
+	mi := &file_v1_wxproxy_proto_msgTypes[84]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5061,7 +5113,7 @@ func (x *WXErrorReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WXErrorReply.ProtoReflect.Descriptor instead.
 func (*WXErrorReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{83}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{84}
 }
 
 func (x *WXErrorReply) GetErrcode() int64 {
@@ -5088,7 +5140,7 @@ type GetMemberTagsRequest struct {
 
 func (x *GetMemberTagsRequest) Reset() {
 	*x = GetMemberTagsRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[84]
+	mi := &file_v1_wxproxy_proto_msgTypes[85]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5100,7 +5152,7 @@ func (x *GetMemberTagsRequest) String() string {
 func (*GetMemberTagsRequest) ProtoMessage() {}
 
 func (x *GetMemberTagsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[84]
+	mi := &file_v1_wxproxy_proto_msgTypes[85]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5113,7 +5165,7 @@ func (x *GetMemberTagsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberTagsRequest.ProtoReflect.Descriptor instead.
 func (*GetMemberTagsRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{84}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{85}
 }
 
 func (x *GetMemberTagsRequest) GetAccessToken() string {
@@ -5139,7 +5191,7 @@ type GetMemberTagsReply struct {
 
 func (x *GetMemberTagsReply) Reset() {
 	*x = GetMemberTagsReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[85]
+	mi := &file_v1_wxproxy_proto_msgTypes[86]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5151,7 +5203,7 @@ func (x *GetMemberTagsReply) String() string {
 func (*GetMemberTagsReply) ProtoMessage() {}
 
 func (x *GetMemberTagsReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[85]
+	mi := &file_v1_wxproxy_proto_msgTypes[86]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5164,7 +5216,7 @@ func (x *GetMemberTagsReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberTagsReply.ProtoReflect.Descriptor instead.
 func (*GetMemberTagsReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{85}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{86}
 }
 
 func (x *GetMemberTagsReply) GetTagidList() []int64 {
@@ -5184,7 +5236,7 @@ type BatchGetMemberInfoRequest struct {
 
 func (x *BatchGetMemberInfoRequest) Reset() {
 	*x = BatchGetMemberInfoRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[86]
+	mi := &file_v1_wxproxy_proto_msgTypes[87]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5196,7 +5248,7 @@ func (x *BatchGetMemberInfoRequest) String() string {
 func (*BatchGetMemberInfoRequest) ProtoMessage() {}
 
 func (x *BatchGetMemberInfoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[86]
+	mi := &file_v1_wxproxy_proto_msgTypes[87]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5209,7 +5261,7 @@ func (x *BatchGetMemberInfoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchGetMemberInfoRequest.ProtoReflect.Descriptor instead.
 func (*BatchGetMemberInfoRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{86}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{87}
 }
 
 func (x *BatchGetMemberInfoRequest) GetAccessToken() string {
@@ -5235,7 +5287,7 @@ type BatchGetMemberInfoReply struct {
 
 func (x *BatchGetMemberInfoReply) Reset() {
 	*x = BatchGetMemberInfoReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[87]
+	mi := &file_v1_wxproxy_proto_msgTypes[88]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5247,7 +5299,7 @@ func (x *BatchGetMemberInfoReply) String() string {
 func (*BatchGetMemberInfoReply) ProtoMessage() {}
 
 func (x *BatchGetMemberInfoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[87]
+	mi := &file_v1_wxproxy_proto_msgTypes[88]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5260,7 +5312,7 @@ func (x *BatchGetMemberInfoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchGetMemberInfoReply.ProtoReflect.Descriptor instead.
 func (*BatchGetMemberInfoReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{87}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{88}
 }
 
 func (x *BatchGetMemberInfoReply) GetUserListInfo() []*GetMemberInfoReply {
@@ -5281,7 +5333,7 @@ type GetMemberInfoRequest struct {
 
 func (x *GetMemberInfoRequest) Reset() {
 	*x = GetMemberInfoRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[88]
+	mi := &file_v1_wxproxy_proto_msgTypes[89]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5293,7 +5345,7 @@ func (x *GetMemberInfoRequest) String() string {
 func (*GetMemberInfoRequest) ProtoMessage() {}
 
 func (x *GetMemberInfoRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[88]
+	mi := &file_v1_wxproxy_proto_msgTypes[89]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5306,7 +5358,7 @@ func (x *GetMemberInfoRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberInfoRequest.ProtoReflect.Descriptor instead.
 func (*GetMemberInfoRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{88}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{89}
 }
 
 func (x *GetMemberInfoRequest) GetAccessToken() string {
@@ -5349,7 +5401,7 @@ type GetMemberInfoReply struct {
 
 func (x *GetMemberInfoReply) Reset() {
 	*x = GetMemberInfoReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[89]
+	mi := &file_v1_wxproxy_proto_msgTypes[90]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5361,7 +5413,7 @@ func (x *GetMemberInfoReply) String() string {
 func (*GetMemberInfoReply) ProtoMessage() {}
 
 func (x *GetMemberInfoReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[89]
+	mi := &file_v1_wxproxy_proto_msgTypes[90]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5374,7 +5426,7 @@ func (x *GetMemberInfoReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberInfoReply.ProtoReflect.Descriptor instead.
 func (*GetMemberInfoReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{89}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{90}
 }
 
 func (x *GetMemberInfoReply) GetSubscribe() int64 {
@@ -5464,7 +5516,7 @@ type GetMemberListRequest struct {
 
 func (x *GetMemberListRequest) Reset() {
 	*x = GetMemberListRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[90]
+	mi := &file_v1_wxproxy_proto_msgTypes[91]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5476,7 +5528,7 @@ func (x *GetMemberListRequest) String() string {
 func (*GetMemberListRequest) ProtoMessage() {}
 
 func (x *GetMemberListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[90]
+	mi := &file_v1_wxproxy_proto_msgTypes[91]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5489,7 +5541,7 @@ func (x *GetMemberListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberListRequest.ProtoReflect.Descriptor instead.
 func (*GetMemberListRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{90}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{91}
 }
 
 func (x *GetMemberListRequest) GetAccessToken() string {
@@ -5518,7 +5570,7 @@ type GetMemberListReply struct {
 
 func (x *GetMemberListReply) Reset() {
 	*x = GetMemberListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[91]
+	mi := &file_v1_wxproxy_proto_msgTypes[92]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5530,7 +5582,7 @@ func (x *GetMemberListReply) String() string {
 func (*GetMemberListReply) ProtoMessage() {}
 
 func (x *GetMemberListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[91]
+	mi := &file_v1_wxproxy_proto_msgTypes[92]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5543,7 +5595,7 @@ func (x *GetMemberListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberListReply.ProtoReflect.Descriptor instead.
 func (*GetMemberListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{91}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{92}
 }
 
 func (x *GetMemberListReply) GetTotal() int64 {
@@ -5583,7 +5635,7 @@ type OpenIdList struct {
 
 func (x *OpenIdList) Reset() {
 	*x = OpenIdList{}
-	mi := &file_v1_wxproxy_proto_msgTypes[92]
+	mi := &file_v1_wxproxy_proto_msgTypes[93]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5595,7 +5647,7 @@ func (x *OpenIdList) String() string {
 func (*OpenIdList) ProtoMessage() {}
 
 func (x *OpenIdList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[92]
+	mi := &file_v1_wxproxy_proto_msgTypes[93]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5608,7 +5660,7 @@ func (x *OpenIdList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OpenIdList.ProtoReflect.Descriptor instead.
 func (*OpenIdList) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{92}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{93}
 }
 
 func (x *OpenIdList) GetOpenid() string {
@@ -5627,7 +5679,7 @@ type AccessTokenParam struct {
 
 func (x *AccessTokenParam) Reset() {
 	*x = AccessTokenParam{}
-	mi := &file_v1_wxproxy_proto_msgTypes[93]
+	mi := &file_v1_wxproxy_proto_msgTypes[94]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5639,7 +5691,7 @@ func (x *AccessTokenParam) String() string {
 func (*AccessTokenParam) ProtoMessage() {}
 
 func (x *AccessTokenParam) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[93]
+	mi := &file_v1_wxproxy_proto_msgTypes[94]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5652,7 +5704,7 @@ func (x *AccessTokenParam) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccessTokenParam.ProtoReflect.Descriptor instead.
 func (*AccessTokenParam) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{93}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{94}
 }
 
 func (x *AccessTokenParam) GetAccessToken() string {
@@ -5674,7 +5726,7 @@ type GetMaterialCountReply struct {
 
 func (x *GetMaterialCountReply) Reset() {
 	*x = GetMaterialCountReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[94]
+	mi := &file_v1_wxproxy_proto_msgTypes[95]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5686,7 +5738,7 @@ func (x *GetMaterialCountReply) String() string {
 func (*GetMaterialCountReply) ProtoMessage() {}
 
 func (x *GetMaterialCountReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[94]
+	mi := &file_v1_wxproxy_proto_msgTypes[95]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5699,7 +5751,7 @@ func (x *GetMaterialCountReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialCountReply.ProtoReflect.Descriptor instead.
 func (*GetMaterialCountReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{94}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{95}
 }
 
 func (x *GetMaterialCountReply) GetVoiceCount() int64 {
@@ -5742,7 +5794,7 @@ type GetMaterialListRequest struct {
 
 func (x *GetMaterialListRequest) Reset() {
 	*x = GetMaterialListRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[95]
+	mi := &file_v1_wxproxy_proto_msgTypes[96]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5754,7 +5806,7 @@ func (x *GetMaterialListRequest) String() string {
 func (*GetMaterialListRequest) ProtoMessage() {}
 
 func (x *GetMaterialListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[95]
+	mi := &file_v1_wxproxy_proto_msgTypes[96]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5767,7 +5819,7 @@ func (x *GetMaterialListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialListRequest.ProtoReflect.Descriptor instead.
 func (*GetMaterialListRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{95}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{96}
 }
 
 func (x *GetMaterialListRequest) GetAccessToken() string {
@@ -5809,7 +5861,7 @@ type GetMaterialListReply struct {
 
 func (x *GetMaterialListReply) Reset() {
 	*x = GetMaterialListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[96]
+	mi := &file_v1_wxproxy_proto_msgTypes[97]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5821,7 +5873,7 @@ func (x *GetMaterialListReply) String() string {
 func (*GetMaterialListReply) ProtoMessage() {}
 
 func (x *GetMaterialListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[96]
+	mi := &file_v1_wxproxy_proto_msgTypes[97]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5834,7 +5886,7 @@ func (x *GetMaterialListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialListReply.ProtoReflect.Descriptor instead.
 func (*GetMaterialListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{96}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{97}
 }
 
 func (x *GetMaterialListReply) GetTotalCount() int64 {
@@ -5870,7 +5922,7 @@ type MaterialItem struct {
 
 func (x *MaterialItem) Reset() {
 	*x = MaterialItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	mi := &file_v1_wxproxy_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5882,7 +5934,7 @@ func (x *MaterialItem) String() string {
 func (*MaterialItem) ProtoMessage() {}
 
 func (x *MaterialItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	mi := &file_v1_wxproxy_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5895,7 +5947,7 @@ func (x *MaterialItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MaterialItem.ProtoReflect.Descriptor instead.
 func (*MaterialItem) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{97}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *MaterialItem) GetMediaId() string {
@@ -5938,7 +5990,7 @@ type SendKFMiniProgramMsgRequest_KFMiniProgramMsg struct {
 
 func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) Reset() {
 	*x = SendKFMiniProgramMsgRequest_KFMiniProgramMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[98]
+	mi := &file_v1_wxproxy_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5950,7 +6002,7 @@ func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) String() string {
 func (*SendKFMiniProgramMsgRequest_KFMiniProgramMsg) ProtoMessage() {}
 
 func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[98]
+	mi := &file_v1_wxproxy_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5963,7 +6015,7 @@ func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) ProtoReflect() protorefle
 
 // Deprecated: Use SendKFMiniProgramMsgRequest_KFMiniProgramMsg.ProtoReflect.Descriptor instead.
 func (*SendKFMiniProgramMsgRequest_KFMiniProgramMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{0, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{1, 0}
 }
 
 func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) GetTitle() string {
@@ -6003,7 +6055,7 @@ type SendKFCardMsgRequest_KFCardMsg struct {
 
 func (x *SendKFCardMsgRequest_KFCardMsg) Reset() {
 	*x = SendKFCardMsgRequest_KFCardMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[99]
+	mi := &file_v1_wxproxy_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6015,7 +6067,7 @@ func (x *SendKFCardMsgRequest_KFCardMsg) String() string {
 func (*SendKFCardMsgRequest_KFCardMsg) ProtoMessage() {}
 
 func (x *SendKFCardMsgRequest_KFCardMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[99]
+	mi := &file_v1_wxproxy_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6028,7 +6080,7 @@ func (x *SendKFCardMsgRequest_KFCardMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFCardMsgRequest_KFCardMsg.ProtoReflect.Descriptor instead.
 func (*SendKFCardMsgRequest_KFCardMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{1, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{2, 0}
 }
 
 func (x *SendKFCardMsgRequest_KFCardMsg) GetCardId() string {
@@ -6048,7 +6100,7 @@ type SendKFMenuMsgRequest_Item struct {
 
 func (x *SendKFMenuMsgRequest_Item) Reset() {
 	*x = SendKFMenuMsgRequest_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[100]
+	mi := &file_v1_wxproxy_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6060,7 +6112,7 @@ func (x *SendKFMenuMsgRequest_Item) String() string {
 func (*SendKFMenuMsgRequest_Item) ProtoMessage() {}
 
 func (x *SendKFMenuMsgRequest_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[100]
+	mi := &file_v1_wxproxy_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6073,7 +6125,7 @@ func (x *SendKFMenuMsgRequest_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMenuMsgRequest_Item.ProtoReflect.Descriptor instead.
 func (*SendKFMenuMsgRequest_Item) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{2, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{3, 0}
 }
 
 func (x *SendKFMenuMsgRequest_Item) GetId() string {
@@ -6101,7 +6153,7 @@ type SendKFMenuMsgRequest_MenuMsg struct {
 
 func (x *SendKFMenuMsgRequest_MenuMsg) Reset() {
 	*x = SendKFMenuMsgRequest_MenuMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[101]
+	mi := &file_v1_wxproxy_proto_msgTypes[102]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6113,7 +6165,7 @@ func (x *SendKFMenuMsgRequest_MenuMsg) String() string {
 func (*SendKFMenuMsgRequest_MenuMsg) ProtoMessage() {}
 
 func (x *SendKFMenuMsgRequest_MenuMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[101]
+	mi := &file_v1_wxproxy_proto_msgTypes[102]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6126,7 +6178,7 @@ func (x *SendKFMenuMsgRequest_MenuMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMenuMsgRequest_MenuMsg.ProtoReflect.Descriptor instead.
 func (*SendKFMenuMsgRequest_MenuMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{2, 1}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{3, 1}
 }
 
 func (x *SendKFMenuMsgRequest_MenuMsg) GetHeadContent() string {
@@ -6159,7 +6211,7 @@ type SendKFToArticleMsgRequest_ToArticleMsg struct {
 
 func (x *SendKFToArticleMsgRequest_ToArticleMsg) Reset() {
 	*x = SendKFToArticleMsgRequest_ToArticleMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	mi := &file_v1_wxproxy_proto_msgTypes[103]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6171,7 +6223,7 @@ func (x *SendKFToArticleMsgRequest_ToArticleMsg) String() string {
 func (*SendKFToArticleMsgRequest_ToArticleMsg) ProtoMessage() {}
 
 func (x *SendKFToArticleMsgRequest_ToArticleMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	mi := &file_v1_wxproxy_proto_msgTypes[103]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6184,7 +6236,7 @@ func (x *SendKFToArticleMsgRequest_ToArticleMsg) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use SendKFToArticleMsgRequest_ToArticleMsg.ProtoReflect.Descriptor instead.
 func (*SendKFToArticleMsgRequest_ToArticleMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{3, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{4, 0}
 }
 
 func (x *SendKFToArticleMsgRequest_ToArticleMsg) GetArticleId() string {
@@ -6203,7 +6255,7 @@ type SendKFNewsPageMsgRequest_KFNewsPageMsg struct {
 
 func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) Reset() {
 	*x = SendKFNewsPageMsgRequest_KFNewsPageMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	mi := &file_v1_wxproxy_proto_msgTypes[104]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6215,7 +6267,7 @@ func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) String() string {
 func (*SendKFNewsPageMsgRequest_KFNewsPageMsg) ProtoMessage() {}
 
 func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	mi := &file_v1_wxproxy_proto_msgTypes[104]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6228,7 +6280,7 @@ func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use SendKFNewsPageMsgRequest_KFNewsPageMsg.ProtoReflect.Descriptor instead.
 func (*SendKFNewsPageMsgRequest_KFNewsPageMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{4, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{5, 0}
 }
 
 func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) GetMediaId() string {
@@ -6250,7 +6302,7 @@ type SendKFNewsCardMsgRequest_KFNewsCardMsg struct {
 
 func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) Reset() {
 	*x = SendKFNewsCardMsgRequest_KFNewsCardMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	mi := &file_v1_wxproxy_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6262,7 +6314,7 @@ func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) String() string {
 func (*SendKFNewsCardMsgRequest_KFNewsCardMsg) ProtoMessage() {}
 
 func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	mi := &file_v1_wxproxy_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6275,7 +6327,7 @@ func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use SendKFNewsCardMsgRequest_KFNewsCardMsg.ProtoReflect.Descriptor instead.
 func (*SendKFNewsCardMsgRequest_KFNewsCardMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{5, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{6, 0}
 }
 
 func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) GetTitle() string {
@@ -6319,7 +6371,7 @@ type SendKFMusicMsgRequest_KFMusicMsg struct {
 
 func (x *SendKFMusicMsgRequest_KFMusicMsg) Reset() {
 	*x = SendKFMusicMsgRequest_KFMusicMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[105]
+	mi := &file_v1_wxproxy_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6331,7 +6383,7 @@ func (x *SendKFMusicMsgRequest_KFMusicMsg) String() string {
 func (*SendKFMusicMsgRequest_KFMusicMsg) ProtoMessage() {}
 
 func (x *SendKFMusicMsgRequest_KFMusicMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[105]
+	mi := &file_v1_wxproxy_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6344,7 +6396,7 @@ func (x *SendKFMusicMsgRequest_KFMusicMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFMusicMsgRequest_KFMusicMsg.ProtoReflect.Descriptor instead.
 func (*SendKFMusicMsgRequest_KFMusicMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{6, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{7, 0}
 }
 
 func (x *SendKFMusicMsgRequest_KFMusicMsg) GetMusicUrl() string {
@@ -6394,7 +6446,7 @@ type SendKFVideoMsgRequest_KFVideoMsg struct {
 
 func (x *SendKFVideoMsgRequest_KFVideoMsg) Reset() {
 	*x = SendKFVideoMsgRequest_KFVideoMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[106]
+	mi := &file_v1_wxproxy_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6406,7 +6458,7 @@ func (x *SendKFVideoMsgRequest_KFVideoMsg) String() string {
 func (*SendKFVideoMsgRequest_KFVideoMsg) ProtoMessage() {}
 
 func (x *SendKFVideoMsgRequest_KFVideoMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[106]
+	mi := &file_v1_wxproxy_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6419,7 +6471,7 @@ func (x *SendKFVideoMsgRequest_KFVideoMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFVideoMsgRequest_KFVideoMsg.ProtoReflect.Descriptor instead.
 func (*SendKFVideoMsgRequest_KFVideoMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{7, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{8, 0}
 }
 
 func (x *SendKFVideoMsgRequest_KFVideoMsg) GetMediaId() string {
@@ -6459,7 +6511,7 @@ type SendKFVoiceMsgRequest_KFVoiceMsg struct {
 
 func (x *SendKFVoiceMsgRequest_KFVoiceMsg) Reset() {
 	*x = SendKFVoiceMsgRequest_KFVoiceMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[107]
+	mi := &file_v1_wxproxy_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6471,7 +6523,7 @@ func (x *SendKFVoiceMsgRequest_KFVoiceMsg) String() string {
 func (*SendKFVoiceMsgRequest_KFVoiceMsg) ProtoMessage() {}
 
 func (x *SendKFVoiceMsgRequest_KFVoiceMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[107]
+	mi := &file_v1_wxproxy_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6484,7 +6536,7 @@ func (x *SendKFVoiceMsgRequest_KFVoiceMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFVoiceMsgRequest_KFVoiceMsg.ProtoReflect.Descriptor instead.
 func (*SendKFVoiceMsgRequest_KFVoiceMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{8, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{9, 0}
 }
 
 func (x *SendKFVoiceMsgRequest_KFVoiceMsg) GetMediaId() string {
@@ -6503,7 +6555,7 @@ type SendKFImageMsgRequest_KFImageMsg struct {
 
 func (x *SendKFImageMsgRequest_KFImageMsg) Reset() {
 	*x = SendKFImageMsgRequest_KFImageMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[108]
+	mi := &file_v1_wxproxy_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6515,7 +6567,7 @@ func (x *SendKFImageMsgRequest_KFImageMsg) String() string {
 func (*SendKFImageMsgRequest_KFImageMsg) ProtoMessage() {}
 
 func (x *SendKFImageMsgRequest_KFImageMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[108]
+	mi := &file_v1_wxproxy_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6528,7 +6580,7 @@ func (x *SendKFImageMsgRequest_KFImageMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFImageMsgRequest_KFImageMsg.ProtoReflect.Descriptor instead.
 func (*SendKFImageMsgRequest_KFImageMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{9, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{10, 0}
 }
 
 func (x *SendKFImageMsgRequest_KFImageMsg) GetMediaId() string {
@@ -6547,7 +6599,7 @@ type KFMessageCommon_KFAccount struct {
 
 func (x *KFMessageCommon_KFAccount) Reset() {
 	*x = KFMessageCommon_KFAccount{}
-	mi := &file_v1_wxproxy_proto_msgTypes[109]
+	mi := &file_v1_wxproxy_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6559,7 +6611,7 @@ func (x *KFMessageCommon_KFAccount) String() string {
 func (*KFMessageCommon_KFAccount) ProtoMessage() {}
 
 func (x *KFMessageCommon_KFAccount) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[109]
+	mi := &file_v1_wxproxy_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6572,7 +6624,7 @@ func (x *KFMessageCommon_KFAccount) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KFMessageCommon_KFAccount.ProtoReflect.Descriptor instead.
 func (*KFMessageCommon_KFAccount) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{10, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{11, 0}
 }
 
 func (x *KFMessageCommon_KFAccount) GetKfAccount() string {
@@ -6591,7 +6643,7 @@ type SendKFTextMsgRequest_KFTextMsg struct {
 
 func (x *SendKFTextMsgRequest_KFTextMsg) Reset() {
 	*x = SendKFTextMsgRequest_KFTextMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[110]
+	mi := &file_v1_wxproxy_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6603,7 +6655,7 @@ func (x *SendKFTextMsgRequest_KFTextMsg) String() string {
 func (*SendKFTextMsgRequest_KFTextMsg) ProtoMessage() {}
 
 func (x *SendKFTextMsgRequest_KFTextMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[110]
+	mi := &file_v1_wxproxy_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6616,7 +6668,7 @@ func (x *SendKFTextMsgRequest_KFTextMsg) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendKFTextMsgRequest_KFTextMsg.ProtoReflect.Descriptor instead.
 func (*SendKFTextMsgRequest_KFTextMsg) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{11, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{12, 0}
 }
 
 func (x *SendKFTextMsgRequest_KFTextMsg) GetContent() string {
@@ -6636,7 +6688,7 @@ type GetKFSessionUnacceptedReply_WaitCase struct {
 
 func (x *GetKFSessionUnacceptedReply_WaitCase) Reset() {
 	*x = GetKFSessionUnacceptedReply_WaitCase{}
-	mi := &file_v1_wxproxy_proto_msgTypes[111]
+	mi := &file_v1_wxproxy_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6648,7 +6700,7 @@ func (x *GetKFSessionUnacceptedReply_WaitCase) String() string {
 func (*GetKFSessionUnacceptedReply_WaitCase) ProtoMessage() {}
 
 func (x *GetKFSessionUnacceptedReply_WaitCase) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[111]
+	mi := &file_v1_wxproxy_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6661,7 +6713,7 @@ func (x *GetKFSessionUnacceptedReply_WaitCase) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetKFSessionUnacceptedReply_WaitCase.ProtoReflect.Descriptor instead.
 func (*GetKFSessionUnacceptedReply_WaitCase) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{14, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{15, 0}
 }
 
 func (x *GetKFSessionUnacceptedReply_WaitCase) GetLatestTime() int64 {
@@ -6687,7 +6739,7 @@ type SendSubscribeMessageRequest_DataItem struct {
 
 func (x *SendSubscribeMessageRequest_DataItem) Reset() {
 	*x = SendSubscribeMessageRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[112]
+	mi := &file_v1_wxproxy_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6699,7 +6751,7 @@ func (x *SendSubscribeMessageRequest_DataItem) String() string {
 func (*SendSubscribeMessageRequest_DataItem) ProtoMessage() {}
 
 func (x *SendSubscribeMessageRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[112]
+	mi := &file_v1_wxproxy_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6712,7 +6764,7 @@ func (x *SendSubscribeMessageRequest_DataItem) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use SendSubscribeMessageRequest_DataItem.ProtoReflect.Descriptor instead.
 func (*SendSubscribeMessageRequest_DataItem) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{33, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{34, 0}
 }
 
 func (x *SendSubscribeMessageRequest_DataItem) GetValue() string {
@@ -6735,7 +6787,7 @@ type GetSubscribePrivateTplReply_Item struct {
 
 func (x *GetSubscribePrivateTplReply_Item) Reset() {
 	*x = GetSubscribePrivateTplReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[114]
+	mi := &file_v1_wxproxy_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6747,7 +6799,7 @@ func (x *GetSubscribePrivateTplReply_Item) String() string {
 func (*GetSubscribePrivateTplReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribePrivateTplReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[114]
+	mi := &file_v1_wxproxy_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6760,7 +6812,7 @@ func (x *GetSubscribePrivateTplReply_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribePrivateTplReply_Item.ProtoReflect.Descriptor instead.
 func (*GetSubscribePrivateTplReply_Item) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{34, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{35, 0}
 }
 
 func (x *GetSubscribePrivateTplReply_Item) GetPriTmplId() string {
@@ -6810,7 +6862,7 @@ type GetSubscribeTplTitlesReply_Item struct {
 
 func (x *GetSubscribeTplTitlesReply_Item) Reset() {
 	*x = GetSubscribeTplTitlesReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[115]
+	mi := &file_v1_wxproxy_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6822,7 +6874,7 @@ func (x *GetSubscribeTplTitlesReply_Item) String() string {
 func (*GetSubscribeTplTitlesReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribeTplTitlesReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[115]
+	mi := &file_v1_wxproxy_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6835,7 +6887,7 @@ func (x *GetSubscribeTplTitlesReply_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSubscribeTplTitlesReply_Item.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplTitlesReply_Item) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{35, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{36, 0}
 }
 
 func (x *GetSubscribeTplTitlesReply_Item) GetTid() string {
@@ -6878,7 +6930,7 @@ type GetSubscribeTplKeywordsReply_Item struct {
 
 func (x *GetSubscribeTplKeywordsReply_Item) Reset() {
 	*x = GetSubscribeTplKeywordsReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[116]
+	mi := &file_v1_wxproxy_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6890,7 +6942,7 @@ func (x *GetSubscribeTplKeywordsReply_Item) String() string {
 func (*GetSubscribeTplKeywordsReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribeTplKeywordsReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[116]
+	mi := &file_v1_wxproxy_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6903,7 +6955,7 @@ func (x *GetSubscribeTplKeywordsReply_Item) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use GetSubscribeTplKeywordsReply_Item.ProtoReflect.Descriptor instead.
 func (*GetSubscribeTplKeywordsReply_Item) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{37, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{38, 0}
 }
 
 func (x *GetSubscribeTplKeywordsReply_Item) GetKid() int64 {
@@ -6944,7 +6996,7 @@ type GetSubscribeCategoryReply_Category struct {
 
 func (x *GetSubscribeCategoryReply_Category) Reset() {
 	*x = GetSubscribeCategoryReply_Category{}
-	mi := &file_v1_wxproxy_proto_msgTypes[117]
+	mi := &file_v1_wxproxy_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6956,7 +7008,7 @@ func (x *GetSubscribeCategoryReply_Category) String() string {
 func (*GetSubscribeCategoryReply_Category) ProtoMessage() {}
 
 func (x *GetSubscribeCategoryReply_Category) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[117]
+	mi := &file_v1_wxproxy_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6969,7 +7021,7 @@ func (x *GetSubscribeCategoryReply_Category) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use GetSubscribeCategoryReply_Category.ProtoReflect.Descriptor instead.
 func (*GetSubscribeCategoryReply_Category) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{39, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{40, 0}
 }
 
 func (x *GetSubscribeCategoryReply_Category) GetId() string {
@@ -7000,7 +7052,7 @@ type GetBlockedTplMsgReply_BlockedMsgInfo struct {
 
 func (x *GetBlockedTplMsgReply_BlockedMsgInfo) Reset() {
 	*x = GetBlockedTplMsgReply_BlockedMsgInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[118]
+	mi := &file_v1_wxproxy_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7012,7 +7064,7 @@ func (x *GetBlockedTplMsgReply_BlockedMsgInfo) String() string {
 func (*GetBlockedTplMsgReply_BlockedMsgInfo) ProtoMessage() {}
 
 func (x *GetBlockedTplMsgReply_BlockedMsgInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[118]
+	mi := &file_v1_wxproxy_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7025,7 +7077,7 @@ func (x *GetBlockedTplMsgReply_BlockedMsgInfo) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetBlockedTplMsgReply_BlockedMsgInfo.ProtoReflect.Descriptor instead.
 func (*GetBlockedTplMsgReply_BlockedMsgInfo) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{44, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{45, 0}
 }
 
 func (x *GetBlockedTplMsgReply_BlockedMsgInfo) GetId() int64 {
@@ -7080,7 +7132,7 @@ type SendSubscribeMsgRequest_DataItem struct {
 
 func (x *SendSubscribeMsgRequest_DataItem) Reset() {
 	*x = SendSubscribeMsgRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[119]
+	mi := &file_v1_wxproxy_proto_msgTypes[120]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7092,7 +7144,7 @@ func (x *SendSubscribeMsgRequest_DataItem) String() string {
 func (*SendSubscribeMsgRequest_DataItem) ProtoMessage() {}
 
 func (x *SendSubscribeMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[119]
+	mi := &file_v1_wxproxy_proto_msgTypes[120]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7105,7 +7157,7 @@ func (x *SendSubscribeMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendSubscribeMsgRequest_DataItem.ProtoReflect.Descriptor instead.
 func (*SendSubscribeMsgRequest_DataItem) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{45, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{46, 0}
 }
 
 func (x *SendSubscribeMsgRequest_DataItem) GetValue() string {
@@ -7132,7 +7184,7 @@ type SendTplMsgRequest_DataItem struct {
 
 func (x *SendTplMsgRequest_DataItem) Reset() {
 	*x = SendTplMsgRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[121]
+	mi := &file_v1_wxproxy_proto_msgTypes[122]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7144,7 +7196,7 @@ func (x *SendTplMsgRequest_DataItem) String() string {
 func (*SendTplMsgRequest_DataItem) ProtoMessage() {}
 
 func (x *SendTplMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[121]
+	mi := &file_v1_wxproxy_proto_msgTypes[122]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7157,7 +7209,7 @@ func (x *SendTplMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendTplMsgRequest_DataItem.ProtoReflect.Descriptor instead.
 func (*SendTplMsgRequest_DataItem) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{47, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{48, 0}
 }
 
 func (x *SendTplMsgRequest_DataItem) GetValue() string {
@@ -7188,7 +7240,7 @@ type GetAllPrivateTplReply_TplInfo struct {
 
 func (x *GetAllPrivateTplReply_TplInfo) Reset() {
 	*x = GetAllPrivateTplReply_TplInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[123]
+	mi := &file_v1_wxproxy_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7200,7 +7252,7 @@ func (x *GetAllPrivateTplReply_TplInfo) String() string {
 func (*GetAllPrivateTplReply_TplInfo) ProtoMessage() {}
 
 func (x *GetAllPrivateTplReply_TplInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[123]
+	mi := &file_v1_wxproxy_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7213,7 +7265,7 @@ func (x *GetAllPrivateTplReply_TplInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPrivateTplReply_TplInfo.ProtoReflect.Descriptor instead.
 func (*GetAllPrivateTplReply_TplInfo) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{52, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{53, 0}
 }
 
 func (x *GetAllPrivateTplReply_TplInfo) GetTemplateId() string {
@@ -7268,7 +7320,7 @@ type GetIndustryReply_Industry struct {
 
 func (x *GetIndustryReply_Industry) Reset() {
 	*x = GetIndustryReply_Industry{}
-	mi := &file_v1_wxproxy_proto_msgTypes[124]
+	mi := &file_v1_wxproxy_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7280,7 +7332,7 @@ func (x *GetIndustryReply_Industry) String() string {
 func (*GetIndustryReply_Industry) ProtoMessage() {}
 
 func (x *GetIndustryReply_Industry) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[124]
+	mi := &file_v1_wxproxy_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7293,7 +7345,7 @@ func (x *GetIndustryReply_Industry) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetIndustryReply_Industry.ProtoReflect.Descriptor instead.
 func (*GetIndustryReply_Industry) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{54, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{55, 0}
 }
 
 func (x *GetIndustryReply_Industry) GetFirstClass() string {
@@ -7319,7 +7371,7 @@ type SelfMenuReply_MenuInfoType struct {
 
 func (x *SelfMenuReply_MenuInfoType) Reset() {
 	*x = SelfMenuReply_MenuInfoType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[125]
+	mi := &file_v1_wxproxy_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7331,7 +7383,7 @@ func (x *SelfMenuReply_MenuInfoType) String() string {
 func (*SelfMenuReply_MenuInfoType) ProtoMessage() {}
 
 func (x *SelfMenuReply_MenuInfoType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[125]
+	mi := &file_v1_wxproxy_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7344,7 +7396,7 @@ func (x *SelfMenuReply_MenuInfoType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfMenuReply_MenuInfoType.ProtoReflect.Descriptor instead.
 func (*SelfMenuReply_MenuInfoType) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{57, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{58, 0}
 }
 
 func (x *SelfMenuReply_MenuInfoType) GetButton() []*SelfMenuButton {
@@ -7363,7 +7415,7 @@ type SelfMenuButton_SubButtonType struct {
 
 func (x *SelfMenuButton_SubButtonType) Reset() {
 	*x = SelfMenuButton_SubButtonType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[126]
+	mi := &file_v1_wxproxy_proto_msgTypes[127]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7375,7 +7427,7 @@ func (x *SelfMenuButton_SubButtonType) String() string {
 func (*SelfMenuButton_SubButtonType) ProtoMessage() {}
 
 func (x *SelfMenuButton_SubButtonType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[126]
+	mi := &file_v1_wxproxy_proto_msgTypes[127]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7388,7 +7440,7 @@ func (x *SelfMenuButton_SubButtonType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfMenuButton_SubButtonType.ProtoReflect.Descriptor instead.
 func (*SelfMenuButton_SubButtonType) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{58, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{59, 0}
 }
 
 func (x *SelfMenuButton_SubButtonType) GetList() []*SelfMenuButton {
@@ -7407,7 +7459,7 @@ type SelfMenuButton_NewsButtonType struct {
 
 func (x *SelfMenuButton_NewsButtonType) Reset() {
 	*x = SelfMenuButton_NewsButtonType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[127]
+	mi := &file_v1_wxproxy_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7419,7 +7471,7 @@ func (x *SelfMenuButton_NewsButtonType) String() string {
 func (*SelfMenuButton_NewsButtonType) ProtoMessage() {}
 
 func (x *SelfMenuButton_NewsButtonType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[127]
+	mi := &file_v1_wxproxy_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7432,7 +7484,7 @@ func (x *SelfMenuButton_NewsButtonType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SelfMenuButton_NewsButtonType.ProtoReflect.Descriptor instead.
 func (*SelfMenuButton_NewsButtonType) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{58, 1}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{59, 1}
 }
 
 func (x *SelfMenuButton_NewsButtonType) GetList() []*NewsButton {
@@ -7452,7 +7504,7 @@ type MenuInfoReply_MenuType struct {
 
 func (x *MenuInfoReply_MenuType) Reset() {
 	*x = MenuInfoReply_MenuType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[128]
+	mi := &file_v1_wxproxy_proto_msgTypes[129]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7464,7 +7516,7 @@ func (x *MenuInfoReply_MenuType) String() string {
 func (*MenuInfoReply_MenuType) ProtoMessage() {}
 
 func (x *MenuInfoReply_MenuType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[128]
+	mi := &file_v1_wxproxy_proto_msgTypes[129]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7477,7 +7529,7 @@ func (x *MenuInfoReply_MenuType) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MenuInfoReply_MenuType.ProtoReflect.Descriptor instead.
 func (*MenuInfoReply_MenuType) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{62, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{63, 0}
 }
 
 func (x *MenuInfoReply_MenuType) GetMenuid() int64 {
@@ -7503,7 +7555,7 @@ type GetTagMembersReply_DataT struct {
 
 func (x *GetTagMembersReply_DataT) Reset() {
 	*x = GetTagMembersReply_DataT{}
-	mi := &file_v1_wxproxy_proto_msgTypes[129]
+	mi := &file_v1_wxproxy_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7515,7 +7567,7 @@ func (x *GetTagMembersReply_DataT) String() string {
 func (*GetTagMembersReply_DataT) ProtoMessage() {}
 
 func (x *GetTagMembersReply_DataT) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[129]
+	mi := &file_v1_wxproxy_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7528,7 +7580,7 @@ func (x *GetTagMembersReply_DataT) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTagMembersReply_DataT.ProtoReflect.Descriptor instead.
 func (*GetTagMembersReply_DataT) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{74, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{75, 0}
 }
 
 func (x *GetTagMembersReply_DataT) GetOpenid() []string {
@@ -7547,7 +7599,7 @@ type BatchGetMemberInfoRequest_OpenIdList struct {
 
 func (x *BatchGetMemberInfoRequest_OpenIdList) Reset() {
 	*x = BatchGetMemberInfoRequest_OpenIdList{}
-	mi := &file_v1_wxproxy_proto_msgTypes[130]
+	mi := &file_v1_wxproxy_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7559,7 +7611,7 @@ func (x *BatchGetMemberInfoRequest_OpenIdList) String() string {
 func (*BatchGetMemberInfoRequest_OpenIdList) ProtoMessage() {}
 
 func (x *BatchGetMemberInfoRequest_OpenIdList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[130]
+	mi := &file_v1_wxproxy_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7572,7 +7624,7 @@ func (x *BatchGetMemberInfoRequest_OpenIdList) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use BatchGetMemberInfoRequest_OpenIdList.ProtoReflect.Descriptor instead.
 func (*BatchGetMemberInfoRequest_OpenIdList) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{86, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{87, 0}
 }
 
 func (x *BatchGetMemberInfoRequest_OpenIdList) GetOpenid() string {
@@ -7591,7 +7643,7 @@ type GetMemberListReply_IdList struct {
 
 func (x *GetMemberListReply_IdList) Reset() {
 	*x = GetMemberListReply_IdList{}
-	mi := &file_v1_wxproxy_proto_msgTypes[131]
+	mi := &file_v1_wxproxy_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7603,7 +7655,7 @@ func (x *GetMemberListReply_IdList) String() string {
 func (*GetMemberListReply_IdList) ProtoMessage() {}
 
 func (x *GetMemberListReply_IdList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[131]
+	mi := &file_v1_wxproxy_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7616,7 +7668,7 @@ func (x *GetMemberListReply_IdList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMemberListReply_IdList.ProtoReflect.Descriptor instead.
 func (*GetMemberListReply_IdList) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{91, 0}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{92, 0}
 }
 
 func (x *GetMemberListReply_IdList) GetOpenid() []*OpenIdList {
@@ -7630,7 +7682,10 @@ var File_v1_wxproxy_proto protoreflect.FileDescriptor
 
 const file_v1_wxproxy_proto_rawDesc = "" +
 	"\n" +
-	"\x10v1/wxproxy.proto\x12\x0eapi.wxproxy.v1\x1a\x1cgoogle/api/annotations.proto\"\xf4\x02\n" +
+	"\x10v1/wxproxy.proto\x12\x0eapi.wxproxy.v1\x1a\x1cgoogle/api/annotations.proto\"L\n" +
+	"\x0eBlockMemberReq\x12 \n" +
+	"\vAccessToken\x18\x01 \x01(\tR\vAccessToken\x12\x18\n" +
+	"\aOpenIds\x18\x02 \x03(\tR\aOpenIds\"\xf4\x02\n" +
 	"\x1bSendKFMiniProgramMsgRequest\x12 \n" +
 	"\vAccessToken\x18\x01 \x01(\tR\vAccessToken\x12\x12\n" +
 	"\x04Type\x18\x02 \x01(\tR\x04Type\x127\n" +
@@ -8211,7 +8266,7 @@ const file_v1_wxproxy_proto_rawDesc = "" +
 	"\x03Url\x18\x03 \x01(\tR\x03Url\x12\x1e\n" +
 	"\n" +
 	"UpdateTime\x18\x04 \x01(\x03R\n" +
-	"UpdateTime2\xd5C\n" +
+	"UpdateTime2\xf5D\n" +
 	"\aMpproxy\x12\x80\x01\n" +
 	"\x10GetMaterialCount\x12 .api.wxproxy.v1.AccessTokenParam\x1a%.api.wxproxy.v1.GetMaterialCountReply\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mpproxy/v1/materials/count\x12\x83\x01\n" +
 	"\x0fGetMaterialList\x12&.api.wxproxy.v1.GetMaterialListRequest\x1a$.api.wxproxy.v1.GetMaterialListReply\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/mpproxy/v1/materials/list\x12v\n" +
@@ -8282,7 +8337,9 @@ const file_v1_wxproxy_proto_rawDesc = "" +
 	"\x12SendKFToArticleMsg\x12).api.wxproxy.v1.SendKFToArticleMsgRequest\x1a\x1c.api.wxproxy.v1.WXErrorReply\"/\x82\xd3\xe4\x93\x02):\x01*\"$/mpproxy/v1/kf/message/sendtoarticle\x12\x7f\n" +
 	"\rSendKFMenuMsg\x12$.api.wxproxy.v1.SendKFMenuMsgRequest\x1a\x1c.api.wxproxy.v1.WXErrorReply\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/mpproxy/v1/kf/message/sendmenu\x12\x7f\n" +
 	"\rSendKFCardMsg\x12$.api.wxproxy.v1.SendKFCardMsgRequest\x1a\x1c.api.wxproxy.v1.WXErrorReply\"*\x82\xd3\xe4\x93\x02$:\x01*\"\x1f/mpproxy/v1/kf/message/sendcard\x12\x8b\x01\n" +
-	"\x14SendKFMiniProgramMsg\x12+.api.wxproxy.v1.SendKFMiniProgramMsgRequest\x1a\x1c.api.wxproxy.v1.WXErrorReply\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/mpproxy/v1/kf/message/sendmpB2\n" +
+	"\x14SendKFMiniProgramMsg\x12+.api.wxproxy.v1.SendKFMiniProgramMsgRequest\x1a\x1c.api.wxproxy.v1.WXErrorReply\"(\x82\xd3\xe4\x93\x02\":\x01*\"\x1d/mpproxy/v1/kf/message/sendmp\x12M\n" +
+	"\vBlockMember\x12\x1e.api.wxproxy.v1.BlockMemberReq\x1a\x1c.api.wxproxy.v1.WXErrorReply\"\x00\x12O\n" +
+	"\rUnBlockMember\x12\x1e.api.wxproxy.v1.BlockMemberReq\x1a\x1c.api.wxproxy.v1.WXErrorReply\"\x00B2\n" +
 	"\x06api.v1P\x01Z&github.com/seth16888/wxproxy/api/v1;v1b\x06proto3"
 
 var (
@@ -8297,343 +8354,348 @@ func file_v1_wxproxy_proto_rawDescGZIP() []byte {
 	return file_v1_wxproxy_proto_rawDescData
 }
 
-var file_v1_wxproxy_proto_msgTypes = make([]protoimpl.MessageInfo, 132)
+var file_v1_wxproxy_proto_msgTypes = make([]protoimpl.MessageInfo, 133)
 var file_v1_wxproxy_proto_goTypes = []any{
-	(*SendKFMiniProgramMsgRequest)(nil),                  // 0: api.wxproxy.v1.SendKFMiniProgramMsgRequest
-	(*SendKFCardMsgRequest)(nil),                         // 1: api.wxproxy.v1.SendKFCardMsgRequest
-	(*SendKFMenuMsgRequest)(nil),                         // 2: api.wxproxy.v1.SendKFMenuMsgRequest
-	(*SendKFToArticleMsgRequest)(nil),                    // 3: api.wxproxy.v1.SendKFToArticleMsgRequest
-	(*SendKFNewsPageMsgRequest)(nil),                     // 4: api.wxproxy.v1.SendKFNewsPageMsgRequest
-	(*SendKFNewsCardMsgRequest)(nil),                     // 5: api.wxproxy.v1.SendKFNewsCardMsgRequest
-	(*SendKFMusicMsgRequest)(nil),                        // 6: api.wxproxy.v1.SendKFMusicMsgRequest
-	(*SendKFVideoMsgRequest)(nil),                        // 7: api.wxproxy.v1.SendKFVideoMsgRequest
-	(*SendKFVoiceMsgRequest)(nil),                        // 8: api.wxproxy.v1.SendKFVoiceMsgRequest
-	(*SendKFImageMsgRequest)(nil),                        // 9: api.wxproxy.v1.SendKFImageMsgRequest
-	(*KFMessageCommon)(nil),                              // 10: api.wxproxy.v1.KFMessageCommon
-	(*SendKFTextMsgRequest)(nil),                         // 11: api.wxproxy.v1.SendKFTextMsgRequest
-	(*NewKFSessionRequest)(nil),                          // 12: api.wxproxy.v1.NewKFSessionRequest
-	(*CloseKFSessionRequest)(nil),                        // 13: api.wxproxy.v1.CloseKFSessionRequest
-	(*GetKFSessionUnacceptedReply)(nil),                  // 14: api.wxproxy.v1.GetKFSessionUnacceptedReply
-	(*GetKFSessionStatusReply)(nil),                      // 15: api.wxproxy.v1.GetKFSessionStatusReply
-	(*GetKFSessionStatusRequest)(nil),                    // 16: api.wxproxy.v1.GetKFSessionStatusRequest
-	(*GetKFSessionListReply)(nil),                        // 17: api.wxproxy.v1.GetKFSessionListReply
-	(*KFSession)(nil),                                    // 18: api.wxproxy.v1.KFSession
-	(*GetKFSessionListRequest)(nil),                      // 19: api.wxproxy.v1.GetKFSessionListRequest
-	(*UpdateKFTypingRequest)(nil),                        // 20: api.wxproxy.v1.UpdateKFTypingRequest
-	(*UpdateKFAvatarRequest)(nil),                        // 21: api.wxproxy.v1.UpdateKFAvatarRequest
-	(*InviteKFWorkerRequest)(nil),                        // 22: api.wxproxy.v1.InviteKFWorkerRequest
-	(*DelKFAccountRequest)(nil),                          // 23: api.wxproxy.v1.DelKFAccountRequest
-	(*UpdateKFAccountRequest)(nil),                       // 24: api.wxproxy.v1.UpdateKFAccountRequest
-	(*AddKFAccountRequest)(nil),                          // 25: api.wxproxy.v1.AddKFAccountRequest
-	(*GetKFMsgHistoryReply)(nil),                         // 26: api.wxproxy.v1.GetKFMsgHistoryReply
-	(*KFMsgHistory)(nil),                                 // 27: api.wxproxy.v1.KFMsgHistory
-	(*GetKFMsgHistoryRequest)(nil),                       // 28: api.wxproxy.v1.GetKFMsgHistoryRequest
-	(*GetKFOnlineListReply)(nil),                         // 29: api.wxproxy.v1.GetKFOnlineListReply
-	(*KFOnlineInfo)(nil),                                 // 30: api.wxproxy.v1.KFOnlineInfo
-	(*GetKFListReply)(nil),                               // 31: api.wxproxy.v1.GetKFListReply
-	(*KeFuInfo)(nil),                                     // 32: api.wxproxy.v1.KeFuInfo
-	(*SendSubscribeMessageRequest)(nil),                  // 33: api.wxproxy.v1.SendSubscribeMessageRequest
-	(*GetSubscribePrivateTplReply)(nil),                  // 34: api.wxproxy.v1.GetSubscribePrivateTplReply
-	(*GetSubscribeTplTitlesReply)(nil),                   // 35: api.wxproxy.v1.GetSubscribeTplTitlesReply
-	(*GetSubscribeTplTitlesRequest)(nil),                 // 36: api.wxproxy.v1.GetSubscribeTplTitlesRequest
-	(*GetSubscribeTplKeywordsReply)(nil),                 // 37: api.wxproxy.v1.GetSubscribeTplKeywordsReply
-	(*GetSubscribeTplKeywordsRequest)(nil),               // 38: api.wxproxy.v1.GetSubscribeTplKeywordsRequest
-	(*GetSubscribeCategoryReply)(nil),                    // 39: api.wxproxy.v1.GetSubscribeCategoryReply
-	(*DelSubscribeTplRequest)(nil),                       // 40: api.wxproxy.v1.DelSubscribeTplRequest
-	(*AddSubscribeTplRequest)(nil),                       // 41: api.wxproxy.v1.AddSubscribeTplRequest
-	(*AddSubscribeTplReply)(nil),                         // 42: api.wxproxy.v1.AddSubscribeTplReply
-	(*GetBlockedTplRequest)(nil),                         // 43: api.wxproxy.v1.GetBlockedTplRequest
-	(*GetBlockedTplMsgReply)(nil),                        // 44: api.wxproxy.v1.GetBlockedTplMsgReply
-	(*SendSubscribeMsgRequest)(nil),                      // 45: api.wxproxy.v1.SendSubscribeMsgRequest
-	(*SendTplMsgReply)(nil),                              // 46: api.wxproxy.v1.SendTplMsgReply
-	(*SendTplMsgRequest)(nil),                            // 47: api.wxproxy.v1.SendTplMsgRequest
-	(*MiniProgram)(nil),                                  // 48: api.wxproxy.v1.MiniProgram
-	(*DeleteMessageTplRequest)(nil),                      // 49: api.wxproxy.v1.DeleteMessageTplRequest
-	(*AddTemplateRequest)(nil),                           // 50: api.wxproxy.v1.AddTemplateRequest
-	(*AddMessageTplReply)(nil),                           // 51: api.wxproxy.v1.AddMessageTplReply
-	(*GetAllPrivateTplReply)(nil),                        // 52: api.wxproxy.v1.GetAllPrivateTplReply
-	(*SetIndustryRequest)(nil),                           // 53: api.wxproxy.v1.SetIndustryRequest
-	(*GetIndustryReply)(nil),                             // 54: api.wxproxy.v1.GetIndustryReply
-	(*DeleteConditionalMenuRequest)(nil),                 // 55: api.wxproxy.v1.DeleteConditionalMenuRequest
-	(*CreateMenuRequest)(nil),                            // 56: api.wxproxy.v1.CreateMenuRequest
-	(*SelfMenuReply)(nil),                                // 57: api.wxproxy.v1.SelfMenuReply
-	(*SelfMenuButton)(nil),                               // 58: api.wxproxy.v1.SelfMenuButton
-	(*NewsButton)(nil),                                   // 59: api.wxproxy.v1.NewsButton
-	(*TryMatchMenuRequest)(nil),                          // 60: api.wxproxy.v1.TryMatchMenuRequest
-	(*TryMatchMenuReply)(nil),                            // 61: api.wxproxy.v1.TryMatchMenuReply
-	(*MenuInfoReply)(nil),                                // 62: api.wxproxy.v1.MenuInfoReply
-	(*MenuButton)(nil),                                   // 63: api.wxproxy.v1.MenuButton
-	(*ConditionalMenu)(nil),                              // 64: api.wxproxy.v1.ConditionalMenu
-	(*ConditionalMatchRule)(nil),                         // 65: api.wxproxy.v1.ConditionalMatchRule
-	(*FetchShortenRequest)(nil),                          // 66: api.wxproxy.v1.FetchShortenRequest
-	(*FetchShortenReply)(nil),                            // 67: api.wxproxy.v1.FetchShortenReply
-	(*GenShortenRequest)(nil),                            // 68: api.wxproxy.v1.GenShortenRequest
-	(*GenShortenReply)(nil),                              // 69: api.wxproxy.v1.GenShortenReply
-	(*CreateQRCodeReply)(nil),                            // 70: api.wxproxy.v1.CreateQRCodeReply
-	(*CreateQRCodeRequest)(nil),                          // 71: api.wxproxy.v1.CreateQRCodeRequest
-	(*BatchUnTaggingMembersRequest)(nil),                 // 72: api.wxproxy.v1.BatchUnTaggingMembersRequest
-	(*BatchTaggingMembersRequest)(nil),                   // 73: api.wxproxy.v1.BatchTaggingMembersRequest
-	(*GetTagMembersReply)(nil),                           // 74: api.wxproxy.v1.GetTagMembersReply
-	(*GetTagMembersRequest)(nil),                         // 75: api.wxproxy.v1.GetTagMembersRequest
-	(*DeleteTagRequest)(nil),                             // 76: api.wxproxy.v1.DeleteTagRequest
-	(*UpdateTagRequest)(nil),                             // 77: api.wxproxy.v1.UpdateTagRequest
-	(*CreateTagRequest)(nil),                             // 78: api.wxproxy.v1.CreateTagRequest
-	(*CreateTagReply)(nil),                               // 79: api.wxproxy.v1.CreateTagReply
-	(*GetTagListReply)(nil),                              // 80: api.wxproxy.v1.GetTagListReply
-	(*Tag)(nil),                                          // 81: api.wxproxy.v1.Tag
-	(*UpdateMemberRemarkRequest)(nil),                    // 82: api.wxproxy.v1.UpdateMemberRemarkRequest
-	(*WXErrorReply)(nil),                                 // 83: api.wxproxy.v1.WXErrorReply
-	(*GetMemberTagsRequest)(nil),                         // 84: api.wxproxy.v1.GetMemberTagsRequest
-	(*GetMemberTagsReply)(nil),                           // 85: api.wxproxy.v1.GetMemberTagsReply
-	(*BatchGetMemberInfoRequest)(nil),                    // 86: api.wxproxy.v1.BatchGetMemberInfoRequest
-	(*BatchGetMemberInfoReply)(nil),                      // 87: api.wxproxy.v1.BatchGetMemberInfoReply
-	(*GetMemberInfoRequest)(nil),                         // 88: api.wxproxy.v1.GetMemberInfoRequest
-	(*GetMemberInfoReply)(nil),                           // 89: api.wxproxy.v1.GetMemberInfoReply
-	(*GetMemberListRequest)(nil),                         // 90: api.wxproxy.v1.GetMemberListRequest
-	(*GetMemberListReply)(nil),                           // 91: api.wxproxy.v1.GetMemberListReply
-	(*OpenIdList)(nil),                                   // 92: api.wxproxy.v1.OpenIdList
-	(*AccessTokenParam)(nil),                             // 93: api.wxproxy.v1.AccessTokenParam
-	(*GetMaterialCountReply)(nil),                        // 94: api.wxproxy.v1.GetMaterialCountReply
-	(*GetMaterialListRequest)(nil),                       // 95: api.wxproxy.v1.GetMaterialListRequest
-	(*GetMaterialListReply)(nil),                         // 96: api.wxproxy.v1.GetMaterialListReply
-	(*MaterialItem)(nil),                                 // 97: api.wxproxy.v1.MaterialItem
-	(*SendKFMiniProgramMsgRequest_KFMiniProgramMsg)(nil), // 98: api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
-	(*SendKFCardMsgRequest_KFCardMsg)(nil),               // 99: api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
-	(*SendKFMenuMsgRequest_Item)(nil),                    // 100: api.wxproxy.v1.SendKFMenuMsgRequest.Item
-	(*SendKFMenuMsgRequest_MenuMsg)(nil),                 // 101: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
-	(*SendKFToArticleMsgRequest_ToArticleMsg)(nil),       // 102: api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
-	(*SendKFNewsPageMsgRequest_KFNewsPageMsg)(nil),       // 103: api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
-	(*SendKFNewsCardMsgRequest_KFNewsCardMsg)(nil),       // 104: api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
-	(*SendKFMusicMsgRequest_KFMusicMsg)(nil),             // 105: api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
-	(*SendKFVideoMsgRequest_KFVideoMsg)(nil),             // 106: api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
-	(*SendKFVoiceMsgRequest_KFVoiceMsg)(nil),             // 107: api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
-	(*SendKFImageMsgRequest_KFImageMsg)(nil),             // 108: api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
-	(*KFMessageCommon_KFAccount)(nil),                    // 109: api.wxproxy.v1.KFMessageCommon.KFAccount
-	(*SendKFTextMsgRequest_KFTextMsg)(nil),               // 110: api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
-	(*GetKFSessionUnacceptedReply_WaitCase)(nil),         // 111: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
-	(*SendSubscribeMessageRequest_DataItem)(nil),         // 112: api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
-	nil,                                          // 113: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
-	(*GetSubscribePrivateTplReply_Item)(nil),     // 114: api.wxproxy.v1.GetSubscribePrivateTplReply.Item
-	(*GetSubscribeTplTitlesReply_Item)(nil),      // 115: api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
-	(*GetSubscribeTplKeywordsReply_Item)(nil),    // 116: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
-	(*GetSubscribeCategoryReply_Category)(nil),   // 117: api.wxproxy.v1.GetSubscribeCategoryReply.Category
-	(*GetBlockedTplMsgReply_BlockedMsgInfo)(nil), // 118: api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
-	(*SendSubscribeMsgRequest_DataItem)(nil),     // 119: api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
-	nil,                                          // 120: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
-	(*SendTplMsgRequest_DataItem)(nil),           // 121: api.wxproxy.v1.SendTplMsgRequest.DataItem
-	nil,                                          // 122: api.wxproxy.v1.SendTplMsgRequest.DataEntry
-	(*GetAllPrivateTplReply_TplInfo)(nil),        // 123: api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
-	(*GetIndustryReply_Industry)(nil),            // 124: api.wxproxy.v1.GetIndustryReply.Industry
-	(*SelfMenuReply_MenuInfoType)(nil),           // 125: api.wxproxy.v1.SelfMenuReply.MenuInfoType
-	(*SelfMenuButton_SubButtonType)(nil),         // 126: api.wxproxy.v1.SelfMenuButton.SubButtonType
-	(*SelfMenuButton_NewsButtonType)(nil),        // 127: api.wxproxy.v1.SelfMenuButton.NewsButtonType
-	(*MenuInfoReply_MenuType)(nil),               // 128: api.wxproxy.v1.MenuInfoReply.MenuType
-	(*GetTagMembersReply_DataT)(nil),             // 129: api.wxproxy.v1.GetTagMembersReply.DataT
-	(*BatchGetMemberInfoRequest_OpenIdList)(nil), // 130: api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
-	(*GetMemberListReply_IdList)(nil),            // 131: api.wxproxy.v1.GetMemberListReply.IdList
+	(*BlockMemberReq)(nil),                               // 0: api.wxproxy.v1.BlockMemberReq
+	(*SendKFMiniProgramMsgRequest)(nil),                  // 1: api.wxproxy.v1.SendKFMiniProgramMsgRequest
+	(*SendKFCardMsgRequest)(nil),                         // 2: api.wxproxy.v1.SendKFCardMsgRequest
+	(*SendKFMenuMsgRequest)(nil),                         // 3: api.wxproxy.v1.SendKFMenuMsgRequest
+	(*SendKFToArticleMsgRequest)(nil),                    // 4: api.wxproxy.v1.SendKFToArticleMsgRequest
+	(*SendKFNewsPageMsgRequest)(nil),                     // 5: api.wxproxy.v1.SendKFNewsPageMsgRequest
+	(*SendKFNewsCardMsgRequest)(nil),                     // 6: api.wxproxy.v1.SendKFNewsCardMsgRequest
+	(*SendKFMusicMsgRequest)(nil),                        // 7: api.wxproxy.v1.SendKFMusicMsgRequest
+	(*SendKFVideoMsgRequest)(nil),                        // 8: api.wxproxy.v1.SendKFVideoMsgRequest
+	(*SendKFVoiceMsgRequest)(nil),                        // 9: api.wxproxy.v1.SendKFVoiceMsgRequest
+	(*SendKFImageMsgRequest)(nil),                        // 10: api.wxproxy.v1.SendKFImageMsgRequest
+	(*KFMessageCommon)(nil),                              // 11: api.wxproxy.v1.KFMessageCommon
+	(*SendKFTextMsgRequest)(nil),                         // 12: api.wxproxy.v1.SendKFTextMsgRequest
+	(*NewKFSessionRequest)(nil),                          // 13: api.wxproxy.v1.NewKFSessionRequest
+	(*CloseKFSessionRequest)(nil),                        // 14: api.wxproxy.v1.CloseKFSessionRequest
+	(*GetKFSessionUnacceptedReply)(nil),                  // 15: api.wxproxy.v1.GetKFSessionUnacceptedReply
+	(*GetKFSessionStatusReply)(nil),                      // 16: api.wxproxy.v1.GetKFSessionStatusReply
+	(*GetKFSessionStatusRequest)(nil),                    // 17: api.wxproxy.v1.GetKFSessionStatusRequest
+	(*GetKFSessionListReply)(nil),                        // 18: api.wxproxy.v1.GetKFSessionListReply
+	(*KFSession)(nil),                                    // 19: api.wxproxy.v1.KFSession
+	(*GetKFSessionListRequest)(nil),                      // 20: api.wxproxy.v1.GetKFSessionListRequest
+	(*UpdateKFTypingRequest)(nil),                        // 21: api.wxproxy.v1.UpdateKFTypingRequest
+	(*UpdateKFAvatarRequest)(nil),                        // 22: api.wxproxy.v1.UpdateKFAvatarRequest
+	(*InviteKFWorkerRequest)(nil),                        // 23: api.wxproxy.v1.InviteKFWorkerRequest
+	(*DelKFAccountRequest)(nil),                          // 24: api.wxproxy.v1.DelKFAccountRequest
+	(*UpdateKFAccountRequest)(nil),                       // 25: api.wxproxy.v1.UpdateKFAccountRequest
+	(*AddKFAccountRequest)(nil),                          // 26: api.wxproxy.v1.AddKFAccountRequest
+	(*GetKFMsgHistoryReply)(nil),                         // 27: api.wxproxy.v1.GetKFMsgHistoryReply
+	(*KFMsgHistory)(nil),                                 // 28: api.wxproxy.v1.KFMsgHistory
+	(*GetKFMsgHistoryRequest)(nil),                       // 29: api.wxproxy.v1.GetKFMsgHistoryRequest
+	(*GetKFOnlineListReply)(nil),                         // 30: api.wxproxy.v1.GetKFOnlineListReply
+	(*KFOnlineInfo)(nil),                                 // 31: api.wxproxy.v1.KFOnlineInfo
+	(*GetKFListReply)(nil),                               // 32: api.wxproxy.v1.GetKFListReply
+	(*KeFuInfo)(nil),                                     // 33: api.wxproxy.v1.KeFuInfo
+	(*SendSubscribeMessageRequest)(nil),                  // 34: api.wxproxy.v1.SendSubscribeMessageRequest
+	(*GetSubscribePrivateTplReply)(nil),                  // 35: api.wxproxy.v1.GetSubscribePrivateTplReply
+	(*GetSubscribeTplTitlesReply)(nil),                   // 36: api.wxproxy.v1.GetSubscribeTplTitlesReply
+	(*GetSubscribeTplTitlesRequest)(nil),                 // 37: api.wxproxy.v1.GetSubscribeTplTitlesRequest
+	(*GetSubscribeTplKeywordsReply)(nil),                 // 38: api.wxproxy.v1.GetSubscribeTplKeywordsReply
+	(*GetSubscribeTplKeywordsRequest)(nil),               // 39: api.wxproxy.v1.GetSubscribeTplKeywordsRequest
+	(*GetSubscribeCategoryReply)(nil),                    // 40: api.wxproxy.v1.GetSubscribeCategoryReply
+	(*DelSubscribeTplRequest)(nil),                       // 41: api.wxproxy.v1.DelSubscribeTplRequest
+	(*AddSubscribeTplRequest)(nil),                       // 42: api.wxproxy.v1.AddSubscribeTplRequest
+	(*AddSubscribeTplReply)(nil),                         // 43: api.wxproxy.v1.AddSubscribeTplReply
+	(*GetBlockedTplRequest)(nil),                         // 44: api.wxproxy.v1.GetBlockedTplRequest
+	(*GetBlockedTplMsgReply)(nil),                        // 45: api.wxproxy.v1.GetBlockedTplMsgReply
+	(*SendSubscribeMsgRequest)(nil),                      // 46: api.wxproxy.v1.SendSubscribeMsgRequest
+	(*SendTplMsgReply)(nil),                              // 47: api.wxproxy.v1.SendTplMsgReply
+	(*SendTplMsgRequest)(nil),                            // 48: api.wxproxy.v1.SendTplMsgRequest
+	(*MiniProgram)(nil),                                  // 49: api.wxproxy.v1.MiniProgram
+	(*DeleteMessageTplRequest)(nil),                      // 50: api.wxproxy.v1.DeleteMessageTplRequest
+	(*AddTemplateRequest)(nil),                           // 51: api.wxproxy.v1.AddTemplateRequest
+	(*AddMessageTplReply)(nil),                           // 52: api.wxproxy.v1.AddMessageTplReply
+	(*GetAllPrivateTplReply)(nil),                        // 53: api.wxproxy.v1.GetAllPrivateTplReply
+	(*SetIndustryRequest)(nil),                           // 54: api.wxproxy.v1.SetIndustryRequest
+	(*GetIndustryReply)(nil),                             // 55: api.wxproxy.v1.GetIndustryReply
+	(*DeleteConditionalMenuRequest)(nil),                 // 56: api.wxproxy.v1.DeleteConditionalMenuRequest
+	(*CreateMenuRequest)(nil),                            // 57: api.wxproxy.v1.CreateMenuRequest
+	(*SelfMenuReply)(nil),                                // 58: api.wxproxy.v1.SelfMenuReply
+	(*SelfMenuButton)(nil),                               // 59: api.wxproxy.v1.SelfMenuButton
+	(*NewsButton)(nil),                                   // 60: api.wxproxy.v1.NewsButton
+	(*TryMatchMenuRequest)(nil),                          // 61: api.wxproxy.v1.TryMatchMenuRequest
+	(*TryMatchMenuReply)(nil),                            // 62: api.wxproxy.v1.TryMatchMenuReply
+	(*MenuInfoReply)(nil),                                // 63: api.wxproxy.v1.MenuInfoReply
+	(*MenuButton)(nil),                                   // 64: api.wxproxy.v1.MenuButton
+	(*ConditionalMenu)(nil),                              // 65: api.wxproxy.v1.ConditionalMenu
+	(*ConditionalMatchRule)(nil),                         // 66: api.wxproxy.v1.ConditionalMatchRule
+	(*FetchShortenRequest)(nil),                          // 67: api.wxproxy.v1.FetchShortenRequest
+	(*FetchShortenReply)(nil),                            // 68: api.wxproxy.v1.FetchShortenReply
+	(*GenShortenRequest)(nil),                            // 69: api.wxproxy.v1.GenShortenRequest
+	(*GenShortenReply)(nil),                              // 70: api.wxproxy.v1.GenShortenReply
+	(*CreateQRCodeReply)(nil),                            // 71: api.wxproxy.v1.CreateQRCodeReply
+	(*CreateQRCodeRequest)(nil),                          // 72: api.wxproxy.v1.CreateQRCodeRequest
+	(*BatchUnTaggingMembersRequest)(nil),                 // 73: api.wxproxy.v1.BatchUnTaggingMembersRequest
+	(*BatchTaggingMembersRequest)(nil),                   // 74: api.wxproxy.v1.BatchTaggingMembersRequest
+	(*GetTagMembersReply)(nil),                           // 75: api.wxproxy.v1.GetTagMembersReply
+	(*GetTagMembersRequest)(nil),                         // 76: api.wxproxy.v1.GetTagMembersRequest
+	(*DeleteTagRequest)(nil),                             // 77: api.wxproxy.v1.DeleteTagRequest
+	(*UpdateTagRequest)(nil),                             // 78: api.wxproxy.v1.UpdateTagRequest
+	(*CreateTagRequest)(nil),                             // 79: api.wxproxy.v1.CreateTagRequest
+	(*CreateTagReply)(nil),                               // 80: api.wxproxy.v1.CreateTagReply
+	(*GetTagListReply)(nil),                              // 81: api.wxproxy.v1.GetTagListReply
+	(*Tag)(nil),                                          // 82: api.wxproxy.v1.Tag
+	(*UpdateMemberRemarkRequest)(nil),                    // 83: api.wxproxy.v1.UpdateMemberRemarkRequest
+	(*WXErrorReply)(nil),                                 // 84: api.wxproxy.v1.WXErrorReply
+	(*GetMemberTagsRequest)(nil),                         // 85: api.wxproxy.v1.GetMemberTagsRequest
+	(*GetMemberTagsReply)(nil),                           // 86: api.wxproxy.v1.GetMemberTagsReply
+	(*BatchGetMemberInfoRequest)(nil),                    // 87: api.wxproxy.v1.BatchGetMemberInfoRequest
+	(*BatchGetMemberInfoReply)(nil),                      // 88: api.wxproxy.v1.BatchGetMemberInfoReply
+	(*GetMemberInfoRequest)(nil),                         // 89: api.wxproxy.v1.GetMemberInfoRequest
+	(*GetMemberInfoReply)(nil),                           // 90: api.wxproxy.v1.GetMemberInfoReply
+	(*GetMemberListRequest)(nil),                         // 91: api.wxproxy.v1.GetMemberListRequest
+	(*GetMemberListReply)(nil),                           // 92: api.wxproxy.v1.GetMemberListReply
+	(*OpenIdList)(nil),                                   // 93: api.wxproxy.v1.OpenIdList
+	(*AccessTokenParam)(nil),                             // 94: api.wxproxy.v1.AccessTokenParam
+	(*GetMaterialCountReply)(nil),                        // 95: api.wxproxy.v1.GetMaterialCountReply
+	(*GetMaterialListRequest)(nil),                       // 96: api.wxproxy.v1.GetMaterialListRequest
+	(*GetMaterialListReply)(nil),                         // 97: api.wxproxy.v1.GetMaterialListReply
+	(*MaterialItem)(nil),                                 // 98: api.wxproxy.v1.MaterialItem
+	(*SendKFMiniProgramMsgRequest_KFMiniProgramMsg)(nil), // 99: api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
+	(*SendKFCardMsgRequest_KFCardMsg)(nil),               // 100: api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
+	(*SendKFMenuMsgRequest_Item)(nil),                    // 101: api.wxproxy.v1.SendKFMenuMsgRequest.Item
+	(*SendKFMenuMsgRequest_MenuMsg)(nil),                 // 102: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
+	(*SendKFToArticleMsgRequest_ToArticleMsg)(nil),       // 103: api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
+	(*SendKFNewsPageMsgRequest_KFNewsPageMsg)(nil),       // 104: api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
+	(*SendKFNewsCardMsgRequest_KFNewsCardMsg)(nil),       // 105: api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
+	(*SendKFMusicMsgRequest_KFMusicMsg)(nil),             // 106: api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
+	(*SendKFVideoMsgRequest_KFVideoMsg)(nil),             // 107: api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
+	(*SendKFVoiceMsgRequest_KFVoiceMsg)(nil),             // 108: api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
+	(*SendKFImageMsgRequest_KFImageMsg)(nil),             // 109: api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
+	(*KFMessageCommon_KFAccount)(nil),                    // 110: api.wxproxy.v1.KFMessageCommon.KFAccount
+	(*SendKFTextMsgRequest_KFTextMsg)(nil),               // 111: api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
+	(*GetKFSessionUnacceptedReply_WaitCase)(nil),         // 112: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
+	(*SendSubscribeMessageRequest_DataItem)(nil),         // 113: api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
+	nil,                                          // 114: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
+	(*GetSubscribePrivateTplReply_Item)(nil),     // 115: api.wxproxy.v1.GetSubscribePrivateTplReply.Item
+	(*GetSubscribeTplTitlesReply_Item)(nil),      // 116: api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
+	(*GetSubscribeTplKeywordsReply_Item)(nil),    // 117: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
+	(*GetSubscribeCategoryReply_Category)(nil),   // 118: api.wxproxy.v1.GetSubscribeCategoryReply.Category
+	(*GetBlockedTplMsgReply_BlockedMsgInfo)(nil), // 119: api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
+	(*SendSubscribeMsgRequest_DataItem)(nil),     // 120: api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
+	nil,                                          // 121: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
+	(*SendTplMsgRequest_DataItem)(nil),           // 122: api.wxproxy.v1.SendTplMsgRequest.DataItem
+	nil,                                          // 123: api.wxproxy.v1.SendTplMsgRequest.DataEntry
+	(*GetAllPrivateTplReply_TplInfo)(nil),        // 124: api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
+	(*GetIndustryReply_Industry)(nil),            // 125: api.wxproxy.v1.GetIndustryReply.Industry
+	(*SelfMenuReply_MenuInfoType)(nil),           // 126: api.wxproxy.v1.SelfMenuReply.MenuInfoType
+	(*SelfMenuButton_SubButtonType)(nil),         // 127: api.wxproxy.v1.SelfMenuButton.SubButtonType
+	(*SelfMenuButton_NewsButtonType)(nil),        // 128: api.wxproxy.v1.SelfMenuButton.NewsButtonType
+	(*MenuInfoReply_MenuType)(nil),               // 129: api.wxproxy.v1.MenuInfoReply.MenuType
+	(*GetTagMembersReply_DataT)(nil),             // 130: api.wxproxy.v1.GetTagMembersReply.DataT
+	(*BatchGetMemberInfoRequest_OpenIdList)(nil), // 131: api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
+	(*GetMemberListReply_IdList)(nil),            // 132: api.wxproxy.v1.GetMemberListReply.IdList
 }
 var file_v1_wxproxy_proto_depIdxs = []int32{
-	10,  // 0: api.wxproxy.v1.SendKFMiniProgramMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	98,  // 1: api.wxproxy.v1.SendKFMiniProgramMsgRequest.MiniProgramPage:type_name -> api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
-	10,  // 2: api.wxproxy.v1.SendKFCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	99,  // 3: api.wxproxy.v1.SendKFCardMsgRequest.WxCard:type_name -> api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
-	10,  // 4: api.wxproxy.v1.SendKFMenuMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	101, // 5: api.wxproxy.v1.SendKFMenuMsgRequest.MsgMenu:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
-	10,  // 6: api.wxproxy.v1.SendKFToArticleMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	102, // 7: api.wxproxy.v1.SendKFToArticleMsgRequest.MpNewsArticle:type_name -> api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
-	10,  // 8: api.wxproxy.v1.SendKFNewsPageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	103, // 9: api.wxproxy.v1.SendKFNewsPageMsgRequest.MpNews:type_name -> api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
-	10,  // 10: api.wxproxy.v1.SendKFNewsCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	104, // 11: api.wxproxy.v1.SendKFNewsCardMsgRequest.News:type_name -> api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
-	10,  // 12: api.wxproxy.v1.SendKFMusicMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	105, // 13: api.wxproxy.v1.SendKFMusicMsgRequest.Music:type_name -> api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
-	10,  // 14: api.wxproxy.v1.SendKFVideoMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	106, // 15: api.wxproxy.v1.SendKFVideoMsgRequest.Video:type_name -> api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
-	10,  // 16: api.wxproxy.v1.SendKFVoiceMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	107, // 17: api.wxproxy.v1.SendKFVoiceMsgRequest.Voice:type_name -> api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
-	10,  // 18: api.wxproxy.v1.SendKFImageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	108, // 19: api.wxproxy.v1.SendKFImageMsgRequest.Image:type_name -> api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
-	109, // 20: api.wxproxy.v1.KFMessageCommon.CustomerService:type_name -> api.wxproxy.v1.KFMessageCommon.KFAccount
-	10,  // 21: api.wxproxy.v1.SendKFTextMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	110, // 22: api.wxproxy.v1.SendKFTextMsgRequest.Text:type_name -> api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
-	111, // 23: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCaseList:type_name -> api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
-	18,  // 24: api.wxproxy.v1.GetKFSessionListReply.SessionList:type_name -> api.wxproxy.v1.KFSession
-	27,  // 25: api.wxproxy.v1.GetKFMsgHistoryReply.RecordList:type_name -> api.wxproxy.v1.KFMsgHistory
-	30,  // 26: api.wxproxy.v1.GetKFOnlineListReply.KfOnlineList:type_name -> api.wxproxy.v1.KFOnlineInfo
-	32,  // 27: api.wxproxy.v1.GetKFListReply.KfList:type_name -> api.wxproxy.v1.KeFuInfo
-	113, // 28: api.wxproxy.v1.SendSubscribeMessageRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
-	48,  // 29: api.wxproxy.v1.SendSubscribeMessageRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	114, // 30: api.wxproxy.v1.GetSubscribePrivateTplReply.Data:type_name -> api.wxproxy.v1.GetSubscribePrivateTplReply.Item
-	115, // 31: api.wxproxy.v1.GetSubscribeTplTitlesReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
-	116, // 32: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
-	117, // 33: api.wxproxy.v1.GetSubscribeCategoryReply.Data:type_name -> api.wxproxy.v1.GetSubscribeCategoryReply.Category
-	118, // 34: api.wxproxy.v1.GetBlockedTplMsgReply.Msginfo:type_name -> api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
-	120, // 35: api.wxproxy.v1.SendSubscribeMsgRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
-	48,  // 36: api.wxproxy.v1.SendSubscribeMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	122, // 37: api.wxproxy.v1.SendTplMsgRequest.Data:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataEntry
-	48,  // 38: api.wxproxy.v1.SendTplMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	123, // 39: api.wxproxy.v1.GetAllPrivateTplReply.TemplateList:type_name -> api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
-	124, // 40: api.wxproxy.v1.GetIndustryReply.PrimaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
-	124, // 41: api.wxproxy.v1.GetIndustryReply.SecondaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
-	63,  // 42: api.wxproxy.v1.CreateMenuRequest.Button:type_name -> api.wxproxy.v1.MenuButton
-	65,  // 43: api.wxproxy.v1.CreateMenuRequest.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
-	125, // 44: api.wxproxy.v1.SelfMenuReply.SelfmenuInfo:type_name -> api.wxproxy.v1.SelfMenuReply.MenuInfoType
-	126, // 45: api.wxproxy.v1.SelfMenuButton.SubButton:type_name -> api.wxproxy.v1.SelfMenuButton.SubButtonType
-	127, // 46: api.wxproxy.v1.SelfMenuButton.NewsInfo:type_name -> api.wxproxy.v1.SelfMenuButton.NewsButtonType
-	63,  // 47: api.wxproxy.v1.TryMatchMenuReply.Button:type_name -> api.wxproxy.v1.MenuButton
-	128, // 48: api.wxproxy.v1.MenuInfoReply.Menu:type_name -> api.wxproxy.v1.MenuInfoReply.MenuType
-	64,  // 49: api.wxproxy.v1.MenuInfoReply.Conditionalmenu:type_name -> api.wxproxy.v1.ConditionalMenu
-	63,  // 50: api.wxproxy.v1.MenuButton.SubButton:type_name -> api.wxproxy.v1.MenuButton
-	63,  // 51: api.wxproxy.v1.ConditionalMenu.Button:type_name -> api.wxproxy.v1.MenuButton
-	65,  // 52: api.wxproxy.v1.ConditionalMenu.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
-	129, // 53: api.wxproxy.v1.GetTagMembersReply.Data:type_name -> api.wxproxy.v1.GetTagMembersReply.DataT
-	81,  // 54: api.wxproxy.v1.CreateTagReply.tag:type_name -> api.wxproxy.v1.Tag
-	81,  // 55: api.wxproxy.v1.GetTagListReply.Tags:type_name -> api.wxproxy.v1.Tag
-	130, // 56: api.wxproxy.v1.BatchGetMemberInfoRequest.UserList:type_name -> api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
-	89,  // 57: api.wxproxy.v1.BatchGetMemberInfoReply.UserListInfo:type_name -> api.wxproxy.v1.GetMemberInfoReply
-	131, // 58: api.wxproxy.v1.GetMemberListReply.Data:type_name -> api.wxproxy.v1.GetMemberListReply.IdList
-	97,  // 59: api.wxproxy.v1.GetMaterialListReply.Item:type_name -> api.wxproxy.v1.MaterialItem
-	100, // 60: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg.List:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.Item
-	112, // 61: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
-	119, // 62: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
-	121, // 63: api.wxproxy.v1.SendTplMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataItem
-	58,  // 64: api.wxproxy.v1.SelfMenuReply.MenuInfoType.Button:type_name -> api.wxproxy.v1.SelfMenuButton
-	58,  // 65: api.wxproxy.v1.SelfMenuButton.SubButtonType.List:type_name -> api.wxproxy.v1.SelfMenuButton
-	59,  // 66: api.wxproxy.v1.SelfMenuButton.NewsButtonType.List:type_name -> api.wxproxy.v1.NewsButton
-	63,  // 67: api.wxproxy.v1.MenuInfoReply.MenuType.Button:type_name -> api.wxproxy.v1.MenuButton
-	92,  // 68: api.wxproxy.v1.GetMemberListReply.IdList.openid:type_name -> api.wxproxy.v1.OpenIdList
-	93,  // 69: api.wxproxy.v1.Mpproxy.GetMaterialCount:input_type -> api.wxproxy.v1.AccessTokenParam
-	95,  // 70: api.wxproxy.v1.Mpproxy.GetMaterialList:input_type -> api.wxproxy.v1.GetMaterialListRequest
-	90,  // 71: api.wxproxy.v1.Mpproxy.GetMemberList:input_type -> api.wxproxy.v1.GetMemberListRequest
-	88,  // 72: api.wxproxy.v1.Mpproxy.GetMemberInfo:input_type -> api.wxproxy.v1.GetMemberInfoRequest
-	86,  // 73: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:input_type -> api.wxproxy.v1.BatchGetMemberInfoRequest
-	84,  // 74: api.wxproxy.v1.Mpproxy.GetMemberTags:input_type -> api.wxproxy.v1.GetMemberTagsRequest
-	82,  // 75: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:input_type -> api.wxproxy.v1.UpdateMemberRemarkRequest
-	93,  // 76: api.wxproxy.v1.Mpproxy.GetTagList:input_type -> api.wxproxy.v1.AccessTokenParam
-	78,  // 77: api.wxproxy.v1.Mpproxy.CreateTag:input_type -> api.wxproxy.v1.CreateTagRequest
-	77,  // 78: api.wxproxy.v1.Mpproxy.UpdateTag:input_type -> api.wxproxy.v1.UpdateTagRequest
-	76,  // 79: api.wxproxy.v1.Mpproxy.DeleteTag:input_type -> api.wxproxy.v1.DeleteTagRequest
-	75,  // 80: api.wxproxy.v1.Mpproxy.GetTagMembers:input_type -> api.wxproxy.v1.GetTagMembersRequest
-	73,  // 81: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:input_type -> api.wxproxy.v1.BatchTaggingMembersRequest
-	72,  // 82: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:input_type -> api.wxproxy.v1.BatchUnTaggingMembersRequest
-	71,  // 83: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
-	71,  // 84: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
-	68,  // 85: api.wxproxy.v1.Mpproxy.GenShorten:input_type -> api.wxproxy.v1.GenShortenRequest
-	66,  // 86: api.wxproxy.v1.Mpproxy.FetchShorten:input_type -> api.wxproxy.v1.FetchShortenRequest
-	93,  // 87: api.wxproxy.v1.Mpproxy.GetMenuInfo:input_type -> api.wxproxy.v1.AccessTokenParam
-	60,  // 88: api.wxproxy.v1.Mpproxy.TryMatchMenu:input_type -> api.wxproxy.v1.TryMatchMenuRequest
-	93,  // 89: api.wxproxy.v1.Mpproxy.PullMenu:input_type -> api.wxproxy.v1.AccessTokenParam
-	56,  // 90: api.wxproxy.v1.Mpproxy.CreateMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
-	56,  // 91: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
-	55,  // 92: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:input_type -> api.wxproxy.v1.DeleteConditionalMenuRequest
-	93,  // 93: api.wxproxy.v1.Mpproxy.DeleteMenu:input_type -> api.wxproxy.v1.AccessTokenParam
-	93,  // 94: api.wxproxy.v1.Mpproxy.GetIndustry:input_type -> api.wxproxy.v1.AccessTokenParam
-	93,  // 95: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
-	53,  // 96: api.wxproxy.v1.Mpproxy.SetIndustry:input_type -> api.wxproxy.v1.SetIndustryRequest
-	50,  // 97: api.wxproxy.v1.Mpproxy.GetMessageTplId:input_type -> api.wxproxy.v1.AddTemplateRequest
-	49,  // 98: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:input_type -> api.wxproxy.v1.DeleteMessageTplRequest
-	47,  // 99: api.wxproxy.v1.Mpproxy.SendTplMsg:input_type -> api.wxproxy.v1.SendTplMsgRequest
-	45,  // 100: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:input_type -> api.wxproxy.v1.SendSubscribeMsgRequest
-	43,  // 101: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:input_type -> api.wxproxy.v1.GetBlockedTplRequest
-	41,  // 102: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:input_type -> api.wxproxy.v1.AddSubscribeTplRequest
-	40,  // 103: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:input_type -> api.wxproxy.v1.DelSubscribeTplRequest
-	93,  // 104: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:input_type -> api.wxproxy.v1.AccessTokenParam
-	38,  // 105: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:input_type -> api.wxproxy.v1.GetSubscribeTplKeywordsRequest
-	36,  // 106: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:input_type -> api.wxproxy.v1.GetSubscribeTplTitlesRequest
-	93,  // 107: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
-	33,  // 108: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:input_type -> api.wxproxy.v1.SendSubscribeMessageRequest
-	93,  // 109: api.wxproxy.v1.Mpproxy.GetKFList:input_type -> api.wxproxy.v1.AccessTokenParam
-	93,  // 110: api.wxproxy.v1.Mpproxy.GetKFOnlineList:input_type -> api.wxproxy.v1.AccessTokenParam
-	28,  // 111: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:input_type -> api.wxproxy.v1.GetKFMsgHistoryRequest
-	25,  // 112: api.wxproxy.v1.Mpproxy.AddKFAccount:input_type -> api.wxproxy.v1.AddKFAccountRequest
-	24,  // 113: api.wxproxy.v1.Mpproxy.UpdateKFAccount:input_type -> api.wxproxy.v1.UpdateKFAccountRequest
-	23,  // 114: api.wxproxy.v1.Mpproxy.DelKFAccount:input_type -> api.wxproxy.v1.DelKFAccountRequest
-	22,  // 115: api.wxproxy.v1.Mpproxy.InviteKFWorker:input_type -> api.wxproxy.v1.InviteKFWorkerRequest
-	21,  // 116: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:input_type -> api.wxproxy.v1.UpdateKFAvatarRequest
-	20,  // 117: api.wxproxy.v1.Mpproxy.UpdateKFTyping:input_type -> api.wxproxy.v1.UpdateKFTypingRequest
-	19,  // 118: api.wxproxy.v1.Mpproxy.GetKFSessionList:input_type -> api.wxproxy.v1.GetKFSessionListRequest
-	16,  // 119: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:input_type -> api.wxproxy.v1.GetKFSessionStatusRequest
-	93,  // 120: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:input_type -> api.wxproxy.v1.AccessTokenParam
-	13,  // 121: api.wxproxy.v1.Mpproxy.CloseKFSession:input_type -> api.wxproxy.v1.CloseKFSessionRequest
-	12,  // 122: api.wxproxy.v1.Mpproxy.NewKFSession:input_type -> api.wxproxy.v1.NewKFSessionRequest
-	11,  // 123: api.wxproxy.v1.Mpproxy.SendKFTextMsg:input_type -> api.wxproxy.v1.SendKFTextMsgRequest
-	9,   // 124: api.wxproxy.v1.Mpproxy.SendKFImageMsg:input_type -> api.wxproxy.v1.SendKFImageMsgRequest
-	8,   // 125: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:input_type -> api.wxproxy.v1.SendKFVoiceMsgRequest
-	7,   // 126: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:input_type -> api.wxproxy.v1.SendKFVideoMsgRequest
-	6,   // 127: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:input_type -> api.wxproxy.v1.SendKFMusicMsgRequest
-	5,   // 128: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:input_type -> api.wxproxy.v1.SendKFNewsCardMsgRequest
-	4,   // 129: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:input_type -> api.wxproxy.v1.SendKFNewsPageMsgRequest
-	3,   // 130: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:input_type -> api.wxproxy.v1.SendKFToArticleMsgRequest
-	2,   // 131: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:input_type -> api.wxproxy.v1.SendKFMenuMsgRequest
-	1,   // 132: api.wxproxy.v1.Mpproxy.SendKFCardMsg:input_type -> api.wxproxy.v1.SendKFCardMsgRequest
-	0,   // 133: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:input_type -> api.wxproxy.v1.SendKFMiniProgramMsgRequest
-	94,  // 134: api.wxproxy.v1.Mpproxy.GetMaterialCount:output_type -> api.wxproxy.v1.GetMaterialCountReply
-	96,  // 135: api.wxproxy.v1.Mpproxy.GetMaterialList:output_type -> api.wxproxy.v1.GetMaterialListReply
-	91,  // 136: api.wxproxy.v1.Mpproxy.GetMemberList:output_type -> api.wxproxy.v1.GetMemberListReply
-	89,  // 137: api.wxproxy.v1.Mpproxy.GetMemberInfo:output_type -> api.wxproxy.v1.GetMemberInfoReply
-	87,  // 138: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:output_type -> api.wxproxy.v1.BatchGetMemberInfoReply
-	85,  // 139: api.wxproxy.v1.Mpproxy.GetMemberTags:output_type -> api.wxproxy.v1.GetMemberTagsReply
-	83,  // 140: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:output_type -> api.wxproxy.v1.WXErrorReply
-	80,  // 141: api.wxproxy.v1.Mpproxy.GetTagList:output_type -> api.wxproxy.v1.GetTagListReply
-	79,  // 142: api.wxproxy.v1.Mpproxy.CreateTag:output_type -> api.wxproxy.v1.CreateTagReply
-	83,  // 143: api.wxproxy.v1.Mpproxy.UpdateTag:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 144: api.wxproxy.v1.Mpproxy.DeleteTag:output_type -> api.wxproxy.v1.WXErrorReply
-	74,  // 145: api.wxproxy.v1.Mpproxy.GetTagMembers:output_type -> api.wxproxy.v1.GetTagMembersReply
-	83,  // 146: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 147: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
-	70,  // 148: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
-	70,  // 149: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
-	69,  // 150: api.wxproxy.v1.Mpproxy.GenShorten:output_type -> api.wxproxy.v1.GenShortenReply
-	67,  // 151: api.wxproxy.v1.Mpproxy.FetchShorten:output_type -> api.wxproxy.v1.FetchShortenReply
-	62,  // 152: api.wxproxy.v1.Mpproxy.GetMenuInfo:output_type -> api.wxproxy.v1.MenuInfoReply
-	61,  // 153: api.wxproxy.v1.Mpproxy.TryMatchMenu:output_type -> api.wxproxy.v1.TryMatchMenuReply
-	57,  // 154: api.wxproxy.v1.Mpproxy.PullMenu:output_type -> api.wxproxy.v1.SelfMenuReply
-	83,  // 155: api.wxproxy.v1.Mpproxy.CreateMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 156: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 157: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 158: api.wxproxy.v1.Mpproxy.DeleteMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	54,  // 159: api.wxproxy.v1.Mpproxy.GetIndustry:output_type -> api.wxproxy.v1.GetIndustryReply
-	52,  // 160: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:output_type -> api.wxproxy.v1.GetAllPrivateTplReply
-	83,  // 161: api.wxproxy.v1.Mpproxy.SetIndustry:output_type -> api.wxproxy.v1.WXErrorReply
-	51,  // 162: api.wxproxy.v1.Mpproxy.GetMessageTplId:output_type -> api.wxproxy.v1.AddMessageTplReply
-	83,  // 163: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:output_type -> api.wxproxy.v1.WXErrorReply
-	46,  // 164: api.wxproxy.v1.Mpproxy.SendTplMsg:output_type -> api.wxproxy.v1.SendTplMsgReply
-	83,  // 165: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	44,  // 166: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:output_type -> api.wxproxy.v1.GetBlockedTplMsgReply
-	42,  // 167: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:output_type -> api.wxproxy.v1.AddSubscribeTplReply
-	83,  // 168: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:output_type -> api.wxproxy.v1.WXErrorReply
-	39,  // 169: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:output_type -> api.wxproxy.v1.GetSubscribeCategoryReply
-	37,  // 170: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:output_type -> api.wxproxy.v1.GetSubscribeTplKeywordsReply
-	35,  // 171: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:output_type -> api.wxproxy.v1.GetSubscribeTplTitlesReply
-	34,  // 172: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:output_type -> api.wxproxy.v1.GetSubscribePrivateTplReply
-	83,  // 173: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:output_type -> api.wxproxy.v1.WXErrorReply
-	31,  // 174: api.wxproxy.v1.Mpproxy.GetKFList:output_type -> api.wxproxy.v1.GetKFListReply
-	29,  // 175: api.wxproxy.v1.Mpproxy.GetKFOnlineList:output_type -> api.wxproxy.v1.GetKFOnlineListReply
-	26,  // 176: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:output_type -> api.wxproxy.v1.GetKFMsgHistoryReply
-	83,  // 177: api.wxproxy.v1.Mpproxy.AddKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 178: api.wxproxy.v1.Mpproxy.UpdateKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 179: api.wxproxy.v1.Mpproxy.DelKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 180: api.wxproxy.v1.Mpproxy.InviteKFWorker:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 181: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 182: api.wxproxy.v1.Mpproxy.UpdateKFTyping:output_type -> api.wxproxy.v1.WXErrorReply
-	17,  // 183: api.wxproxy.v1.Mpproxy.GetKFSessionList:output_type -> api.wxproxy.v1.GetKFSessionListReply
-	15,  // 184: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:output_type -> api.wxproxy.v1.GetKFSessionStatusReply
-	14,  // 185: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:output_type -> api.wxproxy.v1.GetKFSessionUnacceptedReply
-	83,  // 186: api.wxproxy.v1.Mpproxy.CloseKFSession:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 187: api.wxproxy.v1.Mpproxy.NewKFSession:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 188: api.wxproxy.v1.Mpproxy.SendKFTextMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 189: api.wxproxy.v1.Mpproxy.SendKFImageMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 190: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 191: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 192: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 193: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 194: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 195: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 196: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 197: api.wxproxy.v1.Mpproxy.SendKFCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 198: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	134, // [134:199] is the sub-list for method output_type
-	69,  // [69:134] is the sub-list for method input_type
+	11,  // 0: api.wxproxy.v1.SendKFMiniProgramMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	99,  // 1: api.wxproxy.v1.SendKFMiniProgramMsgRequest.MiniProgramPage:type_name -> api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
+	11,  // 2: api.wxproxy.v1.SendKFCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	100, // 3: api.wxproxy.v1.SendKFCardMsgRequest.WxCard:type_name -> api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
+	11,  // 4: api.wxproxy.v1.SendKFMenuMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	102, // 5: api.wxproxy.v1.SendKFMenuMsgRequest.MsgMenu:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
+	11,  // 6: api.wxproxy.v1.SendKFToArticleMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	103, // 7: api.wxproxy.v1.SendKFToArticleMsgRequest.MpNewsArticle:type_name -> api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
+	11,  // 8: api.wxproxy.v1.SendKFNewsPageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	104, // 9: api.wxproxy.v1.SendKFNewsPageMsgRequest.MpNews:type_name -> api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
+	11,  // 10: api.wxproxy.v1.SendKFNewsCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	105, // 11: api.wxproxy.v1.SendKFNewsCardMsgRequest.News:type_name -> api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
+	11,  // 12: api.wxproxy.v1.SendKFMusicMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	106, // 13: api.wxproxy.v1.SendKFMusicMsgRequest.Music:type_name -> api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
+	11,  // 14: api.wxproxy.v1.SendKFVideoMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	107, // 15: api.wxproxy.v1.SendKFVideoMsgRequest.Video:type_name -> api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
+	11,  // 16: api.wxproxy.v1.SendKFVoiceMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	108, // 17: api.wxproxy.v1.SendKFVoiceMsgRequest.Voice:type_name -> api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
+	11,  // 18: api.wxproxy.v1.SendKFImageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	109, // 19: api.wxproxy.v1.SendKFImageMsgRequest.Image:type_name -> api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
+	110, // 20: api.wxproxy.v1.KFMessageCommon.CustomerService:type_name -> api.wxproxy.v1.KFMessageCommon.KFAccount
+	11,  // 21: api.wxproxy.v1.SendKFTextMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
+	111, // 22: api.wxproxy.v1.SendKFTextMsgRequest.Text:type_name -> api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
+	112, // 23: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCaseList:type_name -> api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
+	19,  // 24: api.wxproxy.v1.GetKFSessionListReply.SessionList:type_name -> api.wxproxy.v1.KFSession
+	28,  // 25: api.wxproxy.v1.GetKFMsgHistoryReply.RecordList:type_name -> api.wxproxy.v1.KFMsgHistory
+	31,  // 26: api.wxproxy.v1.GetKFOnlineListReply.KfOnlineList:type_name -> api.wxproxy.v1.KFOnlineInfo
+	33,  // 27: api.wxproxy.v1.GetKFListReply.KfList:type_name -> api.wxproxy.v1.KeFuInfo
+	114, // 28: api.wxproxy.v1.SendSubscribeMessageRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
+	49,  // 29: api.wxproxy.v1.SendSubscribeMessageRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
+	115, // 30: api.wxproxy.v1.GetSubscribePrivateTplReply.Data:type_name -> api.wxproxy.v1.GetSubscribePrivateTplReply.Item
+	116, // 31: api.wxproxy.v1.GetSubscribeTplTitlesReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
+	117, // 32: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
+	118, // 33: api.wxproxy.v1.GetSubscribeCategoryReply.Data:type_name -> api.wxproxy.v1.GetSubscribeCategoryReply.Category
+	119, // 34: api.wxproxy.v1.GetBlockedTplMsgReply.Msginfo:type_name -> api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
+	121, // 35: api.wxproxy.v1.SendSubscribeMsgRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
+	49,  // 36: api.wxproxy.v1.SendSubscribeMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
+	123, // 37: api.wxproxy.v1.SendTplMsgRequest.Data:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataEntry
+	49,  // 38: api.wxproxy.v1.SendTplMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
+	124, // 39: api.wxproxy.v1.GetAllPrivateTplReply.TemplateList:type_name -> api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
+	125, // 40: api.wxproxy.v1.GetIndustryReply.PrimaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
+	125, // 41: api.wxproxy.v1.GetIndustryReply.SecondaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
+	64,  // 42: api.wxproxy.v1.CreateMenuRequest.Button:type_name -> api.wxproxy.v1.MenuButton
+	66,  // 43: api.wxproxy.v1.CreateMenuRequest.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
+	126, // 44: api.wxproxy.v1.SelfMenuReply.SelfmenuInfo:type_name -> api.wxproxy.v1.SelfMenuReply.MenuInfoType
+	127, // 45: api.wxproxy.v1.SelfMenuButton.SubButton:type_name -> api.wxproxy.v1.SelfMenuButton.SubButtonType
+	128, // 46: api.wxproxy.v1.SelfMenuButton.NewsInfo:type_name -> api.wxproxy.v1.SelfMenuButton.NewsButtonType
+	64,  // 47: api.wxproxy.v1.TryMatchMenuReply.Button:type_name -> api.wxproxy.v1.MenuButton
+	129, // 48: api.wxproxy.v1.MenuInfoReply.Menu:type_name -> api.wxproxy.v1.MenuInfoReply.MenuType
+	65,  // 49: api.wxproxy.v1.MenuInfoReply.Conditionalmenu:type_name -> api.wxproxy.v1.ConditionalMenu
+	64,  // 50: api.wxproxy.v1.MenuButton.SubButton:type_name -> api.wxproxy.v1.MenuButton
+	64,  // 51: api.wxproxy.v1.ConditionalMenu.Button:type_name -> api.wxproxy.v1.MenuButton
+	66,  // 52: api.wxproxy.v1.ConditionalMenu.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
+	130, // 53: api.wxproxy.v1.GetTagMembersReply.Data:type_name -> api.wxproxy.v1.GetTagMembersReply.DataT
+	82,  // 54: api.wxproxy.v1.CreateTagReply.tag:type_name -> api.wxproxy.v1.Tag
+	82,  // 55: api.wxproxy.v1.GetTagListReply.Tags:type_name -> api.wxproxy.v1.Tag
+	131, // 56: api.wxproxy.v1.BatchGetMemberInfoRequest.UserList:type_name -> api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
+	90,  // 57: api.wxproxy.v1.BatchGetMemberInfoReply.UserListInfo:type_name -> api.wxproxy.v1.GetMemberInfoReply
+	132, // 58: api.wxproxy.v1.GetMemberListReply.Data:type_name -> api.wxproxy.v1.GetMemberListReply.IdList
+	98,  // 59: api.wxproxy.v1.GetMaterialListReply.Item:type_name -> api.wxproxy.v1.MaterialItem
+	101, // 60: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg.List:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.Item
+	113, // 61: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
+	120, // 62: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
+	122, // 63: api.wxproxy.v1.SendTplMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataItem
+	59,  // 64: api.wxproxy.v1.SelfMenuReply.MenuInfoType.Button:type_name -> api.wxproxy.v1.SelfMenuButton
+	59,  // 65: api.wxproxy.v1.SelfMenuButton.SubButtonType.List:type_name -> api.wxproxy.v1.SelfMenuButton
+	60,  // 66: api.wxproxy.v1.SelfMenuButton.NewsButtonType.List:type_name -> api.wxproxy.v1.NewsButton
+	64,  // 67: api.wxproxy.v1.MenuInfoReply.MenuType.Button:type_name -> api.wxproxy.v1.MenuButton
+	93,  // 68: api.wxproxy.v1.GetMemberListReply.IdList.openid:type_name -> api.wxproxy.v1.OpenIdList
+	94,  // 69: api.wxproxy.v1.Mpproxy.GetMaterialCount:input_type -> api.wxproxy.v1.AccessTokenParam
+	96,  // 70: api.wxproxy.v1.Mpproxy.GetMaterialList:input_type -> api.wxproxy.v1.GetMaterialListRequest
+	91,  // 71: api.wxproxy.v1.Mpproxy.GetMemberList:input_type -> api.wxproxy.v1.GetMemberListRequest
+	89,  // 72: api.wxproxy.v1.Mpproxy.GetMemberInfo:input_type -> api.wxproxy.v1.GetMemberInfoRequest
+	87,  // 73: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:input_type -> api.wxproxy.v1.BatchGetMemberInfoRequest
+	85,  // 74: api.wxproxy.v1.Mpproxy.GetMemberTags:input_type -> api.wxproxy.v1.GetMemberTagsRequest
+	83,  // 75: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:input_type -> api.wxproxy.v1.UpdateMemberRemarkRequest
+	94,  // 76: api.wxproxy.v1.Mpproxy.GetTagList:input_type -> api.wxproxy.v1.AccessTokenParam
+	79,  // 77: api.wxproxy.v1.Mpproxy.CreateTag:input_type -> api.wxproxy.v1.CreateTagRequest
+	78,  // 78: api.wxproxy.v1.Mpproxy.UpdateTag:input_type -> api.wxproxy.v1.UpdateTagRequest
+	77,  // 79: api.wxproxy.v1.Mpproxy.DeleteTag:input_type -> api.wxproxy.v1.DeleteTagRequest
+	76,  // 80: api.wxproxy.v1.Mpproxy.GetTagMembers:input_type -> api.wxproxy.v1.GetTagMembersRequest
+	74,  // 81: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:input_type -> api.wxproxy.v1.BatchTaggingMembersRequest
+	73,  // 82: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:input_type -> api.wxproxy.v1.BatchUnTaggingMembersRequest
+	72,  // 83: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
+	72,  // 84: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
+	69,  // 85: api.wxproxy.v1.Mpproxy.GenShorten:input_type -> api.wxproxy.v1.GenShortenRequest
+	67,  // 86: api.wxproxy.v1.Mpproxy.FetchShorten:input_type -> api.wxproxy.v1.FetchShortenRequest
+	94,  // 87: api.wxproxy.v1.Mpproxy.GetMenuInfo:input_type -> api.wxproxy.v1.AccessTokenParam
+	61,  // 88: api.wxproxy.v1.Mpproxy.TryMatchMenu:input_type -> api.wxproxy.v1.TryMatchMenuRequest
+	94,  // 89: api.wxproxy.v1.Mpproxy.PullMenu:input_type -> api.wxproxy.v1.AccessTokenParam
+	57,  // 90: api.wxproxy.v1.Mpproxy.CreateMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
+	57,  // 91: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
+	56,  // 92: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:input_type -> api.wxproxy.v1.DeleteConditionalMenuRequest
+	94,  // 93: api.wxproxy.v1.Mpproxy.DeleteMenu:input_type -> api.wxproxy.v1.AccessTokenParam
+	94,  // 94: api.wxproxy.v1.Mpproxy.GetIndustry:input_type -> api.wxproxy.v1.AccessTokenParam
+	94,  // 95: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
+	54,  // 96: api.wxproxy.v1.Mpproxy.SetIndustry:input_type -> api.wxproxy.v1.SetIndustryRequest
+	51,  // 97: api.wxproxy.v1.Mpproxy.GetMessageTplId:input_type -> api.wxproxy.v1.AddTemplateRequest
+	50,  // 98: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:input_type -> api.wxproxy.v1.DeleteMessageTplRequest
+	48,  // 99: api.wxproxy.v1.Mpproxy.SendTplMsg:input_type -> api.wxproxy.v1.SendTplMsgRequest
+	46,  // 100: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:input_type -> api.wxproxy.v1.SendSubscribeMsgRequest
+	44,  // 101: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:input_type -> api.wxproxy.v1.GetBlockedTplRequest
+	42,  // 102: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:input_type -> api.wxproxy.v1.AddSubscribeTplRequest
+	41,  // 103: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:input_type -> api.wxproxy.v1.DelSubscribeTplRequest
+	94,  // 104: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:input_type -> api.wxproxy.v1.AccessTokenParam
+	39,  // 105: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:input_type -> api.wxproxy.v1.GetSubscribeTplKeywordsRequest
+	37,  // 106: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:input_type -> api.wxproxy.v1.GetSubscribeTplTitlesRequest
+	94,  // 107: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
+	34,  // 108: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:input_type -> api.wxproxy.v1.SendSubscribeMessageRequest
+	94,  // 109: api.wxproxy.v1.Mpproxy.GetKFList:input_type -> api.wxproxy.v1.AccessTokenParam
+	94,  // 110: api.wxproxy.v1.Mpproxy.GetKFOnlineList:input_type -> api.wxproxy.v1.AccessTokenParam
+	29,  // 111: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:input_type -> api.wxproxy.v1.GetKFMsgHistoryRequest
+	26,  // 112: api.wxproxy.v1.Mpproxy.AddKFAccount:input_type -> api.wxproxy.v1.AddKFAccountRequest
+	25,  // 113: api.wxproxy.v1.Mpproxy.UpdateKFAccount:input_type -> api.wxproxy.v1.UpdateKFAccountRequest
+	24,  // 114: api.wxproxy.v1.Mpproxy.DelKFAccount:input_type -> api.wxproxy.v1.DelKFAccountRequest
+	23,  // 115: api.wxproxy.v1.Mpproxy.InviteKFWorker:input_type -> api.wxproxy.v1.InviteKFWorkerRequest
+	22,  // 116: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:input_type -> api.wxproxy.v1.UpdateKFAvatarRequest
+	21,  // 117: api.wxproxy.v1.Mpproxy.UpdateKFTyping:input_type -> api.wxproxy.v1.UpdateKFTypingRequest
+	20,  // 118: api.wxproxy.v1.Mpproxy.GetKFSessionList:input_type -> api.wxproxy.v1.GetKFSessionListRequest
+	17,  // 119: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:input_type -> api.wxproxy.v1.GetKFSessionStatusRequest
+	94,  // 120: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:input_type -> api.wxproxy.v1.AccessTokenParam
+	14,  // 121: api.wxproxy.v1.Mpproxy.CloseKFSession:input_type -> api.wxproxy.v1.CloseKFSessionRequest
+	13,  // 122: api.wxproxy.v1.Mpproxy.NewKFSession:input_type -> api.wxproxy.v1.NewKFSessionRequest
+	12,  // 123: api.wxproxy.v1.Mpproxy.SendKFTextMsg:input_type -> api.wxproxy.v1.SendKFTextMsgRequest
+	10,  // 124: api.wxproxy.v1.Mpproxy.SendKFImageMsg:input_type -> api.wxproxy.v1.SendKFImageMsgRequest
+	9,   // 125: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:input_type -> api.wxproxy.v1.SendKFVoiceMsgRequest
+	8,   // 126: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:input_type -> api.wxproxy.v1.SendKFVideoMsgRequest
+	7,   // 127: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:input_type -> api.wxproxy.v1.SendKFMusicMsgRequest
+	6,   // 128: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:input_type -> api.wxproxy.v1.SendKFNewsCardMsgRequest
+	5,   // 129: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:input_type -> api.wxproxy.v1.SendKFNewsPageMsgRequest
+	4,   // 130: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:input_type -> api.wxproxy.v1.SendKFToArticleMsgRequest
+	3,   // 131: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:input_type -> api.wxproxy.v1.SendKFMenuMsgRequest
+	2,   // 132: api.wxproxy.v1.Mpproxy.SendKFCardMsg:input_type -> api.wxproxy.v1.SendKFCardMsgRequest
+	1,   // 133: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:input_type -> api.wxproxy.v1.SendKFMiniProgramMsgRequest
+	0,   // 134: api.wxproxy.v1.Mpproxy.BlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
+	0,   // 135: api.wxproxy.v1.Mpproxy.UnBlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
+	95,  // 136: api.wxproxy.v1.Mpproxy.GetMaterialCount:output_type -> api.wxproxy.v1.GetMaterialCountReply
+	97,  // 137: api.wxproxy.v1.Mpproxy.GetMaterialList:output_type -> api.wxproxy.v1.GetMaterialListReply
+	92,  // 138: api.wxproxy.v1.Mpproxy.GetMemberList:output_type -> api.wxproxy.v1.GetMemberListReply
+	90,  // 139: api.wxproxy.v1.Mpproxy.GetMemberInfo:output_type -> api.wxproxy.v1.GetMemberInfoReply
+	88,  // 140: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:output_type -> api.wxproxy.v1.BatchGetMemberInfoReply
+	86,  // 141: api.wxproxy.v1.Mpproxy.GetMemberTags:output_type -> api.wxproxy.v1.GetMemberTagsReply
+	84,  // 142: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:output_type -> api.wxproxy.v1.WXErrorReply
+	81,  // 143: api.wxproxy.v1.Mpproxy.GetTagList:output_type -> api.wxproxy.v1.GetTagListReply
+	80,  // 144: api.wxproxy.v1.Mpproxy.CreateTag:output_type -> api.wxproxy.v1.CreateTagReply
+	84,  // 145: api.wxproxy.v1.Mpproxy.UpdateTag:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 146: api.wxproxy.v1.Mpproxy.DeleteTag:output_type -> api.wxproxy.v1.WXErrorReply
+	75,  // 147: api.wxproxy.v1.Mpproxy.GetTagMembers:output_type -> api.wxproxy.v1.GetTagMembersReply
+	84,  // 148: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 149: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
+	71,  // 150: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
+	71,  // 151: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
+	70,  // 152: api.wxproxy.v1.Mpproxy.GenShorten:output_type -> api.wxproxy.v1.GenShortenReply
+	68,  // 153: api.wxproxy.v1.Mpproxy.FetchShorten:output_type -> api.wxproxy.v1.FetchShortenReply
+	63,  // 154: api.wxproxy.v1.Mpproxy.GetMenuInfo:output_type -> api.wxproxy.v1.MenuInfoReply
+	62,  // 155: api.wxproxy.v1.Mpproxy.TryMatchMenu:output_type -> api.wxproxy.v1.TryMatchMenuReply
+	58,  // 156: api.wxproxy.v1.Mpproxy.PullMenu:output_type -> api.wxproxy.v1.SelfMenuReply
+	84,  // 157: api.wxproxy.v1.Mpproxy.CreateMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 158: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 159: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 160: api.wxproxy.v1.Mpproxy.DeleteMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	55,  // 161: api.wxproxy.v1.Mpproxy.GetIndustry:output_type -> api.wxproxy.v1.GetIndustryReply
+	53,  // 162: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:output_type -> api.wxproxy.v1.GetAllPrivateTplReply
+	84,  // 163: api.wxproxy.v1.Mpproxy.SetIndustry:output_type -> api.wxproxy.v1.WXErrorReply
+	52,  // 164: api.wxproxy.v1.Mpproxy.GetMessageTplId:output_type -> api.wxproxy.v1.AddMessageTplReply
+	84,  // 165: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:output_type -> api.wxproxy.v1.WXErrorReply
+	47,  // 166: api.wxproxy.v1.Mpproxy.SendTplMsg:output_type -> api.wxproxy.v1.SendTplMsgReply
+	84,  // 167: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	45,  // 168: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:output_type -> api.wxproxy.v1.GetBlockedTplMsgReply
+	43,  // 169: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:output_type -> api.wxproxy.v1.AddSubscribeTplReply
+	84,  // 170: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:output_type -> api.wxproxy.v1.WXErrorReply
+	40,  // 171: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:output_type -> api.wxproxy.v1.GetSubscribeCategoryReply
+	38,  // 172: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:output_type -> api.wxproxy.v1.GetSubscribeTplKeywordsReply
+	36,  // 173: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:output_type -> api.wxproxy.v1.GetSubscribeTplTitlesReply
+	35,  // 174: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:output_type -> api.wxproxy.v1.GetSubscribePrivateTplReply
+	84,  // 175: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:output_type -> api.wxproxy.v1.WXErrorReply
+	32,  // 176: api.wxproxy.v1.Mpproxy.GetKFList:output_type -> api.wxproxy.v1.GetKFListReply
+	30,  // 177: api.wxproxy.v1.Mpproxy.GetKFOnlineList:output_type -> api.wxproxy.v1.GetKFOnlineListReply
+	27,  // 178: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:output_type -> api.wxproxy.v1.GetKFMsgHistoryReply
+	84,  // 179: api.wxproxy.v1.Mpproxy.AddKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 180: api.wxproxy.v1.Mpproxy.UpdateKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 181: api.wxproxy.v1.Mpproxy.DelKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 182: api.wxproxy.v1.Mpproxy.InviteKFWorker:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 183: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 184: api.wxproxy.v1.Mpproxy.UpdateKFTyping:output_type -> api.wxproxy.v1.WXErrorReply
+	18,  // 185: api.wxproxy.v1.Mpproxy.GetKFSessionList:output_type -> api.wxproxy.v1.GetKFSessionListReply
+	16,  // 186: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:output_type -> api.wxproxy.v1.GetKFSessionStatusReply
+	15,  // 187: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:output_type -> api.wxproxy.v1.GetKFSessionUnacceptedReply
+	84,  // 188: api.wxproxy.v1.Mpproxy.CloseKFSession:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 189: api.wxproxy.v1.Mpproxy.NewKFSession:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 190: api.wxproxy.v1.Mpproxy.SendKFTextMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 191: api.wxproxy.v1.Mpproxy.SendKFImageMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 192: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 193: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 194: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 195: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 196: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 197: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 198: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 199: api.wxproxy.v1.Mpproxy.SendKFCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 200: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 201: api.wxproxy.v1.Mpproxy.BlockMember:output_type -> api.wxproxy.v1.WXErrorReply
+	84,  // 202: api.wxproxy.v1.Mpproxy.UnBlockMember:output_type -> api.wxproxy.v1.WXErrorReply
+	136, // [136:203] is the sub-list for method output_type
+	69,  // [69:136] is the sub-list for method input_type
 	69,  // [69:69] is the sub-list for extension type_name
 	69,  // [69:69] is the sub-list for extension extendee
 	0,   // [0:69] is the sub-list for field type_name
@@ -8650,7 +8712,7 @@ func file_v1_wxproxy_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_wxproxy_proto_rawDesc), len(file_v1_wxproxy_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   132,
+			NumMessages:   133,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

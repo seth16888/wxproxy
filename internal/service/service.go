@@ -19,6 +19,18 @@ func NewMPProxyService(uc *biz.MPProxyUsecase, logger *zap.Logger) *MPProxyServi
 	return &MPProxyService{uc: uc, log: logger}
 }
 
+func (m *MPProxyService) BlockMember(ctx context.Context, req *v1.BlockMemberReq) (*v1.WXErrorReply, error) {
+  wxErr := m.uc.BlockMember(ctx, req.AccessToken, req.OpenIds)
+
+  return wxErr, nil
+}
+
+func (m *MPProxyService) UnBlockMember(ctx context.Context, req *v1.BlockMemberReq) (*v1.WXErrorReply, error) {
+  wxErr := m.uc.UnBlockMember(ctx, req.AccessToken, req.OpenIds)
+
+  return wxErr, nil
+}
+
 func (m *MPProxyService) GetMaterialCount(ctx context.Context, req *v1.AccessTokenParam) (*v1.GetMaterialCountReply, error) {
 	res, err := m.uc.GetMaterialCoount(ctx, req.GetAccessToken())
 	if err != nil {
@@ -129,6 +141,7 @@ func (m *MPProxyService) BatchGetMemberInfo(ctx context.Context, req *v1.BatchGe
 	return &rt, nil
 }
 
+// GetMemberTags 获取用户身上的标签列表
 func (m *MPProxyService) GetMemberTags(ctx context.Context, req *v1.GetMemberTagsRequest) (*v1.GetMemberTagsReply, error) {
 	res, err := m.uc.GetMemberTags(ctx, req.AccessToken, req.Openid)
 	if err != nil {
@@ -139,6 +152,8 @@ func (m *MPProxyService) GetMemberTags(ctx context.Context, req *v1.GetMemberTag
 		TagidList: res,
 	}, nil
 }
+// BatchTaggingMembers 批量为用户打标签
+// TODO: biz层应该返回v1.WXErrorReply, 这里判断code是否为0=微信API错误
 func (m *MPProxyService) UpdateMemberRemark(ctx context.Context, req *v1.UpdateMemberRemarkRequest) (*v1.WXErrorReply, error) {
 	err := m.uc.UpdateMemberRemark(ctx, req.AccessToken, req.Openid, req.Remark)
 	if err != nil {

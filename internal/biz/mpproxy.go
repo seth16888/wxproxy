@@ -146,6 +146,68 @@ type MPProxyUsecase struct {
 	hc  *hc.Client
 }
 
+func (m *MPProxyUsecase) UnBlockMember(ctx context.Context, token string, ids []string) *v1.WXErrorReply {
+  url := fmt.Sprintf("https://%s%s?access_token=%s",
+  domain.GetWXAPIDomain(),
+  paths.Path_Batch_Remove_Black_List,
+  token,
+)
+m.log.Debug("url", zap.String("url", url))
+
+type blockMemberReq struct {
+  OpenIds []string `json:"openid_list"`
+}
+req:= &blockMemberReq{
+  OpenIds: ids,
+}
+
+reader,err:= helpers.BuildRequestBody(req)
+if err != nil {
+  m.log.Error("build request body error", zap.Error(err))
+  return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
+}
+
+resp, err := m.hc.Post(url, "application/json", reader)
+rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+if wxErr != nil {
+  m.log.Error("UpdateKFTyping error", zap.Error(err))
+  return &v1.WXErrorReply{Errcode: 500, Errmsg: "UpdateKFTyping error"}
+}
+
+return &v1.WXErrorReply{Errcode: int64(rt.ErrCode), Errmsg: rt.ErrMsg}
+}
+
+func (m *MPProxyUsecase) BlockMember(ctx context.Context, token string, ids []string) *v1.WXErrorReply {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Batch_Add_Black_List,
+		token,
+	)
+	m.log.Debug("url", zap.String("url", url))
+
+  type blockMemberReq struct {
+    OpenIds []string `json:"openid_list"`
+  }
+  req:= &blockMemberReq{
+    OpenIds: ids,
+  }
+
+  reader,err:= helpers.BuildRequestBody(req)
+  if err != nil {
+    m.log.Error("build request body error", zap.Error(err))
+    return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
+  }
+
+  resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+	if wxErr != nil {
+		m.log.Error("UpdateKFTyping error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "UpdateKFTyping error"}
+	}
+
+	return &v1.WXErrorReply{Errcode: int64(rt.ErrCode), Errmsg: rt.ErrMsg}
+}
+
 func NewMPProxyUsecase(hc *hc.Client, logger *zap.Logger) *MPProxyUsecase {
 	return &MPProxyUsecase{
 		hc:  hc,
@@ -356,7 +418,7 @@ func (m *MPProxyUsecase) GetMemberTags(ctx context.Context, token string, openid
 	body := map[string]string{
 		"openid": openid,
 	}
-	bodyJson, err := json.Marshal(body)
+	bodyJson, err := json.Marshal(body) // TODO: helpers.BuildRequestBody
 	if err != nil {
 		Errorf("GetMemberTags error: %s", err.Error())
 		return nil, err

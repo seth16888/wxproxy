@@ -84,6 +84,8 @@ const (
 	Mpproxy_SendKFMenuMsg_FullMethodName           = "/api.wxproxy.v1.Mpproxy/SendKFMenuMsg"
 	Mpproxy_SendKFCardMsg_FullMethodName           = "/api.wxproxy.v1.Mpproxy/SendKFCardMsg"
 	Mpproxy_SendKFMiniProgramMsg_FullMethodName    = "/api.wxproxy.v1.Mpproxy/SendKFMiniProgramMsg"
+	Mpproxy_BlockMember_FullMethodName             = "/api.wxproxy.v1.Mpproxy/BlockMember"
+	Mpproxy_UnBlockMember_FullMethodName           = "/api.wxproxy.v1.Mpproxy/UnBlockMember"
 )
 
 // MpproxyClient is the client API for Mpproxy service.
@@ -157,6 +159,8 @@ type MpproxyClient interface {
 	SendKFMenuMsg(ctx context.Context, in *SendKFMenuMsgRequest, opts ...grpc.CallOption) (*WXErrorReply, error)
 	SendKFCardMsg(ctx context.Context, in *SendKFCardMsgRequest, opts ...grpc.CallOption) (*WXErrorReply, error)
 	SendKFMiniProgramMsg(ctx context.Context, in *SendKFMiniProgramMsgRequest, opts ...grpc.CallOption) (*WXErrorReply, error)
+	BlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error)
+	UnBlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error)
 }
 
 type mpproxyClient struct {
@@ -817,6 +821,26 @@ func (c *mpproxyClient) SendKFMiniProgramMsg(ctx context.Context, in *SendKFMini
 	return out, nil
 }
 
+func (c *mpproxyClient) BlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(WXErrorReply)
+	err := c.cc.Invoke(ctx, Mpproxy_BlockMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mpproxyClient) UnBlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(WXErrorReply)
+	err := c.cc.Invoke(ctx, Mpproxy_UnBlockMember_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MpproxyServer is the server API for Mpproxy service.
 // All implementations must embed UnimplementedMpproxyServer
 // for forward compatibility.
@@ -888,6 +912,8 @@ type MpproxyServer interface {
 	SendKFMenuMsg(context.Context, *SendKFMenuMsgRequest) (*WXErrorReply, error)
 	SendKFCardMsg(context.Context, *SendKFCardMsgRequest) (*WXErrorReply, error)
 	SendKFMiniProgramMsg(context.Context, *SendKFMiniProgramMsgRequest) (*WXErrorReply, error)
+	BlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error)
+	UnBlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error)
 	mustEmbedUnimplementedMpproxyServer()
 }
 
@@ -1092,6 +1118,12 @@ func (UnimplementedMpproxyServer) SendKFCardMsg(context.Context, *SendKFCardMsgR
 }
 func (UnimplementedMpproxyServer) SendKFMiniProgramMsg(context.Context, *SendKFMiniProgramMsgRequest) (*WXErrorReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendKFMiniProgramMsg not implemented")
+}
+func (UnimplementedMpproxyServer) BlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BlockMember not implemented")
+}
+func (UnimplementedMpproxyServer) UnBlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnBlockMember not implemented")
 }
 func (UnimplementedMpproxyServer) mustEmbedUnimplementedMpproxyServer() {}
 func (UnimplementedMpproxyServer) testEmbeddedByValue()                 {}
@@ -2284,6 +2316,42 @@ func _Mpproxy_SendKFMiniProgramMsg_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mpproxy_BlockMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlockMemberReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MpproxyServer).BlockMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mpproxy_BlockMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MpproxyServer).BlockMember(ctx, req.(*BlockMemberReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mpproxy_UnBlockMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlockMemberReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MpproxyServer).UnBlockMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mpproxy_UnBlockMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MpproxyServer).UnBlockMember(ctx, req.(*BlockMemberReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mpproxy_ServiceDesc is the grpc.ServiceDesc for Mpproxy service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2550,6 +2618,14 @@ var Mpproxy_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendKFMiniProgramMsg",
 			Handler:    _Mpproxy_SendKFMiniProgramMsg_Handler,
+		},
+		{
+			MethodName: "BlockMember",
+			Handler:    _Mpproxy_BlockMember_Handler,
+		},
+		{
+			MethodName: "UnBlockMember",
+			Handler:    _Mpproxy_UnBlockMember_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

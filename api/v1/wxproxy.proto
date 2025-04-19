@@ -377,6 +377,13 @@ service Mpproxy {
 			body: "*"
 		};
 	}
+  rpc BlockMember (BlockMemberReq) returns (WXErrorReply) {}
+  rpc UnBlockMember (BlockMemberReq) returns (WXErrorReply) {}
+}
+
+message BlockMemberReq {
+	string AccessToken = 1;
+	repeated string OpenIds = 2;
 }
 
 message SendKFMiniProgramMsgRequest {

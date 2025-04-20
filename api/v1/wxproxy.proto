@@ -379,6 +379,19 @@ service Mpproxy {
 	}
   rpc BlockMember (BlockMemberReq) returns (WXErrorReply) {}
   rpc UnBlockMember (BlockMemberReq) returns (WXErrorReply) {}
+  rpc GetBlacklist (GetBlacklistReq) returns (GetBlacklistReply) {}
+}
+
+message GetBlacklistReq {
+	string AccessToken = 1;
+  string NextOpenid = 2;
+}
+
+message GetBlacklistReply {
+	int64 Total = 1;
+	int64 Count = 2;
+	repeated string OpenIDs = 3;
+	string NextOpenid = 4;
 }
 
 message BlockMemberReq {

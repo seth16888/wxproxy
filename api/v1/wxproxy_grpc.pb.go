@@ -86,6 +86,7 @@ const (
 	Mpproxy_SendKFMiniProgramMsg_FullMethodName    = "/api.wxproxy.v1.Mpproxy/SendKFMiniProgramMsg"
 	Mpproxy_BlockMember_FullMethodName             = "/api.wxproxy.v1.Mpproxy/BlockMember"
 	Mpproxy_UnBlockMember_FullMethodName           = "/api.wxproxy.v1.Mpproxy/UnBlockMember"
+	Mpproxy_GetBlacklist_FullMethodName            = "/api.wxproxy.v1.Mpproxy/GetBlacklist"
 )
 
 // MpproxyClient is the client API for Mpproxy service.
@@ -161,6 +162,7 @@ type MpproxyClient interface {
 	SendKFMiniProgramMsg(ctx context.Context, in *SendKFMiniProgramMsgRequest, opts ...grpc.CallOption) (*WXErrorReply, error)
 	BlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error)
 	UnBlockMember(ctx context.Context, in *BlockMemberReq, opts ...grpc.CallOption) (*WXErrorReply, error)
+	GetBlacklist(ctx context.Context, in *GetBlacklistReq, opts ...grpc.CallOption) (*GetBlacklistReply, error)
 }
 
 type mpproxyClient struct {
@@ -841,6 +843,16 @@ func (c *mpproxyClient) UnBlockMember(ctx context.Context, in *BlockMemberReq, o
 	return out, nil
 }
 
+func (c *mpproxyClient) GetBlacklist(ctx context.Context, in *GetBlacklistReq, opts ...grpc.CallOption) (*GetBlacklistReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBlacklistReply)
+	err := c.cc.Invoke(ctx, Mpproxy_GetBlacklist_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MpproxyServer is the server API for Mpproxy service.
 // All implementations must embed UnimplementedMpproxyServer
 // for forward compatibility.
@@ -914,6 +926,7 @@ type MpproxyServer interface {
 	SendKFMiniProgramMsg(context.Context, *SendKFMiniProgramMsgRequest) (*WXErrorReply, error)
 	BlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error)
 	UnBlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error)
+	GetBlacklist(context.Context, *GetBlacklistReq) (*GetBlacklistReply, error)
 	mustEmbedUnimplementedMpproxyServer()
 }
 
@@ -1124,6 +1137,9 @@ func (UnimplementedMpproxyServer) BlockMember(context.Context, *BlockMemberReq) 
 }
 func (UnimplementedMpproxyServer) UnBlockMember(context.Context, *BlockMemberReq) (*WXErrorReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnBlockMember not implemented")
+}
+func (UnimplementedMpproxyServer) GetBlacklist(context.Context, *GetBlacklistReq) (*GetBlacklistReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBlacklist not implemented")
 }
 func (UnimplementedMpproxyServer) mustEmbedUnimplementedMpproxyServer() {}
 func (UnimplementedMpproxyServer) testEmbeddedByValue()                 {}
@@ -2352,6 +2368,24 @@ func _Mpproxy_UnBlockMember_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mpproxy_GetBlacklist_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBlacklistReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MpproxyServer).GetBlacklist(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mpproxy_GetBlacklist_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MpproxyServer).GetBlacklist(ctx, req.(*GetBlacklistReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mpproxy_ServiceDesc is the grpc.ServiceDesc for Mpproxy service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2626,6 +2660,10 @@ var Mpproxy_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UnBlockMember",
 			Handler:    _Mpproxy_UnBlockMember_Handler,
+		},
+		{
+			MethodName: "GetBlacklist",
+			Handler:    _Mpproxy_GetBlacklist_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

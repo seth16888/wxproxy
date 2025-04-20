@@ -902,3 +902,12 @@ func (m *MPProxyService) SendKFMiniProgramMsg(ctx context.Context, req *v1.SendK
 	}
 	return &v1.WXErrorReply{Errcode: 0, Errmsg: "ok"}, nil
 }
+
+func (m *MPProxyService) GetBlacklist(ctx context.Context, req *v1.GetBlacklistReq) (*v1.GetBlacklistReply, error) {
+	reply,err:= m.uc.GetBlacklist(ctx, req.AccessToken, req.NextOpenid)
+	if err!= nil {
+		return nil, err
+	}
+
+	return reply, err
+}

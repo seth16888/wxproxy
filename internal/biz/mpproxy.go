@@ -118,6 +118,15 @@ type MaterialItem struct {
 	Url        string `json:"url"`
 }
 
+type GetBlackListRes struct {
+	Total      int64  `json:"total"`
+	Count      int64  `json:"count"`
+	NextOpenid string `json:"next_openid"`
+	Data       struct {
+		OpenidList []string `json:"openid"`
+	} `json:"data"`
+}
+
 type GetMemberListRes struct {
 	Total      int64  `json:"total"`
 	Count      int64  `json:"count"`
@@ -146,35 +155,74 @@ type MPProxyUsecase struct {
 	hc  *hc.Client
 }
 
+func (m *MPProxyUsecase) GetBlacklist(ctx context.Context, token string, nextId string) (*v1.GetBlacklistReply, error) {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Get_Black_List,
+		token,
+	)
+	m.log.Debug("url", zap.String("url", url))
+
+  type req struct {
+		NextOpenid string `json:"next_openid"`
+  }
+	params := &req{
+		NextOpenid: nextId,
+	}
+	reader, err := helpers.BuildRequestBody(params)
+	if err!= nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return nil, err
+	}
+
+	resp, err := m.hc.Post(url, "application/json", reader)
+	if err != nil {
+		m.log.Error("GetBlacklist error", zap.Error(err))
+		return nil, err
+	}
+	rt, wxErr := helpers.BuildHttpResponse[GetBlackListRes](resp, err)
+	if wxErr != nil {
+		m.log.Error("GetBlacklist error", zap.Error(err))
+		return nil, err
+	}
+
+	return &v1.GetBlacklistReply{
+		Total:   rt.Total,
+		Count:   rt.Count,
+		OpenIDs: rt.Data.OpenidList,
+    NextOpenid: rt.NextOpenid,
+	}, nil
+}
+
 func (m *MPProxyUsecase) UnBlockMember(ctx context.Context, token string, ids []string) *v1.WXErrorReply {
-  url := fmt.Sprintf("https://%s%s?access_token=%s",
-  domain.GetWXAPIDomain(),
-  paths.Path_Batch_Remove_Black_List,
-  token,
-)
-m.log.Debug("url", zap.String("url", url))
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Batch_Remove_Black_List,
+		token,
+	)
+	m.log.Debug("url", zap.String("url", url))
 
-type blockMemberReq struct {
-  OpenIds []string `json:"openid_list"`
-}
-req:= &blockMemberReq{
-  OpenIds: ids,
-}
+	type blockMemberReq struct {
+		OpenIds []string `json:"openid_list"`
+	}
+	req := &blockMemberReq{
+		OpenIds: ids,
+	}
 
-reader,err:= helpers.BuildRequestBody(req)
-if err != nil {
-  m.log.Error("build request body error", zap.Error(err))
-  return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
-}
+	reader, err := helpers.BuildRequestBody(req)
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
+	}
 
-resp, err := m.hc.Post(url, "application/json", reader)
-rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
-if wxErr != nil {
-  m.log.Error("UpdateKFTyping error", zap.Error(err))
-  return &v1.WXErrorReply{Errcode: 500, Errmsg: "UpdateKFTyping error"}
-}
+	resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+	if wxErr != nil {
+		m.log.Error("UpdateKFTyping error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "UpdateKFTyping error"}
+	}
 
-return &v1.WXErrorReply{Errcode: int64(rt.ErrCode), Errmsg: rt.ErrMsg}
+	return &v1.WXErrorReply{Errcode: int64(rt.ErrCode), Errmsg: rt.ErrMsg}
 }
 
 func (m *MPProxyUsecase) BlockMember(ctx context.Context, token string, ids []string) *v1.WXErrorReply {
@@ -185,20 +233,20 @@ func (m *MPProxyUsecase) BlockMember(ctx context.Context, token string, ids []st
 	)
 	m.log.Debug("url", zap.String("url", url))
 
-  type blockMemberReq struct {
-    OpenIds []string `json:"openid_list"`
-  }
-  req:= &blockMemberReq{
-    OpenIds: ids,
-  }
+	type blockMemberReq struct {
+		OpenIds []string `json:"openid_list"`
+	}
+	req := &blockMemberReq{
+		OpenIds: ids,
+	}
 
-  reader,err:= helpers.BuildRequestBody(req)
-  if err != nil {
-    m.log.Error("build request body error", zap.Error(err))
-    return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
-  }
+	reader, err := helpers.BuildRequestBody(req)
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
+	}
 
-  resp, err := m.hc.Post(url, "application/json", reader)
+	resp, err := m.hc.Post(url, "application/json", reader)
 	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
 	if wxErr != nil {
 		m.log.Error("UpdateKFTyping error", zap.Error(err))

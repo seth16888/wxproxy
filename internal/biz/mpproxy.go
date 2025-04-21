@@ -118,6 +118,31 @@ type MaterialItem struct {
 	Url        string `json:"url"`
 }
 
+type GetMaterialNewsListRes struct {
+	TotalCount int64              `json:"total_count"`
+	ItemCount  int64              `json:"item_count"`
+	Item       []MaterialNewsItem `json:"item"`
+}
+
+type MaterialNewsItem struct {
+	MediaId    string `json:"media_id"`
+	UpdateTime int64  `json:"update_time"`
+	Content    struct {
+		NewsItem []NewsItem `json:"news_item"`
+	} `json:"content"`
+}
+
+type NewsItem struct {
+	Title            string `json:"title"`
+	ThumbMediaId     string `json:"thumb_media_id"`
+	ShowCoverPic     int32  `json:"show_cover_pic"`
+	Author           string `json:"author"`
+	Digest           string `json:"digest"`
+	Content          string `json:"content"`
+	Url              string `json:"url"`
+	ContentSourceUrl string `json:"content_source_url"`
+}
+
 type GetBlackListRes struct {
 	Total      int64  `json:"total"`
 	Count      int64  `json:"count"`
@@ -155,6 +180,36 @@ type MPProxyUsecase struct {
 	hc  *hc.Client
 }
 
+func (m *MPProxyUsecase) DeleteMaterial(ctx context.Context, token string, mediaId string) *v1.WXErrorReply {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Del_Material,
+		token,
+	)
+	m.log.Debug("DeleteMaterial", zap.String("url", url))
+
+	type req struct {
+		MediaId string `json:"media_id"`
+	}
+	params := &req{
+		MediaId: mediaId,
+	}
+	reader, err := helpers.BuildRequestBody(params)
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "build request body error"}
+	}
+
+	resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+	if wxErr != nil {
+		m.log.Error("DeleteMaterial error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: "DeleteMaterial error"}
+	}
+
+	return &v1.WXErrorReply{Errcode: rt.ErrCode, Errmsg: rt.ErrMsg}
+}
+
 func (m *MPProxyUsecase) GetBlacklist(ctx context.Context, token string, nextId string) (*v1.GetBlacklistReply, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
@@ -163,23 +218,19 @@ func (m *MPProxyUsecase) GetBlacklist(ctx context.Context, token string, nextId 
 	)
 	m.log.Debug("url", zap.String("url", url))
 
-  type req struct {
+	type req struct {
 		NextOpenid string `json:"next_openid"`
-  }
+	}
 	params := &req{
 		NextOpenid: nextId,
 	}
 	reader, err := helpers.BuildRequestBody(params)
-	if err!= nil {
+	if err != nil {
 		m.log.Error("build request body error", zap.Error(err))
 		return nil, err
 	}
 
 	resp, err := m.hc.Post(url, "application/json", reader)
-	if err != nil {
-		m.log.Error("GetBlacklist error", zap.Error(err))
-		return nil, err
-	}
 	rt, wxErr := helpers.BuildHttpResponse[GetBlackListRes](resp, err)
 	if wxErr != nil {
 		m.log.Error("GetBlacklist error", zap.Error(err))
@@ -187,10 +238,10 @@ func (m *MPProxyUsecase) GetBlacklist(ctx context.Context, token string, nextId 
 	}
 
 	return &v1.GetBlacklistReply{
-		Total:   rt.Total,
-		Count:   rt.Count,
-		OpenIDs: rt.Data.OpenidList,
-    NextOpenid: rt.NextOpenid,
+		Total:      rt.Total,
+		Count:      rt.Count,
+		OpenIDs:    rt.Data.OpenidList,
+		NextOpenid: rt.NextOpenid,
 	}, nil
 }
 
@@ -288,6 +339,50 @@ func (m *MPProxyUsecase) GetMaterialCoount(ctx context.Context, token string) (*
 	return result, nil
 }
 
+func (m *MPProxyUsecase) GetMaterialNewsList(ctx context.Context, token string, mediaType string, offset int64, count int64) (*GetMaterialNewsListRes, error) {
+  url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Batch_Get_Material,
+		token,
+	)
+	m.log.Debug("GetMaterialNewsList", zap.String("url", url))
+
+	body := map[string]interface{}{
+		"type":   mediaType,
+		"offset": offset,
+		"count":  count,
+	}
+	m.log.Debug("body", zap.Any("body", body))
+	bodyJson, err := json.Marshal(body)
+	if err!= nil {
+		m.log.Error("GetMaterialNewsList error", zap.Error(err))
+		return nil, err
+	}
+	bodyReader := bytes.NewReader(bodyJson)
+	resp, err := m.hc.Post(url, "application/json", bodyReader)
+	if err!= nil {
+		m.log.Error("GetMaterialNewsList error", zap.Error(err))
+		return nil, err
+	}
+
+	type resultT struct {
+		wxError.WXError
+		GetMaterialNewsListRes
+	}
+	result, wxErr := helpers.BuildHttpResponse[resultT](resp, err)
+	if wxErr!= nil {
+		m.log.Error("GetMaterialNewsList error", zap.Error(err))
+		return nil, fmt.Errorf("GetMaterialNewsList error: %d %s", wxErr.ErrCode, wxErr.Error())
+	}
+
+	if result.ErrCode!= 0 {
+		m.log.Error("GetMaterialNewsList error", zap.Error(err))
+		return nil, fmt.Errorf("GetMaterialNewsList error: %d %s", result.ErrCode, result.ErrMsg)
+	}
+
+	return &result.GetMaterialNewsListRes, nil
+}
+
 func (m *MPProxyUsecase) GetMaterialList(ctx context.Context, token string, mediaType string,
 	offset int64, count int64,
 ) (*GetMaterialListRes, error) {
@@ -296,7 +391,7 @@ func (m *MPProxyUsecase) GetMaterialList(ctx context.Context, token string, medi
 		paths.Path_Batch_Get_Material,
 		token,
 	)
-	m.log.Debug("url", zap.String("url", url))
+	m.log.Debug("GetMaterialList", zap.String("url", url))
 
 	body := map[string]interface{}{
 		"type":   mediaType,

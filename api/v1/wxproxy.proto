@@ -9,17 +9,19 @@ option java_multiple_files = true;
 option java_package = "api.v1";
 
 service Mpproxy {
+  rpc DeleteMaterial (DeleteMaterialReq) returns (WXErrorReply) {}
+
 	rpc GetMaterialCount (AccessTokenParam) returns (GetMaterialCountReply) {
 		option (google.api.http) = {
 			get: "/mpproxy/v1/materials/count"
 		};
 	}
 
-	rpc GetMaterialList (GetMaterialListRequest) returns (GetMaterialListReply) {
-		option (google.api.http) = {
-			get: "/mpproxy/v1/materials/list"
-		};
-	}
+  // GetMaterialNewsList 获取永久素材列表(图文消息)
+  rpc GetMaterialNewsList (GetMaterialListRequest) returns (stream GetMaterialNewsListReply);
+
+  // GetMaterialList 获取永久素材列表(图片、语音、视频)
+	rpc GetMaterialList (GetMaterialListRequest) returns (stream GetMaterialListReply);
 
 	rpc GetMemberList (GetMemberListRequest) returns (GetMemberListReply) {
 		option (google.api.http) = {
@@ -1103,6 +1105,11 @@ message AccessTokenParam {
 	string AccessToken = 1;
 }
 
+message DeleteMaterialReq {
+	string AccessToken = 1;
+	string MediaId = 2;
+}
+
 message GetMaterialCountReply {
 	int64 voiceCount = 1;
 	int64 videoCount = 2;
@@ -1117,15 +1124,42 @@ message GetMaterialListRequest {
 	int64 Count = 4;
 }
 
+// GetMaterialListReply 获取永久素材列表(图片、视频、语音)
 message GetMaterialListReply {
 	int64 TotalCount = 1;
 	int64 ItemCount = 2;
 	repeated MaterialItem Item = 3;
 }
 
+// MaterialItem 素材项
 message MaterialItem {
 	string MediaId = 1;
 	string Name = 2;
 	string Url = 3;
 	int64 UpdateTime = 4;
+}
+
+// GetMaterialNewsListRequest 获取永久图文素材列表
+message GetMaterialNewsListReply {
+	int64 TotalCount = 1;
+	int64 ItemCount = 2;
+	repeated MaterialNewsItem Item = 3;
+}
+
+message MaterialNewsItem {
+	string MediaId = 1;
+	int64 UpdateTime = 2;
+  repeated NewsArticle Articles = 3;
+}
+
+// NewsArticle 图文消息的具体内容
+message NewsArticle {
+	string Title = 1;
+	string Digest = 2;
+	int32 ShowCoverPic = 3;
+	string Author = 4;
+	string Content = 5;
+	string ContentSourceUrl = 6;
+	string Url = 7;
+	string ThumbMediaId = 8;
 }

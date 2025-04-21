@@ -19,7 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	Mpproxy_DeleteMaterial_FullMethodName          = "/api.wxproxy.v1.Mpproxy/DeleteMaterial"
 	Mpproxy_GetMaterialCount_FullMethodName        = "/api.wxproxy.v1.Mpproxy/GetMaterialCount"
+	Mpproxy_GetMaterialNewsList_FullMethodName     = "/api.wxproxy.v1.Mpproxy/GetMaterialNewsList"
 	Mpproxy_GetMaterialList_FullMethodName         = "/api.wxproxy.v1.Mpproxy/GetMaterialList"
 	Mpproxy_GetMemberList_FullMethodName           = "/api.wxproxy.v1.Mpproxy/GetMemberList"
 	Mpproxy_GetMemberInfo_FullMethodName           = "/api.wxproxy.v1.Mpproxy/GetMemberInfo"
@@ -93,8 +95,12 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MpproxyClient interface {
+	DeleteMaterial(ctx context.Context, in *DeleteMaterialReq, opts ...grpc.CallOption) (*WXErrorReply, error)
 	GetMaterialCount(ctx context.Context, in *AccessTokenParam, opts ...grpc.CallOption) (*GetMaterialCountReply, error)
-	GetMaterialList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (*GetMaterialListReply, error)
+	// GetMaterialNewsList 获取永久素材列表(图文消息)
+	GetMaterialNewsList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GetMaterialNewsListReply], error)
+	// GetMaterialList 获取永久素材列表(图片、语音、视频)
+	GetMaterialList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GetMaterialListReply], error)
 	GetMemberList(ctx context.Context, in *GetMemberListRequest, opts ...grpc.CallOption) (*GetMemberListReply, error)
 	GetMemberInfo(ctx context.Context, in *GetMemberInfoRequest, opts ...grpc.CallOption) (*GetMemberInfoReply, error)
 	BatchGetMemberInfo(ctx context.Context, in *BatchGetMemberInfoRequest, opts ...grpc.CallOption) (*BatchGetMemberInfoReply, error)
@@ -173,6 +179,16 @@ func NewMpproxyClient(cc grpc.ClientConnInterface) MpproxyClient {
 	return &mpproxyClient{cc}
 }
 
+func (c *mpproxyClient) DeleteMaterial(ctx context.Context, in *DeleteMaterialReq, opts ...grpc.CallOption) (*WXErrorReply, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(WXErrorReply)
+	err := c.cc.Invoke(ctx, Mpproxy_DeleteMaterial_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mpproxyClient) GetMaterialCount(ctx context.Context, in *AccessTokenParam, opts ...grpc.CallOption) (*GetMaterialCountReply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetMaterialCountReply)
@@ -183,15 +199,43 @@ func (c *mpproxyClient) GetMaterialCount(ctx context.Context, in *AccessTokenPar
 	return out, nil
 }
 
-func (c *mpproxyClient) GetMaterialList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (*GetMaterialListReply, error) {
+func (c *mpproxyClient) GetMaterialNewsList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GetMaterialNewsListReply], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetMaterialListReply)
-	err := c.cc.Invoke(ctx, Mpproxy_GetMaterialList_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Mpproxy_ServiceDesc.Streams[0], Mpproxy_GetMaterialNewsList_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &grpc.GenericClientStream[GetMaterialListRequest, GetMaterialNewsListReply]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mpproxy_GetMaterialNewsListClient = grpc.ServerStreamingClient[GetMaterialNewsListReply]
+
+func (c *mpproxyClient) GetMaterialList(ctx context.Context, in *GetMaterialListRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GetMaterialListReply], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &Mpproxy_ServiceDesc.Streams[1], Mpproxy_GetMaterialList_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[GetMaterialListRequest, GetMaterialListReply]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mpproxy_GetMaterialListClient = grpc.ServerStreamingClient[GetMaterialListReply]
 
 func (c *mpproxyClient) GetMemberList(ctx context.Context, in *GetMemberListRequest, opts ...grpc.CallOption) (*GetMemberListReply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -857,8 +901,12 @@ func (c *mpproxyClient) GetBlacklist(ctx context.Context, in *GetBlacklistReq, o
 // All implementations must embed UnimplementedMpproxyServer
 // for forward compatibility.
 type MpproxyServer interface {
+	DeleteMaterial(context.Context, *DeleteMaterialReq) (*WXErrorReply, error)
 	GetMaterialCount(context.Context, *AccessTokenParam) (*GetMaterialCountReply, error)
-	GetMaterialList(context.Context, *GetMaterialListRequest) (*GetMaterialListReply, error)
+	// GetMaterialNewsList 获取永久素材列表(图文消息)
+	GetMaterialNewsList(*GetMaterialListRequest, grpc.ServerStreamingServer[GetMaterialNewsListReply]) error
+	// GetMaterialList 获取永久素材列表(图片、语音、视频)
+	GetMaterialList(*GetMaterialListRequest, grpc.ServerStreamingServer[GetMaterialListReply]) error
 	GetMemberList(context.Context, *GetMemberListRequest) (*GetMemberListReply, error)
 	GetMemberInfo(context.Context, *GetMemberInfoRequest) (*GetMemberInfoReply, error)
 	BatchGetMemberInfo(context.Context, *BatchGetMemberInfoRequest) (*BatchGetMemberInfoReply, error)
@@ -937,11 +985,17 @@ type MpproxyServer interface {
 // pointer dereference when methods are called.
 type UnimplementedMpproxyServer struct{}
 
+func (UnimplementedMpproxyServer) DeleteMaterial(context.Context, *DeleteMaterialReq) (*WXErrorReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMaterial not implemented")
+}
 func (UnimplementedMpproxyServer) GetMaterialCount(context.Context, *AccessTokenParam) (*GetMaterialCountReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMaterialCount not implemented")
 }
-func (UnimplementedMpproxyServer) GetMaterialList(context.Context, *GetMaterialListRequest) (*GetMaterialListReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMaterialList not implemented")
+func (UnimplementedMpproxyServer) GetMaterialNewsList(*GetMaterialListRequest, grpc.ServerStreamingServer[GetMaterialNewsListReply]) error {
+	return status.Errorf(codes.Unimplemented, "method GetMaterialNewsList not implemented")
+}
+func (UnimplementedMpproxyServer) GetMaterialList(*GetMaterialListRequest, grpc.ServerStreamingServer[GetMaterialListReply]) error {
+	return status.Errorf(codes.Unimplemented, "method GetMaterialList not implemented")
 }
 func (UnimplementedMpproxyServer) GetMemberList(context.Context, *GetMemberListRequest) (*GetMemberListReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMemberList not implemented")
@@ -1162,6 +1216,24 @@ func RegisterMpproxyServer(s grpc.ServiceRegistrar, srv MpproxyServer) {
 	s.RegisterService(&Mpproxy_ServiceDesc, srv)
 }
 
+func _Mpproxy_DeleteMaterial_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMaterialReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MpproxyServer).DeleteMaterial(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mpproxy_DeleteMaterial_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MpproxyServer).DeleteMaterial(ctx, req.(*DeleteMaterialReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mpproxy_GetMaterialCount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AccessTokenParam)
 	if err := dec(in); err != nil {
@@ -1180,23 +1252,27 @@ func _Mpproxy_GetMaterialCount_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mpproxy_GetMaterialList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMaterialListRequest)
-	if err := dec(in); err != nil {
-		return nil, err
+func _Mpproxy_GetMaterialNewsList_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetMaterialListRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
 	}
-	if interceptor == nil {
-		return srv.(MpproxyServer).GetMaterialList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mpproxy_GetMaterialList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MpproxyServer).GetMaterialList(ctx, req.(*GetMaterialListRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return srv.(MpproxyServer).GetMaterialNewsList(m, &grpc.GenericServerStream[GetMaterialListRequest, GetMaterialNewsListReply]{ServerStream: stream})
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mpproxy_GetMaterialNewsListServer = grpc.ServerStreamingServer[GetMaterialNewsListReply]
+
+func _Mpproxy_GetMaterialList_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GetMaterialListRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MpproxyServer).GetMaterialList(m, &grpc.GenericServerStream[GetMaterialListRequest, GetMaterialListReply]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mpproxy_GetMaterialListServer = grpc.ServerStreamingServer[GetMaterialListReply]
 
 func _Mpproxy_GetMemberList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMemberListRequest)
@@ -2394,12 +2470,12 @@ var Mpproxy_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*MpproxyServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetMaterialCount",
-			Handler:    _Mpproxy_GetMaterialCount_Handler,
+			MethodName: "DeleteMaterial",
+			Handler:    _Mpproxy_DeleteMaterial_Handler,
 		},
 		{
-			MethodName: "GetMaterialList",
-			Handler:    _Mpproxy_GetMaterialList_Handler,
+			MethodName: "GetMaterialCount",
+			Handler:    _Mpproxy_GetMaterialCount_Handler,
 		},
 		{
 			MethodName: "GetMemberList",
@@ -2666,6 +2742,17 @@ var Mpproxy_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mpproxy_GetBlacklist_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "GetMaterialNewsList",
+			Handler:       _Mpproxy_GetMaterialNewsList_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "GetMaterialList",
+			Handler:       _Mpproxy_GetMaterialList_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "v1/wxproxy.proto",
 }

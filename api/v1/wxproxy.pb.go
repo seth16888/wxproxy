@@ -5834,6 +5834,58 @@ func (x *AccessTokenParam) GetAccessToken() string {
 	return ""
 }
 
+type DeleteMaterialReq struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=AccessToken,proto3" json:"AccessToken,omitempty"`
+	MediaId       string                 `protobuf:"bytes,2,opt,name=MediaId,proto3" json:"MediaId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteMaterialReq) Reset() {
+	*x = DeleteMaterialReq{}
+	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteMaterialReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteMaterialReq) ProtoMessage() {}
+
+func (x *DeleteMaterialReq) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteMaterialReq.ProtoReflect.Descriptor instead.
+func (*DeleteMaterialReq) Descriptor() ([]byte, []int) {
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{97}
+}
+
+func (x *DeleteMaterialReq) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *DeleteMaterialReq) GetMediaId() string {
+	if x != nil {
+		return x.MediaId
+	}
+	return ""
+}
+
 type GetMaterialCountReply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	VoiceCount    int64                  `protobuf:"varint,1,opt,name=voiceCount,proto3" json:"voiceCount,omitempty"`
@@ -5846,7 +5898,7 @@ type GetMaterialCountReply struct {
 
 func (x *GetMaterialCountReply) Reset() {
 	*x = GetMaterialCountReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	mi := &file_v1_wxproxy_proto_msgTypes[98]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5858,7 +5910,7 @@ func (x *GetMaterialCountReply) String() string {
 func (*GetMaterialCountReply) ProtoMessage() {}
 
 func (x *GetMaterialCountReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[97]
+	mi := &file_v1_wxproxy_proto_msgTypes[98]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5871,7 +5923,7 @@ func (x *GetMaterialCountReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialCountReply.ProtoReflect.Descriptor instead.
 func (*GetMaterialCountReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{97}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{98}
 }
 
 func (x *GetMaterialCountReply) GetVoiceCount() int64 {
@@ -5914,7 +5966,7 @@ type GetMaterialListRequest struct {
 
 func (x *GetMaterialListRequest) Reset() {
 	*x = GetMaterialListRequest{}
-	mi := &file_v1_wxproxy_proto_msgTypes[98]
+	mi := &file_v1_wxproxy_proto_msgTypes[99]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5926,7 +5978,7 @@ func (x *GetMaterialListRequest) String() string {
 func (*GetMaterialListRequest) ProtoMessage() {}
 
 func (x *GetMaterialListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[98]
+	mi := &file_v1_wxproxy_proto_msgTypes[99]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5939,7 +5991,7 @@ func (x *GetMaterialListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialListRequest.ProtoReflect.Descriptor instead.
 func (*GetMaterialListRequest) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{98}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{99}
 }
 
 func (x *GetMaterialListRequest) GetAccessToken() string {
@@ -5970,6 +6022,7 @@ func (x *GetMaterialListRequest) GetCount() int64 {
 	return 0
 }
 
+// GetMaterialListReply 获取永久素材列表(图片、视频、语音)
 type GetMaterialListReply struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TotalCount    int64                  `protobuf:"varint,1,opt,name=TotalCount,proto3" json:"TotalCount,omitempty"`
@@ -5981,7 +6034,7 @@ type GetMaterialListReply struct {
 
 func (x *GetMaterialListReply) Reset() {
 	*x = GetMaterialListReply{}
-	mi := &file_v1_wxproxy_proto_msgTypes[99]
+	mi := &file_v1_wxproxy_proto_msgTypes[100]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5993,7 +6046,7 @@ func (x *GetMaterialListReply) String() string {
 func (*GetMaterialListReply) ProtoMessage() {}
 
 func (x *GetMaterialListReply) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[99]
+	mi := &file_v1_wxproxy_proto_msgTypes[100]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6006,7 +6059,7 @@ func (x *GetMaterialListReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetMaterialListReply.ProtoReflect.Descriptor instead.
 func (*GetMaterialListReply) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{99}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{100}
 }
 
 func (x *GetMaterialListReply) GetTotalCount() int64 {
@@ -6030,6 +6083,7 @@ func (x *GetMaterialListReply) GetItem() []*MaterialItem {
 	return nil
 }
 
+// MaterialItem 素材项
 type MaterialItem struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MediaId       string                 `protobuf:"bytes,1,opt,name=MediaId,proto3" json:"MediaId,omitempty"`
@@ -6042,7 +6096,7 @@ type MaterialItem struct {
 
 func (x *MaterialItem) Reset() {
 	*x = MaterialItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[100]
+	mi := &file_v1_wxproxy_proto_msgTypes[101]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6054,7 +6108,7 @@ func (x *MaterialItem) String() string {
 func (*MaterialItem) ProtoMessage() {}
 
 func (x *MaterialItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[100]
+	mi := &file_v1_wxproxy_proto_msgTypes[101]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6067,7 +6121,7 @@ func (x *MaterialItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MaterialItem.ProtoReflect.Descriptor instead.
 func (*MaterialItem) Descriptor() ([]byte, []int) {
-	return file_v1_wxproxy_proto_rawDescGZIP(), []int{100}
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{101}
 }
 
 func (x *MaterialItem) GetMediaId() string {
@@ -6098,6 +6152,228 @@ func (x *MaterialItem) GetUpdateTime() int64 {
 	return 0
 }
 
+// GetMaterialNewsListRequest 获取永久图文素材列表
+type GetMaterialNewsListReply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TotalCount    int64                  `protobuf:"varint,1,opt,name=TotalCount,proto3" json:"TotalCount,omitempty"`
+	ItemCount     int64                  `protobuf:"varint,2,opt,name=ItemCount,proto3" json:"ItemCount,omitempty"`
+	Item          []*MaterialNewsItem    `protobuf:"bytes,3,rep,name=Item,proto3" json:"Item,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMaterialNewsListReply) Reset() {
+	*x = GetMaterialNewsListReply{}
+	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMaterialNewsListReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMaterialNewsListReply) ProtoMessage() {}
+
+func (x *GetMaterialNewsListReply) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMaterialNewsListReply.ProtoReflect.Descriptor instead.
+func (*GetMaterialNewsListReply) Descriptor() ([]byte, []int) {
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{102}
+}
+
+func (x *GetMaterialNewsListReply) GetTotalCount() int64 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+func (x *GetMaterialNewsListReply) GetItemCount() int64 {
+	if x != nil {
+		return x.ItemCount
+	}
+	return 0
+}
+
+func (x *GetMaterialNewsListReply) GetItem() []*MaterialNewsItem {
+	if x != nil {
+		return x.Item
+	}
+	return nil
+}
+
+type MaterialNewsItem struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MediaId       string                 `protobuf:"bytes,1,opt,name=MediaId,proto3" json:"MediaId,omitempty"`
+	UpdateTime    int64                  `protobuf:"varint,2,opt,name=UpdateTime,proto3" json:"UpdateTime,omitempty"`
+	Articles      []*NewsArticle         `protobuf:"bytes,3,rep,name=Articles,proto3" json:"Articles,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MaterialNewsItem) Reset() {
+	*x = MaterialNewsItem{}
+	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MaterialNewsItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MaterialNewsItem) ProtoMessage() {}
+
+func (x *MaterialNewsItem) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MaterialNewsItem.ProtoReflect.Descriptor instead.
+func (*MaterialNewsItem) Descriptor() ([]byte, []int) {
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{103}
+}
+
+func (x *MaterialNewsItem) GetMediaId() string {
+	if x != nil {
+		return x.MediaId
+	}
+	return ""
+}
+
+func (x *MaterialNewsItem) GetUpdateTime() int64 {
+	if x != nil {
+		return x.UpdateTime
+	}
+	return 0
+}
+
+func (x *MaterialNewsItem) GetArticles() []*NewsArticle {
+	if x != nil {
+		return x.Articles
+	}
+	return nil
+}
+
+// NewsArticle 图文消息的具体内容
+type NewsArticle struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Title            string                 `protobuf:"bytes,1,opt,name=Title,proto3" json:"Title,omitempty"`
+	Digest           string                 `protobuf:"bytes,2,opt,name=Digest,proto3" json:"Digest,omitempty"`
+	ShowCoverPic     int32                  `protobuf:"varint,3,opt,name=ShowCoverPic,proto3" json:"ShowCoverPic,omitempty"`
+	Author           string                 `protobuf:"bytes,4,opt,name=Author,proto3" json:"Author,omitempty"`
+	Content          string                 `protobuf:"bytes,5,opt,name=Content,proto3" json:"Content,omitempty"`
+	ContentSourceUrl string                 `protobuf:"bytes,6,opt,name=ContentSourceUrl,proto3" json:"ContentSourceUrl,omitempty"`
+	Url              string                 `protobuf:"bytes,7,opt,name=Url,proto3" json:"Url,omitempty"`
+	ThumbMediaId     string                 `protobuf:"bytes,8,opt,name=ThumbMediaId,proto3" json:"ThumbMediaId,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *NewsArticle) Reset() {
+	*x = NewsArticle{}
+	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NewsArticle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NewsArticle) ProtoMessage() {}
+
+func (x *NewsArticle) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NewsArticle.ProtoReflect.Descriptor instead.
+func (*NewsArticle) Descriptor() ([]byte, []int) {
+	return file_v1_wxproxy_proto_rawDescGZIP(), []int{104}
+}
+
+func (x *NewsArticle) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetDigest() string {
+	if x != nil {
+		return x.Digest
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetShowCoverPic() int32 {
+	if x != nil {
+		return x.ShowCoverPic
+	}
+	return 0
+}
+
+func (x *NewsArticle) GetAuthor() string {
+	if x != nil {
+		return x.Author
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetContentSourceUrl() string {
+	if x != nil {
+		return x.ContentSourceUrl
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+func (x *NewsArticle) GetThumbMediaId() string {
+	if x != nil {
+		return x.ThumbMediaId
+	}
+	return ""
+}
+
 type SendKFMiniProgramMsgRequest_KFMiniProgramMsg struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Title         string                 `protobuf:"bytes,1,opt,name=Title,proto3" json:"Title,omitempty"`
@@ -6110,7 +6386,7 @@ type SendKFMiniProgramMsgRequest_KFMiniProgramMsg struct {
 
 func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) Reset() {
 	*x = SendKFMiniProgramMsgRequest_KFMiniProgramMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[101]
+	mi := &file_v1_wxproxy_proto_msgTypes[105]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6122,7 +6398,7 @@ func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) String() string {
 func (*SendKFMiniProgramMsgRequest_KFMiniProgramMsg) ProtoMessage() {}
 
 func (x *SendKFMiniProgramMsgRequest_KFMiniProgramMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[101]
+	mi := &file_v1_wxproxy_proto_msgTypes[105]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6175,7 +6451,7 @@ type SendKFCardMsgRequest_KFCardMsg struct {
 
 func (x *SendKFCardMsgRequest_KFCardMsg) Reset() {
 	*x = SendKFCardMsgRequest_KFCardMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	mi := &file_v1_wxproxy_proto_msgTypes[106]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6187,7 +6463,7 @@ func (x *SendKFCardMsgRequest_KFCardMsg) String() string {
 func (*SendKFCardMsgRequest_KFCardMsg) ProtoMessage() {}
 
 func (x *SendKFCardMsgRequest_KFCardMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[102]
+	mi := &file_v1_wxproxy_proto_msgTypes[106]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6220,7 +6496,7 @@ type SendKFMenuMsgRequest_Item struct {
 
 func (x *SendKFMenuMsgRequest_Item) Reset() {
 	*x = SendKFMenuMsgRequest_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	mi := &file_v1_wxproxy_proto_msgTypes[107]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6232,7 +6508,7 @@ func (x *SendKFMenuMsgRequest_Item) String() string {
 func (*SendKFMenuMsgRequest_Item) ProtoMessage() {}
 
 func (x *SendKFMenuMsgRequest_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[103]
+	mi := &file_v1_wxproxy_proto_msgTypes[107]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6273,7 +6549,7 @@ type SendKFMenuMsgRequest_MenuMsg struct {
 
 func (x *SendKFMenuMsgRequest_MenuMsg) Reset() {
 	*x = SendKFMenuMsgRequest_MenuMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	mi := &file_v1_wxproxy_proto_msgTypes[108]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6285,7 +6561,7 @@ func (x *SendKFMenuMsgRequest_MenuMsg) String() string {
 func (*SendKFMenuMsgRequest_MenuMsg) ProtoMessage() {}
 
 func (x *SendKFMenuMsgRequest_MenuMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[104]
+	mi := &file_v1_wxproxy_proto_msgTypes[108]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6331,7 +6607,7 @@ type SendKFToArticleMsgRequest_ToArticleMsg struct {
 
 func (x *SendKFToArticleMsgRequest_ToArticleMsg) Reset() {
 	*x = SendKFToArticleMsgRequest_ToArticleMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[105]
+	mi := &file_v1_wxproxy_proto_msgTypes[109]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6343,7 +6619,7 @@ func (x *SendKFToArticleMsgRequest_ToArticleMsg) String() string {
 func (*SendKFToArticleMsgRequest_ToArticleMsg) ProtoMessage() {}
 
 func (x *SendKFToArticleMsgRequest_ToArticleMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[105]
+	mi := &file_v1_wxproxy_proto_msgTypes[109]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6375,7 +6651,7 @@ type SendKFNewsPageMsgRequest_KFNewsPageMsg struct {
 
 func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) Reset() {
 	*x = SendKFNewsPageMsgRequest_KFNewsPageMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[106]
+	mi := &file_v1_wxproxy_proto_msgTypes[110]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6387,7 +6663,7 @@ func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) String() string {
 func (*SendKFNewsPageMsgRequest_KFNewsPageMsg) ProtoMessage() {}
 
 func (x *SendKFNewsPageMsgRequest_KFNewsPageMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[106]
+	mi := &file_v1_wxproxy_proto_msgTypes[110]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6422,7 +6698,7 @@ type SendKFNewsCardMsgRequest_KFNewsCardMsg struct {
 
 func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) Reset() {
 	*x = SendKFNewsCardMsgRequest_KFNewsCardMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[107]
+	mi := &file_v1_wxproxy_proto_msgTypes[111]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6434,7 +6710,7 @@ func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) String() string {
 func (*SendKFNewsCardMsgRequest_KFNewsCardMsg) ProtoMessage() {}
 
 func (x *SendKFNewsCardMsgRequest_KFNewsCardMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[107]
+	mi := &file_v1_wxproxy_proto_msgTypes[111]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6491,7 +6767,7 @@ type SendKFMusicMsgRequest_KFMusicMsg struct {
 
 func (x *SendKFMusicMsgRequest_KFMusicMsg) Reset() {
 	*x = SendKFMusicMsgRequest_KFMusicMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[108]
+	mi := &file_v1_wxproxy_proto_msgTypes[112]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6503,7 +6779,7 @@ func (x *SendKFMusicMsgRequest_KFMusicMsg) String() string {
 func (*SendKFMusicMsgRequest_KFMusicMsg) ProtoMessage() {}
 
 func (x *SendKFMusicMsgRequest_KFMusicMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[108]
+	mi := &file_v1_wxproxy_proto_msgTypes[112]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6566,7 +6842,7 @@ type SendKFVideoMsgRequest_KFVideoMsg struct {
 
 func (x *SendKFVideoMsgRequest_KFVideoMsg) Reset() {
 	*x = SendKFVideoMsgRequest_KFVideoMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[109]
+	mi := &file_v1_wxproxy_proto_msgTypes[113]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6578,7 +6854,7 @@ func (x *SendKFVideoMsgRequest_KFVideoMsg) String() string {
 func (*SendKFVideoMsgRequest_KFVideoMsg) ProtoMessage() {}
 
 func (x *SendKFVideoMsgRequest_KFVideoMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[109]
+	mi := &file_v1_wxproxy_proto_msgTypes[113]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6631,7 +6907,7 @@ type SendKFVoiceMsgRequest_KFVoiceMsg struct {
 
 func (x *SendKFVoiceMsgRequest_KFVoiceMsg) Reset() {
 	*x = SendKFVoiceMsgRequest_KFVoiceMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[110]
+	mi := &file_v1_wxproxy_proto_msgTypes[114]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6643,7 +6919,7 @@ func (x *SendKFVoiceMsgRequest_KFVoiceMsg) String() string {
 func (*SendKFVoiceMsgRequest_KFVoiceMsg) ProtoMessage() {}
 
 func (x *SendKFVoiceMsgRequest_KFVoiceMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[110]
+	mi := &file_v1_wxproxy_proto_msgTypes[114]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6675,7 +6951,7 @@ type SendKFImageMsgRequest_KFImageMsg struct {
 
 func (x *SendKFImageMsgRequest_KFImageMsg) Reset() {
 	*x = SendKFImageMsgRequest_KFImageMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[111]
+	mi := &file_v1_wxproxy_proto_msgTypes[115]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6687,7 +6963,7 @@ func (x *SendKFImageMsgRequest_KFImageMsg) String() string {
 func (*SendKFImageMsgRequest_KFImageMsg) ProtoMessage() {}
 
 func (x *SendKFImageMsgRequest_KFImageMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[111]
+	mi := &file_v1_wxproxy_proto_msgTypes[115]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6719,7 +6995,7 @@ type KFMessageCommon_KFAccount struct {
 
 func (x *KFMessageCommon_KFAccount) Reset() {
 	*x = KFMessageCommon_KFAccount{}
-	mi := &file_v1_wxproxy_proto_msgTypes[112]
+	mi := &file_v1_wxproxy_proto_msgTypes[116]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6731,7 +7007,7 @@ func (x *KFMessageCommon_KFAccount) String() string {
 func (*KFMessageCommon_KFAccount) ProtoMessage() {}
 
 func (x *KFMessageCommon_KFAccount) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[112]
+	mi := &file_v1_wxproxy_proto_msgTypes[116]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6763,7 +7039,7 @@ type SendKFTextMsgRequest_KFTextMsg struct {
 
 func (x *SendKFTextMsgRequest_KFTextMsg) Reset() {
 	*x = SendKFTextMsgRequest_KFTextMsg{}
-	mi := &file_v1_wxproxy_proto_msgTypes[113]
+	mi := &file_v1_wxproxy_proto_msgTypes[117]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6775,7 +7051,7 @@ func (x *SendKFTextMsgRequest_KFTextMsg) String() string {
 func (*SendKFTextMsgRequest_KFTextMsg) ProtoMessage() {}
 
 func (x *SendKFTextMsgRequest_KFTextMsg) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[113]
+	mi := &file_v1_wxproxy_proto_msgTypes[117]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6808,7 +7084,7 @@ type GetKFSessionUnacceptedReply_WaitCase struct {
 
 func (x *GetKFSessionUnacceptedReply_WaitCase) Reset() {
 	*x = GetKFSessionUnacceptedReply_WaitCase{}
-	mi := &file_v1_wxproxy_proto_msgTypes[114]
+	mi := &file_v1_wxproxy_proto_msgTypes[118]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6820,7 +7096,7 @@ func (x *GetKFSessionUnacceptedReply_WaitCase) String() string {
 func (*GetKFSessionUnacceptedReply_WaitCase) ProtoMessage() {}
 
 func (x *GetKFSessionUnacceptedReply_WaitCase) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[114]
+	mi := &file_v1_wxproxy_proto_msgTypes[118]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6859,7 +7135,7 @@ type SendSubscribeMessageRequest_DataItem struct {
 
 func (x *SendSubscribeMessageRequest_DataItem) Reset() {
 	*x = SendSubscribeMessageRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[115]
+	mi := &file_v1_wxproxy_proto_msgTypes[119]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6871,7 +7147,7 @@ func (x *SendSubscribeMessageRequest_DataItem) String() string {
 func (*SendSubscribeMessageRequest_DataItem) ProtoMessage() {}
 
 func (x *SendSubscribeMessageRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[115]
+	mi := &file_v1_wxproxy_proto_msgTypes[119]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6907,7 +7183,7 @@ type GetSubscribePrivateTplReply_Item struct {
 
 func (x *GetSubscribePrivateTplReply_Item) Reset() {
 	*x = GetSubscribePrivateTplReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[117]
+	mi := &file_v1_wxproxy_proto_msgTypes[121]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6919,7 +7195,7 @@ func (x *GetSubscribePrivateTplReply_Item) String() string {
 func (*GetSubscribePrivateTplReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribePrivateTplReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[117]
+	mi := &file_v1_wxproxy_proto_msgTypes[121]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6982,7 +7258,7 @@ type GetSubscribeTplTitlesReply_Item struct {
 
 func (x *GetSubscribeTplTitlesReply_Item) Reset() {
 	*x = GetSubscribeTplTitlesReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[118]
+	mi := &file_v1_wxproxy_proto_msgTypes[122]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6994,7 +7270,7 @@ func (x *GetSubscribeTplTitlesReply_Item) String() string {
 func (*GetSubscribeTplTitlesReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribeTplTitlesReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[118]
+	mi := &file_v1_wxproxy_proto_msgTypes[122]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7050,7 +7326,7 @@ type GetSubscribeTplKeywordsReply_Item struct {
 
 func (x *GetSubscribeTplKeywordsReply_Item) Reset() {
 	*x = GetSubscribeTplKeywordsReply_Item{}
-	mi := &file_v1_wxproxy_proto_msgTypes[119]
+	mi := &file_v1_wxproxy_proto_msgTypes[123]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7062,7 +7338,7 @@ func (x *GetSubscribeTplKeywordsReply_Item) String() string {
 func (*GetSubscribeTplKeywordsReply_Item) ProtoMessage() {}
 
 func (x *GetSubscribeTplKeywordsReply_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[119]
+	mi := &file_v1_wxproxy_proto_msgTypes[123]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7116,7 +7392,7 @@ type GetSubscribeCategoryReply_Category struct {
 
 func (x *GetSubscribeCategoryReply_Category) Reset() {
 	*x = GetSubscribeCategoryReply_Category{}
-	mi := &file_v1_wxproxy_proto_msgTypes[120]
+	mi := &file_v1_wxproxy_proto_msgTypes[124]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7128,7 +7404,7 @@ func (x *GetSubscribeCategoryReply_Category) String() string {
 func (*GetSubscribeCategoryReply_Category) ProtoMessage() {}
 
 func (x *GetSubscribeCategoryReply_Category) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[120]
+	mi := &file_v1_wxproxy_proto_msgTypes[124]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7172,7 +7448,7 @@ type GetBlockedTplMsgReply_BlockedMsgInfo struct {
 
 func (x *GetBlockedTplMsgReply_BlockedMsgInfo) Reset() {
 	*x = GetBlockedTplMsgReply_BlockedMsgInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[121]
+	mi := &file_v1_wxproxy_proto_msgTypes[125]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7184,7 +7460,7 @@ func (x *GetBlockedTplMsgReply_BlockedMsgInfo) String() string {
 func (*GetBlockedTplMsgReply_BlockedMsgInfo) ProtoMessage() {}
 
 func (x *GetBlockedTplMsgReply_BlockedMsgInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[121]
+	mi := &file_v1_wxproxy_proto_msgTypes[125]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7252,7 +7528,7 @@ type SendSubscribeMsgRequest_DataItem struct {
 
 func (x *SendSubscribeMsgRequest_DataItem) Reset() {
 	*x = SendSubscribeMsgRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[122]
+	mi := &file_v1_wxproxy_proto_msgTypes[126]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7264,7 +7540,7 @@ func (x *SendSubscribeMsgRequest_DataItem) String() string {
 func (*SendSubscribeMsgRequest_DataItem) ProtoMessage() {}
 
 func (x *SendSubscribeMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[122]
+	mi := &file_v1_wxproxy_proto_msgTypes[126]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7304,7 +7580,7 @@ type SendTplMsgRequest_DataItem struct {
 
 func (x *SendTplMsgRequest_DataItem) Reset() {
 	*x = SendTplMsgRequest_DataItem{}
-	mi := &file_v1_wxproxy_proto_msgTypes[124]
+	mi := &file_v1_wxproxy_proto_msgTypes[128]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7316,7 +7592,7 @@ func (x *SendTplMsgRequest_DataItem) String() string {
 func (*SendTplMsgRequest_DataItem) ProtoMessage() {}
 
 func (x *SendTplMsgRequest_DataItem) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[124]
+	mi := &file_v1_wxproxy_proto_msgTypes[128]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7360,7 +7636,7 @@ type GetAllPrivateTplReply_TplInfo struct {
 
 func (x *GetAllPrivateTplReply_TplInfo) Reset() {
 	*x = GetAllPrivateTplReply_TplInfo{}
-	mi := &file_v1_wxproxy_proto_msgTypes[126]
+	mi := &file_v1_wxproxy_proto_msgTypes[130]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7372,7 +7648,7 @@ func (x *GetAllPrivateTplReply_TplInfo) String() string {
 func (*GetAllPrivateTplReply_TplInfo) ProtoMessage() {}
 
 func (x *GetAllPrivateTplReply_TplInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[126]
+	mi := &file_v1_wxproxy_proto_msgTypes[130]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7440,7 +7716,7 @@ type GetIndustryReply_Industry struct {
 
 func (x *GetIndustryReply_Industry) Reset() {
 	*x = GetIndustryReply_Industry{}
-	mi := &file_v1_wxproxy_proto_msgTypes[127]
+	mi := &file_v1_wxproxy_proto_msgTypes[131]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7452,7 +7728,7 @@ func (x *GetIndustryReply_Industry) String() string {
 func (*GetIndustryReply_Industry) ProtoMessage() {}
 
 func (x *GetIndustryReply_Industry) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[127]
+	mi := &file_v1_wxproxy_proto_msgTypes[131]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7491,7 +7767,7 @@ type SelfMenuReply_MenuInfoType struct {
 
 func (x *SelfMenuReply_MenuInfoType) Reset() {
 	*x = SelfMenuReply_MenuInfoType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[128]
+	mi := &file_v1_wxproxy_proto_msgTypes[132]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7503,7 +7779,7 @@ func (x *SelfMenuReply_MenuInfoType) String() string {
 func (*SelfMenuReply_MenuInfoType) ProtoMessage() {}
 
 func (x *SelfMenuReply_MenuInfoType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[128]
+	mi := &file_v1_wxproxy_proto_msgTypes[132]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7535,7 +7811,7 @@ type SelfMenuButton_SubButtonType struct {
 
 func (x *SelfMenuButton_SubButtonType) Reset() {
 	*x = SelfMenuButton_SubButtonType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[129]
+	mi := &file_v1_wxproxy_proto_msgTypes[133]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7547,7 +7823,7 @@ func (x *SelfMenuButton_SubButtonType) String() string {
 func (*SelfMenuButton_SubButtonType) ProtoMessage() {}
 
 func (x *SelfMenuButton_SubButtonType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[129]
+	mi := &file_v1_wxproxy_proto_msgTypes[133]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7579,7 +7855,7 @@ type SelfMenuButton_NewsButtonType struct {
 
 func (x *SelfMenuButton_NewsButtonType) Reset() {
 	*x = SelfMenuButton_NewsButtonType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[130]
+	mi := &file_v1_wxproxy_proto_msgTypes[134]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7591,7 +7867,7 @@ func (x *SelfMenuButton_NewsButtonType) String() string {
 func (*SelfMenuButton_NewsButtonType) ProtoMessage() {}
 
 func (x *SelfMenuButton_NewsButtonType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[130]
+	mi := &file_v1_wxproxy_proto_msgTypes[134]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7624,7 +7900,7 @@ type MenuInfoReply_MenuType struct {
 
 func (x *MenuInfoReply_MenuType) Reset() {
 	*x = MenuInfoReply_MenuType{}
-	mi := &file_v1_wxproxy_proto_msgTypes[131]
+	mi := &file_v1_wxproxy_proto_msgTypes[135]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7636,7 +7912,7 @@ func (x *MenuInfoReply_MenuType) String() string {
 func (*MenuInfoReply_MenuType) ProtoMessage() {}
 
 func (x *MenuInfoReply_MenuType) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[131]
+	mi := &file_v1_wxproxy_proto_msgTypes[135]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7675,7 +7951,7 @@ type GetTagMembersReply_DataT struct {
 
 func (x *GetTagMembersReply_DataT) Reset() {
 	*x = GetTagMembersReply_DataT{}
-	mi := &file_v1_wxproxy_proto_msgTypes[132]
+	mi := &file_v1_wxproxy_proto_msgTypes[136]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7687,7 +7963,7 @@ func (x *GetTagMembersReply_DataT) String() string {
 func (*GetTagMembersReply_DataT) ProtoMessage() {}
 
 func (x *GetTagMembersReply_DataT) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[132]
+	mi := &file_v1_wxproxy_proto_msgTypes[136]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7719,7 +7995,7 @@ type BatchGetMemberInfoRequest_OpenIdList struct {
 
 func (x *BatchGetMemberInfoRequest_OpenIdList) Reset() {
 	*x = BatchGetMemberInfoRequest_OpenIdList{}
-	mi := &file_v1_wxproxy_proto_msgTypes[133]
+	mi := &file_v1_wxproxy_proto_msgTypes[137]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7731,7 +8007,7 @@ func (x *BatchGetMemberInfoRequest_OpenIdList) String() string {
 func (*BatchGetMemberInfoRequest_OpenIdList) ProtoMessage() {}
 
 func (x *BatchGetMemberInfoRequest_OpenIdList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[133]
+	mi := &file_v1_wxproxy_proto_msgTypes[137]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7763,7 +8039,7 @@ type GetMemberListReply_IdList struct {
 
 func (x *GetMemberListReply_IdList) Reset() {
 	*x = GetMemberListReply_IdList{}
-	mi := &file_v1_wxproxy_proto_msgTypes[134]
+	mi := &file_v1_wxproxy_proto_msgTypes[138]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7775,7 +8051,7 @@ func (x *GetMemberListReply_IdList) String() string {
 func (*GetMemberListReply_IdList) ProtoMessage() {}
 
 func (x *GetMemberListReply_IdList) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_wxproxy_proto_msgTypes[134]
+	mi := &file_v1_wxproxy_proto_msgTypes[138]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8369,7 +8645,10 @@ const file_v1_wxproxy_proto_rawDesc = "" +
 	"OpenIdList\x12\x16\n" +
 	"\x06Openid\x18\x01 \x01(\tR\x06Openid\"4\n" +
 	"\x10AccessTokenParam\x12 \n" +
-	"\vAccessToken\x18\x01 \x01(\tR\vAccessToken\"\x95\x01\n" +
+	"\vAccessToken\x18\x01 \x01(\tR\vAccessToken\"O\n" +
+	"\x11DeleteMaterialReq\x12 \n" +
+	"\vAccessToken\x18\x01 \x01(\tR\vAccessToken\x12\x18\n" +
+	"\aMediaId\x18\x02 \x01(\tR\aMediaId\"\x95\x01\n" +
 	"\x15GetMaterialCountReply\x12\x1e\n" +
 	"\n" +
 	"voiceCount\x18\x01 \x01(\x03R\n" +
@@ -8398,10 +8677,33 @@ const file_v1_wxproxy_proto_rawDesc = "" +
 	"\x03Url\x18\x03 \x01(\tR\x03Url\x12\x1e\n" +
 	"\n" +
 	"UpdateTime\x18\x04 \x01(\x03R\n" +
-	"UpdateTime2\xcbE\n" +
-	"\aMpproxy\x12\x80\x01\n" +
-	"\x10GetMaterialCount\x12 .api.wxproxy.v1.AccessTokenParam\x1a%.api.wxproxy.v1.GetMaterialCountReply\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mpproxy/v1/materials/count\x12\x83\x01\n" +
-	"\x0fGetMaterialList\x12&.api.wxproxy.v1.GetMaterialListRequest\x1a$.api.wxproxy.v1.GetMaterialListReply\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/mpproxy/v1/materials/list\x12v\n" +
+	"UpdateTime\"\x8e\x01\n" +
+	"\x18GetMaterialNewsListReply\x12\x1e\n" +
+	"\n" +
+	"TotalCount\x18\x01 \x01(\x03R\n" +
+	"TotalCount\x12\x1c\n" +
+	"\tItemCount\x18\x02 \x01(\x03R\tItemCount\x124\n" +
+	"\x04Item\x18\x03 \x03(\v2 .api.wxproxy.v1.MaterialNewsItemR\x04Item\"\x85\x01\n" +
+	"\x10MaterialNewsItem\x12\x18\n" +
+	"\aMediaId\x18\x01 \x01(\tR\aMediaId\x12\x1e\n" +
+	"\n" +
+	"UpdateTime\x18\x02 \x01(\x03R\n" +
+	"UpdateTime\x127\n" +
+	"\bArticles\x18\x03 \x03(\v2\x1b.api.wxproxy.v1.NewsArticleR\bArticles\"\xf3\x01\n" +
+	"\vNewsArticle\x12\x14\n" +
+	"\x05Title\x18\x01 \x01(\tR\x05Title\x12\x16\n" +
+	"\x06Digest\x18\x02 \x01(\tR\x06Digest\x12\"\n" +
+	"\fShowCoverPic\x18\x03 \x01(\x05R\fShowCoverPic\x12\x16\n" +
+	"\x06Author\x18\x04 \x01(\tR\x06Author\x12\x18\n" +
+	"\aContent\x18\x05 \x01(\tR\aContent\x12*\n" +
+	"\x10ContentSourceUrl\x18\x06 \x01(\tR\x10ContentSourceUrl\x12\x10\n" +
+	"\x03Url\x18\a \x01(\tR\x03Url\x12\"\n" +
+	"\fThumbMediaId\x18\b \x01(\tR\fThumbMediaId2\xe8F\n" +
+	"\aMpproxy\x12S\n" +
+	"\x0eDeleteMaterial\x12!.api.wxproxy.v1.DeleteMaterialReq\x1a\x1c.api.wxproxy.v1.WXErrorReply\"\x00\x12\x80\x01\n" +
+	"\x10GetMaterialCount\x12 .api.wxproxy.v1.AccessTokenParam\x1a%.api.wxproxy.v1.GetMaterialCountReply\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/mpproxy/v1/materials/count\x12i\n" +
+	"\x13GetMaterialNewsList\x12&.api.wxproxy.v1.GetMaterialListRequest\x1a(.api.wxproxy.v1.GetMaterialNewsListReply0\x01\x12a\n" +
+	"\x0fGetMaterialList\x12&.api.wxproxy.v1.GetMaterialListRequest\x1a$.api.wxproxy.v1.GetMaterialListReply0\x01\x12v\n" +
 	"\rGetMemberList\x12$.api.wxproxy.v1.GetMemberListRequest\x1a\".api.wxproxy.v1.GetMemberListReply\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/mpproxy/v1/members\x12{\n" +
 	"\rGetMemberInfo\x12$.api.wxproxy.v1.GetMemberInfoRequest\x1a\".api.wxproxy.v1.GetMemberInfoReply\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/mpproxy/v1/members/info\x12\x96\x01\n" +
 	"\x12BatchGetMemberInfo\x12).api.wxproxy.v1.BatchGetMemberInfoRequest\x1a'.api.wxproxy.v1.BatchGetMemberInfoReply\",\x82\xd3\xe4\x93\x02&:\x01*\"!/mpproxy/v1/members/info/batchget\x12{\n" +
@@ -8487,7 +8789,7 @@ func file_v1_wxproxy_proto_rawDescGZIP() []byte {
 	return file_v1_wxproxy_proto_rawDescData
 }
 
-var file_v1_wxproxy_proto_msgTypes = make([]protoimpl.MessageInfo, 135)
+var file_v1_wxproxy_proto_msgTypes = make([]protoimpl.MessageInfo, 139)
 var file_v1_wxproxy_proto_goTypes = []any{
 	(*GetBlacklistReq)(nil),                              // 0: api.wxproxy.v1.GetBlacklistReq
 	(*GetBlacklistReply)(nil),                            // 1: api.wxproxy.v1.GetBlacklistReply
@@ -8586,256 +8888,266 @@ var file_v1_wxproxy_proto_goTypes = []any{
 	(*GetMemberListReply)(nil),                           // 94: api.wxproxy.v1.GetMemberListReply
 	(*OpenIdList)(nil),                                   // 95: api.wxproxy.v1.OpenIdList
 	(*AccessTokenParam)(nil),                             // 96: api.wxproxy.v1.AccessTokenParam
-	(*GetMaterialCountReply)(nil),                        // 97: api.wxproxy.v1.GetMaterialCountReply
-	(*GetMaterialListRequest)(nil),                       // 98: api.wxproxy.v1.GetMaterialListRequest
-	(*GetMaterialListReply)(nil),                         // 99: api.wxproxy.v1.GetMaterialListReply
-	(*MaterialItem)(nil),                                 // 100: api.wxproxy.v1.MaterialItem
-	(*SendKFMiniProgramMsgRequest_KFMiniProgramMsg)(nil), // 101: api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
-	(*SendKFCardMsgRequest_KFCardMsg)(nil),               // 102: api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
-	(*SendKFMenuMsgRequest_Item)(nil),                    // 103: api.wxproxy.v1.SendKFMenuMsgRequest.Item
-	(*SendKFMenuMsgRequest_MenuMsg)(nil),                 // 104: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
-	(*SendKFToArticleMsgRequest_ToArticleMsg)(nil),       // 105: api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
-	(*SendKFNewsPageMsgRequest_KFNewsPageMsg)(nil),       // 106: api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
-	(*SendKFNewsCardMsgRequest_KFNewsCardMsg)(nil),       // 107: api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
-	(*SendKFMusicMsgRequest_KFMusicMsg)(nil),             // 108: api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
-	(*SendKFVideoMsgRequest_KFVideoMsg)(nil),             // 109: api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
-	(*SendKFVoiceMsgRequest_KFVoiceMsg)(nil),             // 110: api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
-	(*SendKFImageMsgRequest_KFImageMsg)(nil),             // 111: api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
-	(*KFMessageCommon_KFAccount)(nil),                    // 112: api.wxproxy.v1.KFMessageCommon.KFAccount
-	(*SendKFTextMsgRequest_KFTextMsg)(nil),               // 113: api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
-	(*GetKFSessionUnacceptedReply_WaitCase)(nil),         // 114: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
-	(*SendSubscribeMessageRequest_DataItem)(nil),         // 115: api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
-	nil,                                          // 116: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
-	(*GetSubscribePrivateTplReply_Item)(nil),     // 117: api.wxproxy.v1.GetSubscribePrivateTplReply.Item
-	(*GetSubscribeTplTitlesReply_Item)(nil),      // 118: api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
-	(*GetSubscribeTplKeywordsReply_Item)(nil),    // 119: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
-	(*GetSubscribeCategoryReply_Category)(nil),   // 120: api.wxproxy.v1.GetSubscribeCategoryReply.Category
-	(*GetBlockedTplMsgReply_BlockedMsgInfo)(nil), // 121: api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
-	(*SendSubscribeMsgRequest_DataItem)(nil),     // 122: api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
-	nil,                                          // 123: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
-	(*SendTplMsgRequest_DataItem)(nil),           // 124: api.wxproxy.v1.SendTplMsgRequest.DataItem
-	nil,                                          // 125: api.wxproxy.v1.SendTplMsgRequest.DataEntry
-	(*GetAllPrivateTplReply_TplInfo)(nil),        // 126: api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
-	(*GetIndustryReply_Industry)(nil),            // 127: api.wxproxy.v1.GetIndustryReply.Industry
-	(*SelfMenuReply_MenuInfoType)(nil),           // 128: api.wxproxy.v1.SelfMenuReply.MenuInfoType
-	(*SelfMenuButton_SubButtonType)(nil),         // 129: api.wxproxy.v1.SelfMenuButton.SubButtonType
-	(*SelfMenuButton_NewsButtonType)(nil),        // 130: api.wxproxy.v1.SelfMenuButton.NewsButtonType
-	(*MenuInfoReply_MenuType)(nil),               // 131: api.wxproxy.v1.MenuInfoReply.MenuType
-	(*GetTagMembersReply_DataT)(nil),             // 132: api.wxproxy.v1.GetTagMembersReply.DataT
-	(*BatchGetMemberInfoRequest_OpenIdList)(nil), // 133: api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
-	(*GetMemberListReply_IdList)(nil),            // 134: api.wxproxy.v1.GetMemberListReply.IdList
+	(*DeleteMaterialReq)(nil),                            // 97: api.wxproxy.v1.DeleteMaterialReq
+	(*GetMaterialCountReply)(nil),                        // 98: api.wxproxy.v1.GetMaterialCountReply
+	(*GetMaterialListRequest)(nil),                       // 99: api.wxproxy.v1.GetMaterialListRequest
+	(*GetMaterialListReply)(nil),                         // 100: api.wxproxy.v1.GetMaterialListReply
+	(*MaterialItem)(nil),                                 // 101: api.wxproxy.v1.MaterialItem
+	(*GetMaterialNewsListReply)(nil),                     // 102: api.wxproxy.v1.GetMaterialNewsListReply
+	(*MaterialNewsItem)(nil),                             // 103: api.wxproxy.v1.MaterialNewsItem
+	(*NewsArticle)(nil),                                  // 104: api.wxproxy.v1.NewsArticle
+	(*SendKFMiniProgramMsgRequest_KFMiniProgramMsg)(nil), // 105: api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
+	(*SendKFCardMsgRequest_KFCardMsg)(nil),               // 106: api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
+	(*SendKFMenuMsgRequest_Item)(nil),                    // 107: api.wxproxy.v1.SendKFMenuMsgRequest.Item
+	(*SendKFMenuMsgRequest_MenuMsg)(nil),                 // 108: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
+	(*SendKFToArticleMsgRequest_ToArticleMsg)(nil),       // 109: api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
+	(*SendKFNewsPageMsgRequest_KFNewsPageMsg)(nil),       // 110: api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
+	(*SendKFNewsCardMsgRequest_KFNewsCardMsg)(nil),       // 111: api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
+	(*SendKFMusicMsgRequest_KFMusicMsg)(nil),             // 112: api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
+	(*SendKFVideoMsgRequest_KFVideoMsg)(nil),             // 113: api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
+	(*SendKFVoiceMsgRequest_KFVoiceMsg)(nil),             // 114: api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
+	(*SendKFImageMsgRequest_KFImageMsg)(nil),             // 115: api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
+	(*KFMessageCommon_KFAccount)(nil),                    // 116: api.wxproxy.v1.KFMessageCommon.KFAccount
+	(*SendKFTextMsgRequest_KFTextMsg)(nil),               // 117: api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
+	(*GetKFSessionUnacceptedReply_WaitCase)(nil),         // 118: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
+	(*SendSubscribeMessageRequest_DataItem)(nil),         // 119: api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
+	nil,                                          // 120: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
+	(*GetSubscribePrivateTplReply_Item)(nil),     // 121: api.wxproxy.v1.GetSubscribePrivateTplReply.Item
+	(*GetSubscribeTplTitlesReply_Item)(nil),      // 122: api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
+	(*GetSubscribeTplKeywordsReply_Item)(nil),    // 123: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
+	(*GetSubscribeCategoryReply_Category)(nil),   // 124: api.wxproxy.v1.GetSubscribeCategoryReply.Category
+	(*GetBlockedTplMsgReply_BlockedMsgInfo)(nil), // 125: api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
+	(*SendSubscribeMsgRequest_DataItem)(nil),     // 126: api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
+	nil,                                          // 127: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
+	(*SendTplMsgRequest_DataItem)(nil),           // 128: api.wxproxy.v1.SendTplMsgRequest.DataItem
+	nil,                                          // 129: api.wxproxy.v1.SendTplMsgRequest.DataEntry
+	(*GetAllPrivateTplReply_TplInfo)(nil),        // 130: api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
+	(*GetIndustryReply_Industry)(nil),            // 131: api.wxproxy.v1.GetIndustryReply.Industry
+	(*SelfMenuReply_MenuInfoType)(nil),           // 132: api.wxproxy.v1.SelfMenuReply.MenuInfoType
+	(*SelfMenuButton_SubButtonType)(nil),         // 133: api.wxproxy.v1.SelfMenuButton.SubButtonType
+	(*SelfMenuButton_NewsButtonType)(nil),        // 134: api.wxproxy.v1.SelfMenuButton.NewsButtonType
+	(*MenuInfoReply_MenuType)(nil),               // 135: api.wxproxy.v1.MenuInfoReply.MenuType
+	(*GetTagMembersReply_DataT)(nil),             // 136: api.wxproxy.v1.GetTagMembersReply.DataT
+	(*BatchGetMemberInfoRequest_OpenIdList)(nil), // 137: api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
+	(*GetMemberListReply_IdList)(nil),            // 138: api.wxproxy.v1.GetMemberListReply.IdList
 }
 var file_v1_wxproxy_proto_depIdxs = []int32{
 	13,  // 0: api.wxproxy.v1.SendKFMiniProgramMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	101, // 1: api.wxproxy.v1.SendKFMiniProgramMsgRequest.MiniProgramPage:type_name -> api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
+	105, // 1: api.wxproxy.v1.SendKFMiniProgramMsgRequest.MiniProgramPage:type_name -> api.wxproxy.v1.SendKFMiniProgramMsgRequest.KFMiniProgramMsg
 	13,  // 2: api.wxproxy.v1.SendKFCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	102, // 3: api.wxproxy.v1.SendKFCardMsgRequest.WxCard:type_name -> api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
+	106, // 3: api.wxproxy.v1.SendKFCardMsgRequest.WxCard:type_name -> api.wxproxy.v1.SendKFCardMsgRequest.KFCardMsg
 	13,  // 4: api.wxproxy.v1.SendKFMenuMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	104, // 5: api.wxproxy.v1.SendKFMenuMsgRequest.MsgMenu:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
+	108, // 5: api.wxproxy.v1.SendKFMenuMsgRequest.MsgMenu:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg
 	13,  // 6: api.wxproxy.v1.SendKFToArticleMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	105, // 7: api.wxproxy.v1.SendKFToArticleMsgRequest.MpNewsArticle:type_name -> api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
+	109, // 7: api.wxproxy.v1.SendKFToArticleMsgRequest.MpNewsArticle:type_name -> api.wxproxy.v1.SendKFToArticleMsgRequest.ToArticleMsg
 	13,  // 8: api.wxproxy.v1.SendKFNewsPageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	106, // 9: api.wxproxy.v1.SendKFNewsPageMsgRequest.MpNews:type_name -> api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
+	110, // 9: api.wxproxy.v1.SendKFNewsPageMsgRequest.MpNews:type_name -> api.wxproxy.v1.SendKFNewsPageMsgRequest.KFNewsPageMsg
 	13,  // 10: api.wxproxy.v1.SendKFNewsCardMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	107, // 11: api.wxproxy.v1.SendKFNewsCardMsgRequest.News:type_name -> api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
+	111, // 11: api.wxproxy.v1.SendKFNewsCardMsgRequest.News:type_name -> api.wxproxy.v1.SendKFNewsCardMsgRequest.KFNewsCardMsg
 	13,  // 12: api.wxproxy.v1.SendKFMusicMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	108, // 13: api.wxproxy.v1.SendKFMusicMsgRequest.Music:type_name -> api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
+	112, // 13: api.wxproxy.v1.SendKFMusicMsgRequest.Music:type_name -> api.wxproxy.v1.SendKFMusicMsgRequest.KFMusicMsg
 	13,  // 14: api.wxproxy.v1.SendKFVideoMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	109, // 15: api.wxproxy.v1.SendKFVideoMsgRequest.Video:type_name -> api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
+	113, // 15: api.wxproxy.v1.SendKFVideoMsgRequest.Video:type_name -> api.wxproxy.v1.SendKFVideoMsgRequest.KFVideoMsg
 	13,  // 16: api.wxproxy.v1.SendKFVoiceMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	110, // 17: api.wxproxy.v1.SendKFVoiceMsgRequest.Voice:type_name -> api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
+	114, // 17: api.wxproxy.v1.SendKFVoiceMsgRequest.Voice:type_name -> api.wxproxy.v1.SendKFVoiceMsgRequest.KFVoiceMsg
 	13,  // 18: api.wxproxy.v1.SendKFImageMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	111, // 19: api.wxproxy.v1.SendKFImageMsgRequest.Image:type_name -> api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
-	112, // 20: api.wxproxy.v1.KFMessageCommon.CustomerService:type_name -> api.wxproxy.v1.KFMessageCommon.KFAccount
+	115, // 19: api.wxproxy.v1.SendKFImageMsgRequest.Image:type_name -> api.wxproxy.v1.SendKFImageMsgRequest.KFImageMsg
+	116, // 20: api.wxproxy.v1.KFMessageCommon.CustomerService:type_name -> api.wxproxy.v1.KFMessageCommon.KFAccount
 	13,  // 21: api.wxproxy.v1.SendKFTextMsgRequest.Common:type_name -> api.wxproxy.v1.KFMessageCommon
-	113, // 22: api.wxproxy.v1.SendKFTextMsgRequest.Text:type_name -> api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
-	114, // 23: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCaseList:type_name -> api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
+	117, // 22: api.wxproxy.v1.SendKFTextMsgRequest.Text:type_name -> api.wxproxy.v1.SendKFTextMsgRequest.KFTextMsg
+	118, // 23: api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCaseList:type_name -> api.wxproxy.v1.GetKFSessionUnacceptedReply.WaitCase
 	21,  // 24: api.wxproxy.v1.GetKFSessionListReply.SessionList:type_name -> api.wxproxy.v1.KFSession
 	30,  // 25: api.wxproxy.v1.GetKFMsgHistoryReply.RecordList:type_name -> api.wxproxy.v1.KFMsgHistory
 	33,  // 26: api.wxproxy.v1.GetKFOnlineListReply.KfOnlineList:type_name -> api.wxproxy.v1.KFOnlineInfo
 	35,  // 27: api.wxproxy.v1.GetKFListReply.KfList:type_name -> api.wxproxy.v1.KeFuInfo
-	116, // 28: api.wxproxy.v1.SendSubscribeMessageRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
+	120, // 28: api.wxproxy.v1.SendSubscribeMessageRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry
 	51,  // 29: api.wxproxy.v1.SendSubscribeMessageRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	117, // 30: api.wxproxy.v1.GetSubscribePrivateTplReply.Data:type_name -> api.wxproxy.v1.GetSubscribePrivateTplReply.Item
-	118, // 31: api.wxproxy.v1.GetSubscribeTplTitlesReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
-	119, // 32: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
-	120, // 33: api.wxproxy.v1.GetSubscribeCategoryReply.Data:type_name -> api.wxproxy.v1.GetSubscribeCategoryReply.Category
-	121, // 34: api.wxproxy.v1.GetBlockedTplMsgReply.Msginfo:type_name -> api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
-	123, // 35: api.wxproxy.v1.SendSubscribeMsgRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
+	121, // 30: api.wxproxy.v1.GetSubscribePrivateTplReply.Data:type_name -> api.wxproxy.v1.GetSubscribePrivateTplReply.Item
+	122, // 31: api.wxproxy.v1.GetSubscribeTplTitlesReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplTitlesReply.Item
+	123, // 32: api.wxproxy.v1.GetSubscribeTplKeywordsReply.Data:type_name -> api.wxproxy.v1.GetSubscribeTplKeywordsReply.Item
+	124, // 33: api.wxproxy.v1.GetSubscribeCategoryReply.Data:type_name -> api.wxproxy.v1.GetSubscribeCategoryReply.Category
+	125, // 34: api.wxproxy.v1.GetBlockedTplMsgReply.Msginfo:type_name -> api.wxproxy.v1.GetBlockedTplMsgReply.BlockedMsgInfo
+	127, // 35: api.wxproxy.v1.SendSubscribeMsgRequest.Data:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry
 	51,  // 36: api.wxproxy.v1.SendSubscribeMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	125, // 37: api.wxproxy.v1.SendTplMsgRequest.Data:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataEntry
+	129, // 37: api.wxproxy.v1.SendTplMsgRequest.Data:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataEntry
 	51,  // 38: api.wxproxy.v1.SendTplMsgRequest.Miniprogram:type_name -> api.wxproxy.v1.MiniProgram
-	126, // 39: api.wxproxy.v1.GetAllPrivateTplReply.TemplateList:type_name -> api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
-	127, // 40: api.wxproxy.v1.GetIndustryReply.PrimaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
-	127, // 41: api.wxproxy.v1.GetIndustryReply.SecondaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
+	130, // 39: api.wxproxy.v1.GetAllPrivateTplReply.TemplateList:type_name -> api.wxproxy.v1.GetAllPrivateTplReply.TplInfo
+	131, // 40: api.wxproxy.v1.GetIndustryReply.PrimaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
+	131, // 41: api.wxproxy.v1.GetIndustryReply.SecondaryIndustry:type_name -> api.wxproxy.v1.GetIndustryReply.Industry
 	66,  // 42: api.wxproxy.v1.CreateMenuRequest.Button:type_name -> api.wxproxy.v1.MenuButton
 	68,  // 43: api.wxproxy.v1.CreateMenuRequest.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
-	128, // 44: api.wxproxy.v1.SelfMenuReply.SelfmenuInfo:type_name -> api.wxproxy.v1.SelfMenuReply.MenuInfoType
-	129, // 45: api.wxproxy.v1.SelfMenuButton.SubButton:type_name -> api.wxproxy.v1.SelfMenuButton.SubButtonType
-	130, // 46: api.wxproxy.v1.SelfMenuButton.NewsInfo:type_name -> api.wxproxy.v1.SelfMenuButton.NewsButtonType
+	132, // 44: api.wxproxy.v1.SelfMenuReply.SelfmenuInfo:type_name -> api.wxproxy.v1.SelfMenuReply.MenuInfoType
+	133, // 45: api.wxproxy.v1.SelfMenuButton.SubButton:type_name -> api.wxproxy.v1.SelfMenuButton.SubButtonType
+	134, // 46: api.wxproxy.v1.SelfMenuButton.NewsInfo:type_name -> api.wxproxy.v1.SelfMenuButton.NewsButtonType
 	66,  // 47: api.wxproxy.v1.TryMatchMenuReply.Button:type_name -> api.wxproxy.v1.MenuButton
-	131, // 48: api.wxproxy.v1.MenuInfoReply.Menu:type_name -> api.wxproxy.v1.MenuInfoReply.MenuType
+	135, // 48: api.wxproxy.v1.MenuInfoReply.Menu:type_name -> api.wxproxy.v1.MenuInfoReply.MenuType
 	67,  // 49: api.wxproxy.v1.MenuInfoReply.Conditionalmenu:type_name -> api.wxproxy.v1.ConditionalMenu
 	66,  // 50: api.wxproxy.v1.MenuButton.SubButton:type_name -> api.wxproxy.v1.MenuButton
 	66,  // 51: api.wxproxy.v1.ConditionalMenu.Button:type_name -> api.wxproxy.v1.MenuButton
 	68,  // 52: api.wxproxy.v1.ConditionalMenu.Matchrule:type_name -> api.wxproxy.v1.ConditionalMatchRule
-	132, // 53: api.wxproxy.v1.GetTagMembersReply.Data:type_name -> api.wxproxy.v1.GetTagMembersReply.DataT
+	136, // 53: api.wxproxy.v1.GetTagMembersReply.Data:type_name -> api.wxproxy.v1.GetTagMembersReply.DataT
 	84,  // 54: api.wxproxy.v1.CreateTagReply.tag:type_name -> api.wxproxy.v1.Tag
 	84,  // 55: api.wxproxy.v1.GetTagListReply.Tags:type_name -> api.wxproxy.v1.Tag
-	133, // 56: api.wxproxy.v1.BatchGetMemberInfoRequest.UserList:type_name -> api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
+	137, // 56: api.wxproxy.v1.BatchGetMemberInfoRequest.UserList:type_name -> api.wxproxy.v1.BatchGetMemberInfoRequest.OpenIdList
 	92,  // 57: api.wxproxy.v1.BatchGetMemberInfoReply.UserListInfo:type_name -> api.wxproxy.v1.GetMemberInfoReply
-	134, // 58: api.wxproxy.v1.GetMemberListReply.Data:type_name -> api.wxproxy.v1.GetMemberListReply.IdList
-	100, // 59: api.wxproxy.v1.GetMaterialListReply.Item:type_name -> api.wxproxy.v1.MaterialItem
-	103, // 60: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg.List:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.Item
-	115, // 61: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
-	122, // 62: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
-	124, // 63: api.wxproxy.v1.SendTplMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataItem
-	61,  // 64: api.wxproxy.v1.SelfMenuReply.MenuInfoType.Button:type_name -> api.wxproxy.v1.SelfMenuButton
-	61,  // 65: api.wxproxy.v1.SelfMenuButton.SubButtonType.List:type_name -> api.wxproxy.v1.SelfMenuButton
-	62,  // 66: api.wxproxy.v1.SelfMenuButton.NewsButtonType.List:type_name -> api.wxproxy.v1.NewsButton
-	66,  // 67: api.wxproxy.v1.MenuInfoReply.MenuType.Button:type_name -> api.wxproxy.v1.MenuButton
-	95,  // 68: api.wxproxy.v1.GetMemberListReply.IdList.openid:type_name -> api.wxproxy.v1.OpenIdList
-	96,  // 69: api.wxproxy.v1.Mpproxy.GetMaterialCount:input_type -> api.wxproxy.v1.AccessTokenParam
-	98,  // 70: api.wxproxy.v1.Mpproxy.GetMaterialList:input_type -> api.wxproxy.v1.GetMaterialListRequest
-	93,  // 71: api.wxproxy.v1.Mpproxy.GetMemberList:input_type -> api.wxproxy.v1.GetMemberListRequest
-	91,  // 72: api.wxproxy.v1.Mpproxy.GetMemberInfo:input_type -> api.wxproxy.v1.GetMemberInfoRequest
-	89,  // 73: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:input_type -> api.wxproxy.v1.BatchGetMemberInfoRequest
-	87,  // 74: api.wxproxy.v1.Mpproxy.GetMemberTags:input_type -> api.wxproxy.v1.GetMemberTagsRequest
-	85,  // 75: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:input_type -> api.wxproxy.v1.UpdateMemberRemarkRequest
-	96,  // 76: api.wxproxy.v1.Mpproxy.GetTagList:input_type -> api.wxproxy.v1.AccessTokenParam
-	81,  // 77: api.wxproxy.v1.Mpproxy.CreateTag:input_type -> api.wxproxy.v1.CreateTagRequest
-	80,  // 78: api.wxproxy.v1.Mpproxy.UpdateTag:input_type -> api.wxproxy.v1.UpdateTagRequest
-	79,  // 79: api.wxproxy.v1.Mpproxy.DeleteTag:input_type -> api.wxproxy.v1.DeleteTagRequest
-	78,  // 80: api.wxproxy.v1.Mpproxy.GetTagMembers:input_type -> api.wxproxy.v1.GetTagMembersRequest
-	76,  // 81: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:input_type -> api.wxproxy.v1.BatchTaggingMembersRequest
-	75,  // 82: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:input_type -> api.wxproxy.v1.BatchUnTaggingMembersRequest
-	74,  // 83: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
-	74,  // 84: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
-	71,  // 85: api.wxproxy.v1.Mpproxy.GenShorten:input_type -> api.wxproxy.v1.GenShortenRequest
-	69,  // 86: api.wxproxy.v1.Mpproxy.FetchShorten:input_type -> api.wxproxy.v1.FetchShortenRequest
-	96,  // 87: api.wxproxy.v1.Mpproxy.GetMenuInfo:input_type -> api.wxproxy.v1.AccessTokenParam
-	63,  // 88: api.wxproxy.v1.Mpproxy.TryMatchMenu:input_type -> api.wxproxy.v1.TryMatchMenuRequest
-	96,  // 89: api.wxproxy.v1.Mpproxy.PullMenu:input_type -> api.wxproxy.v1.AccessTokenParam
-	59,  // 90: api.wxproxy.v1.Mpproxy.CreateMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
-	59,  // 91: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
-	58,  // 92: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:input_type -> api.wxproxy.v1.DeleteConditionalMenuRequest
-	96,  // 93: api.wxproxy.v1.Mpproxy.DeleteMenu:input_type -> api.wxproxy.v1.AccessTokenParam
-	96,  // 94: api.wxproxy.v1.Mpproxy.GetIndustry:input_type -> api.wxproxy.v1.AccessTokenParam
-	96,  // 95: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
-	56,  // 96: api.wxproxy.v1.Mpproxy.SetIndustry:input_type -> api.wxproxy.v1.SetIndustryRequest
-	53,  // 97: api.wxproxy.v1.Mpproxy.GetMessageTplId:input_type -> api.wxproxy.v1.AddTemplateRequest
-	52,  // 98: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:input_type -> api.wxproxy.v1.DeleteMessageTplRequest
-	50,  // 99: api.wxproxy.v1.Mpproxy.SendTplMsg:input_type -> api.wxproxy.v1.SendTplMsgRequest
-	48,  // 100: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:input_type -> api.wxproxy.v1.SendSubscribeMsgRequest
-	46,  // 101: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:input_type -> api.wxproxy.v1.GetBlockedTplRequest
-	44,  // 102: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:input_type -> api.wxproxy.v1.AddSubscribeTplRequest
-	43,  // 103: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:input_type -> api.wxproxy.v1.DelSubscribeTplRequest
-	96,  // 104: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:input_type -> api.wxproxy.v1.AccessTokenParam
-	41,  // 105: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:input_type -> api.wxproxy.v1.GetSubscribeTplKeywordsRequest
-	39,  // 106: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:input_type -> api.wxproxy.v1.GetSubscribeTplTitlesRequest
-	96,  // 107: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
-	36,  // 108: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:input_type -> api.wxproxy.v1.SendSubscribeMessageRequest
-	96,  // 109: api.wxproxy.v1.Mpproxy.GetKFList:input_type -> api.wxproxy.v1.AccessTokenParam
-	96,  // 110: api.wxproxy.v1.Mpproxy.GetKFOnlineList:input_type -> api.wxproxy.v1.AccessTokenParam
-	31,  // 111: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:input_type -> api.wxproxy.v1.GetKFMsgHistoryRequest
-	28,  // 112: api.wxproxy.v1.Mpproxy.AddKFAccount:input_type -> api.wxproxy.v1.AddKFAccountRequest
-	27,  // 113: api.wxproxy.v1.Mpproxy.UpdateKFAccount:input_type -> api.wxproxy.v1.UpdateKFAccountRequest
-	26,  // 114: api.wxproxy.v1.Mpproxy.DelKFAccount:input_type -> api.wxproxy.v1.DelKFAccountRequest
-	25,  // 115: api.wxproxy.v1.Mpproxy.InviteKFWorker:input_type -> api.wxproxy.v1.InviteKFWorkerRequest
-	24,  // 116: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:input_type -> api.wxproxy.v1.UpdateKFAvatarRequest
-	23,  // 117: api.wxproxy.v1.Mpproxy.UpdateKFTyping:input_type -> api.wxproxy.v1.UpdateKFTypingRequest
-	22,  // 118: api.wxproxy.v1.Mpproxy.GetKFSessionList:input_type -> api.wxproxy.v1.GetKFSessionListRequest
-	19,  // 119: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:input_type -> api.wxproxy.v1.GetKFSessionStatusRequest
-	96,  // 120: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:input_type -> api.wxproxy.v1.AccessTokenParam
-	16,  // 121: api.wxproxy.v1.Mpproxy.CloseKFSession:input_type -> api.wxproxy.v1.CloseKFSessionRequest
-	15,  // 122: api.wxproxy.v1.Mpproxy.NewKFSession:input_type -> api.wxproxy.v1.NewKFSessionRequest
-	14,  // 123: api.wxproxy.v1.Mpproxy.SendKFTextMsg:input_type -> api.wxproxy.v1.SendKFTextMsgRequest
-	12,  // 124: api.wxproxy.v1.Mpproxy.SendKFImageMsg:input_type -> api.wxproxy.v1.SendKFImageMsgRequest
-	11,  // 125: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:input_type -> api.wxproxy.v1.SendKFVoiceMsgRequest
-	10,  // 126: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:input_type -> api.wxproxy.v1.SendKFVideoMsgRequest
-	9,   // 127: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:input_type -> api.wxproxy.v1.SendKFMusicMsgRequest
-	8,   // 128: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:input_type -> api.wxproxy.v1.SendKFNewsCardMsgRequest
-	7,   // 129: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:input_type -> api.wxproxy.v1.SendKFNewsPageMsgRequest
-	6,   // 130: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:input_type -> api.wxproxy.v1.SendKFToArticleMsgRequest
-	5,   // 131: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:input_type -> api.wxproxy.v1.SendKFMenuMsgRequest
-	4,   // 132: api.wxproxy.v1.Mpproxy.SendKFCardMsg:input_type -> api.wxproxy.v1.SendKFCardMsgRequest
-	3,   // 133: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:input_type -> api.wxproxy.v1.SendKFMiniProgramMsgRequest
-	2,   // 134: api.wxproxy.v1.Mpproxy.BlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
-	2,   // 135: api.wxproxy.v1.Mpproxy.UnBlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
-	0,   // 136: api.wxproxy.v1.Mpproxy.GetBlacklist:input_type -> api.wxproxy.v1.GetBlacklistReq
-	97,  // 137: api.wxproxy.v1.Mpproxy.GetMaterialCount:output_type -> api.wxproxy.v1.GetMaterialCountReply
-	99,  // 138: api.wxproxy.v1.Mpproxy.GetMaterialList:output_type -> api.wxproxy.v1.GetMaterialListReply
-	94,  // 139: api.wxproxy.v1.Mpproxy.GetMemberList:output_type -> api.wxproxy.v1.GetMemberListReply
-	92,  // 140: api.wxproxy.v1.Mpproxy.GetMemberInfo:output_type -> api.wxproxy.v1.GetMemberInfoReply
-	90,  // 141: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:output_type -> api.wxproxy.v1.BatchGetMemberInfoReply
-	88,  // 142: api.wxproxy.v1.Mpproxy.GetMemberTags:output_type -> api.wxproxy.v1.GetMemberTagsReply
-	86,  // 143: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:output_type -> api.wxproxy.v1.WXErrorReply
-	83,  // 144: api.wxproxy.v1.Mpproxy.GetTagList:output_type -> api.wxproxy.v1.GetTagListReply
-	82,  // 145: api.wxproxy.v1.Mpproxy.CreateTag:output_type -> api.wxproxy.v1.CreateTagReply
-	86,  // 146: api.wxproxy.v1.Mpproxy.UpdateTag:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 147: api.wxproxy.v1.Mpproxy.DeleteTag:output_type -> api.wxproxy.v1.WXErrorReply
-	77,  // 148: api.wxproxy.v1.Mpproxy.GetTagMembers:output_type -> api.wxproxy.v1.GetTagMembersReply
-	86,  // 149: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 150: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
-	73,  // 151: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
-	73,  // 152: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
-	72,  // 153: api.wxproxy.v1.Mpproxy.GenShorten:output_type -> api.wxproxy.v1.GenShortenReply
-	70,  // 154: api.wxproxy.v1.Mpproxy.FetchShorten:output_type -> api.wxproxy.v1.FetchShortenReply
-	65,  // 155: api.wxproxy.v1.Mpproxy.GetMenuInfo:output_type -> api.wxproxy.v1.MenuInfoReply
-	64,  // 156: api.wxproxy.v1.Mpproxy.TryMatchMenu:output_type -> api.wxproxy.v1.TryMatchMenuReply
-	60,  // 157: api.wxproxy.v1.Mpproxy.PullMenu:output_type -> api.wxproxy.v1.SelfMenuReply
-	86,  // 158: api.wxproxy.v1.Mpproxy.CreateMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 159: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 160: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 161: api.wxproxy.v1.Mpproxy.DeleteMenu:output_type -> api.wxproxy.v1.WXErrorReply
-	57,  // 162: api.wxproxy.v1.Mpproxy.GetIndustry:output_type -> api.wxproxy.v1.GetIndustryReply
-	55,  // 163: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:output_type -> api.wxproxy.v1.GetAllPrivateTplReply
-	86,  // 164: api.wxproxy.v1.Mpproxy.SetIndustry:output_type -> api.wxproxy.v1.WXErrorReply
-	54,  // 165: api.wxproxy.v1.Mpproxy.GetMessageTplId:output_type -> api.wxproxy.v1.AddMessageTplReply
-	86,  // 166: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:output_type -> api.wxproxy.v1.WXErrorReply
-	49,  // 167: api.wxproxy.v1.Mpproxy.SendTplMsg:output_type -> api.wxproxy.v1.SendTplMsgReply
-	86,  // 168: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	47,  // 169: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:output_type -> api.wxproxy.v1.GetBlockedTplMsgReply
-	45,  // 170: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:output_type -> api.wxproxy.v1.AddSubscribeTplReply
-	86,  // 171: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:output_type -> api.wxproxy.v1.WXErrorReply
-	42,  // 172: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:output_type -> api.wxproxy.v1.GetSubscribeCategoryReply
-	40,  // 173: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:output_type -> api.wxproxy.v1.GetSubscribeTplKeywordsReply
-	38,  // 174: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:output_type -> api.wxproxy.v1.GetSubscribeTplTitlesReply
-	37,  // 175: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:output_type -> api.wxproxy.v1.GetSubscribePrivateTplReply
-	86,  // 176: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:output_type -> api.wxproxy.v1.WXErrorReply
-	34,  // 177: api.wxproxy.v1.Mpproxy.GetKFList:output_type -> api.wxproxy.v1.GetKFListReply
-	32,  // 178: api.wxproxy.v1.Mpproxy.GetKFOnlineList:output_type -> api.wxproxy.v1.GetKFOnlineListReply
-	29,  // 179: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:output_type -> api.wxproxy.v1.GetKFMsgHistoryReply
-	86,  // 180: api.wxproxy.v1.Mpproxy.AddKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 181: api.wxproxy.v1.Mpproxy.UpdateKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 182: api.wxproxy.v1.Mpproxy.DelKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 183: api.wxproxy.v1.Mpproxy.InviteKFWorker:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 184: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 185: api.wxproxy.v1.Mpproxy.UpdateKFTyping:output_type -> api.wxproxy.v1.WXErrorReply
-	20,  // 186: api.wxproxy.v1.Mpproxy.GetKFSessionList:output_type -> api.wxproxy.v1.GetKFSessionListReply
-	18,  // 187: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:output_type -> api.wxproxy.v1.GetKFSessionStatusReply
-	17,  // 188: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:output_type -> api.wxproxy.v1.GetKFSessionUnacceptedReply
-	86,  // 189: api.wxproxy.v1.Mpproxy.CloseKFSession:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 190: api.wxproxy.v1.Mpproxy.NewKFSession:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 191: api.wxproxy.v1.Mpproxy.SendKFTextMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 192: api.wxproxy.v1.Mpproxy.SendKFImageMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 193: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 194: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 195: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 196: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 197: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 198: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 199: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 200: api.wxproxy.v1.Mpproxy.SendKFCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 201: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 202: api.wxproxy.v1.Mpproxy.BlockMember:output_type -> api.wxproxy.v1.WXErrorReply
-	86,  // 203: api.wxproxy.v1.Mpproxy.UnBlockMember:output_type -> api.wxproxy.v1.WXErrorReply
-	1,   // 204: api.wxproxy.v1.Mpproxy.GetBlacklist:output_type -> api.wxproxy.v1.GetBlacklistReply
-	137, // [137:205] is the sub-list for method output_type
-	69,  // [69:137] is the sub-list for method input_type
-	69,  // [69:69] is the sub-list for extension type_name
-	69,  // [69:69] is the sub-list for extension extendee
-	0,   // [0:69] is the sub-list for field type_name
+	138, // 58: api.wxproxy.v1.GetMemberListReply.Data:type_name -> api.wxproxy.v1.GetMemberListReply.IdList
+	101, // 59: api.wxproxy.v1.GetMaterialListReply.Item:type_name -> api.wxproxy.v1.MaterialItem
+	103, // 60: api.wxproxy.v1.GetMaterialNewsListReply.Item:type_name -> api.wxproxy.v1.MaterialNewsItem
+	104, // 61: api.wxproxy.v1.MaterialNewsItem.Articles:type_name -> api.wxproxy.v1.NewsArticle
+	107, // 62: api.wxproxy.v1.SendKFMenuMsgRequest.MenuMsg.List:type_name -> api.wxproxy.v1.SendKFMenuMsgRequest.Item
+	119, // 63: api.wxproxy.v1.SendSubscribeMessageRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMessageRequest.DataItem
+	126, // 64: api.wxproxy.v1.SendSubscribeMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendSubscribeMsgRequest.DataItem
+	128, // 65: api.wxproxy.v1.SendTplMsgRequest.DataEntry.value:type_name -> api.wxproxy.v1.SendTplMsgRequest.DataItem
+	61,  // 66: api.wxproxy.v1.SelfMenuReply.MenuInfoType.Button:type_name -> api.wxproxy.v1.SelfMenuButton
+	61,  // 67: api.wxproxy.v1.SelfMenuButton.SubButtonType.List:type_name -> api.wxproxy.v1.SelfMenuButton
+	62,  // 68: api.wxproxy.v1.SelfMenuButton.NewsButtonType.List:type_name -> api.wxproxy.v1.NewsButton
+	66,  // 69: api.wxproxy.v1.MenuInfoReply.MenuType.Button:type_name -> api.wxproxy.v1.MenuButton
+	95,  // 70: api.wxproxy.v1.GetMemberListReply.IdList.openid:type_name -> api.wxproxy.v1.OpenIdList
+	97,  // 71: api.wxproxy.v1.Mpproxy.DeleteMaterial:input_type -> api.wxproxy.v1.DeleteMaterialReq
+	96,  // 72: api.wxproxy.v1.Mpproxy.GetMaterialCount:input_type -> api.wxproxy.v1.AccessTokenParam
+	99,  // 73: api.wxproxy.v1.Mpproxy.GetMaterialNewsList:input_type -> api.wxproxy.v1.GetMaterialListRequest
+	99,  // 74: api.wxproxy.v1.Mpproxy.GetMaterialList:input_type -> api.wxproxy.v1.GetMaterialListRequest
+	93,  // 75: api.wxproxy.v1.Mpproxy.GetMemberList:input_type -> api.wxproxy.v1.GetMemberListRequest
+	91,  // 76: api.wxproxy.v1.Mpproxy.GetMemberInfo:input_type -> api.wxproxy.v1.GetMemberInfoRequest
+	89,  // 77: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:input_type -> api.wxproxy.v1.BatchGetMemberInfoRequest
+	87,  // 78: api.wxproxy.v1.Mpproxy.GetMemberTags:input_type -> api.wxproxy.v1.GetMemberTagsRequest
+	85,  // 79: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:input_type -> api.wxproxy.v1.UpdateMemberRemarkRequest
+	96,  // 80: api.wxproxy.v1.Mpproxy.GetTagList:input_type -> api.wxproxy.v1.AccessTokenParam
+	81,  // 81: api.wxproxy.v1.Mpproxy.CreateTag:input_type -> api.wxproxy.v1.CreateTagRequest
+	80,  // 82: api.wxproxy.v1.Mpproxy.UpdateTag:input_type -> api.wxproxy.v1.UpdateTagRequest
+	79,  // 83: api.wxproxy.v1.Mpproxy.DeleteTag:input_type -> api.wxproxy.v1.DeleteTagRequest
+	78,  // 84: api.wxproxy.v1.Mpproxy.GetTagMembers:input_type -> api.wxproxy.v1.GetTagMembersRequest
+	76,  // 85: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:input_type -> api.wxproxy.v1.BatchTaggingMembersRequest
+	75,  // 86: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:input_type -> api.wxproxy.v1.BatchUnTaggingMembersRequest
+	74,  // 87: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
+	74,  // 88: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:input_type -> api.wxproxy.v1.CreateQRCodeRequest
+	71,  // 89: api.wxproxy.v1.Mpproxy.GenShorten:input_type -> api.wxproxy.v1.GenShortenRequest
+	69,  // 90: api.wxproxy.v1.Mpproxy.FetchShorten:input_type -> api.wxproxy.v1.FetchShortenRequest
+	96,  // 91: api.wxproxy.v1.Mpproxy.GetMenuInfo:input_type -> api.wxproxy.v1.AccessTokenParam
+	63,  // 92: api.wxproxy.v1.Mpproxy.TryMatchMenu:input_type -> api.wxproxy.v1.TryMatchMenuRequest
+	96,  // 93: api.wxproxy.v1.Mpproxy.PullMenu:input_type -> api.wxproxy.v1.AccessTokenParam
+	59,  // 94: api.wxproxy.v1.Mpproxy.CreateMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
+	59,  // 95: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:input_type -> api.wxproxy.v1.CreateMenuRequest
+	58,  // 96: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:input_type -> api.wxproxy.v1.DeleteConditionalMenuRequest
+	96,  // 97: api.wxproxy.v1.Mpproxy.DeleteMenu:input_type -> api.wxproxy.v1.AccessTokenParam
+	96,  // 98: api.wxproxy.v1.Mpproxy.GetIndustry:input_type -> api.wxproxy.v1.AccessTokenParam
+	96,  // 99: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
+	56,  // 100: api.wxproxy.v1.Mpproxy.SetIndustry:input_type -> api.wxproxy.v1.SetIndustryRequest
+	53,  // 101: api.wxproxy.v1.Mpproxy.GetMessageTplId:input_type -> api.wxproxy.v1.AddTemplateRequest
+	52,  // 102: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:input_type -> api.wxproxy.v1.DeleteMessageTplRequest
+	50,  // 103: api.wxproxy.v1.Mpproxy.SendTplMsg:input_type -> api.wxproxy.v1.SendTplMsgRequest
+	48,  // 104: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:input_type -> api.wxproxy.v1.SendSubscribeMsgRequest
+	46,  // 105: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:input_type -> api.wxproxy.v1.GetBlockedTplRequest
+	44,  // 106: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:input_type -> api.wxproxy.v1.AddSubscribeTplRequest
+	43,  // 107: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:input_type -> api.wxproxy.v1.DelSubscribeTplRequest
+	96,  // 108: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:input_type -> api.wxproxy.v1.AccessTokenParam
+	41,  // 109: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:input_type -> api.wxproxy.v1.GetSubscribeTplKeywordsRequest
+	39,  // 110: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:input_type -> api.wxproxy.v1.GetSubscribeTplTitlesRequest
+	96,  // 111: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:input_type -> api.wxproxy.v1.AccessTokenParam
+	36,  // 112: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:input_type -> api.wxproxy.v1.SendSubscribeMessageRequest
+	96,  // 113: api.wxproxy.v1.Mpproxy.GetKFList:input_type -> api.wxproxy.v1.AccessTokenParam
+	96,  // 114: api.wxproxy.v1.Mpproxy.GetKFOnlineList:input_type -> api.wxproxy.v1.AccessTokenParam
+	31,  // 115: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:input_type -> api.wxproxy.v1.GetKFMsgHistoryRequest
+	28,  // 116: api.wxproxy.v1.Mpproxy.AddKFAccount:input_type -> api.wxproxy.v1.AddKFAccountRequest
+	27,  // 117: api.wxproxy.v1.Mpproxy.UpdateKFAccount:input_type -> api.wxproxy.v1.UpdateKFAccountRequest
+	26,  // 118: api.wxproxy.v1.Mpproxy.DelKFAccount:input_type -> api.wxproxy.v1.DelKFAccountRequest
+	25,  // 119: api.wxproxy.v1.Mpproxy.InviteKFWorker:input_type -> api.wxproxy.v1.InviteKFWorkerRequest
+	24,  // 120: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:input_type -> api.wxproxy.v1.UpdateKFAvatarRequest
+	23,  // 121: api.wxproxy.v1.Mpproxy.UpdateKFTyping:input_type -> api.wxproxy.v1.UpdateKFTypingRequest
+	22,  // 122: api.wxproxy.v1.Mpproxy.GetKFSessionList:input_type -> api.wxproxy.v1.GetKFSessionListRequest
+	19,  // 123: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:input_type -> api.wxproxy.v1.GetKFSessionStatusRequest
+	96,  // 124: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:input_type -> api.wxproxy.v1.AccessTokenParam
+	16,  // 125: api.wxproxy.v1.Mpproxy.CloseKFSession:input_type -> api.wxproxy.v1.CloseKFSessionRequest
+	15,  // 126: api.wxproxy.v1.Mpproxy.NewKFSession:input_type -> api.wxproxy.v1.NewKFSessionRequest
+	14,  // 127: api.wxproxy.v1.Mpproxy.SendKFTextMsg:input_type -> api.wxproxy.v1.SendKFTextMsgRequest
+	12,  // 128: api.wxproxy.v1.Mpproxy.SendKFImageMsg:input_type -> api.wxproxy.v1.SendKFImageMsgRequest
+	11,  // 129: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:input_type -> api.wxproxy.v1.SendKFVoiceMsgRequest
+	10,  // 130: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:input_type -> api.wxproxy.v1.SendKFVideoMsgRequest
+	9,   // 131: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:input_type -> api.wxproxy.v1.SendKFMusicMsgRequest
+	8,   // 132: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:input_type -> api.wxproxy.v1.SendKFNewsCardMsgRequest
+	7,   // 133: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:input_type -> api.wxproxy.v1.SendKFNewsPageMsgRequest
+	6,   // 134: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:input_type -> api.wxproxy.v1.SendKFToArticleMsgRequest
+	5,   // 135: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:input_type -> api.wxproxy.v1.SendKFMenuMsgRequest
+	4,   // 136: api.wxproxy.v1.Mpproxy.SendKFCardMsg:input_type -> api.wxproxy.v1.SendKFCardMsgRequest
+	3,   // 137: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:input_type -> api.wxproxy.v1.SendKFMiniProgramMsgRequest
+	2,   // 138: api.wxproxy.v1.Mpproxy.BlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
+	2,   // 139: api.wxproxy.v1.Mpproxy.UnBlockMember:input_type -> api.wxproxy.v1.BlockMemberReq
+	0,   // 140: api.wxproxy.v1.Mpproxy.GetBlacklist:input_type -> api.wxproxy.v1.GetBlacklistReq
+	86,  // 141: api.wxproxy.v1.Mpproxy.DeleteMaterial:output_type -> api.wxproxy.v1.WXErrorReply
+	98,  // 142: api.wxproxy.v1.Mpproxy.GetMaterialCount:output_type -> api.wxproxy.v1.GetMaterialCountReply
+	102, // 143: api.wxproxy.v1.Mpproxy.GetMaterialNewsList:output_type -> api.wxproxy.v1.GetMaterialNewsListReply
+	100, // 144: api.wxproxy.v1.Mpproxy.GetMaterialList:output_type -> api.wxproxy.v1.GetMaterialListReply
+	94,  // 145: api.wxproxy.v1.Mpproxy.GetMemberList:output_type -> api.wxproxy.v1.GetMemberListReply
+	92,  // 146: api.wxproxy.v1.Mpproxy.GetMemberInfo:output_type -> api.wxproxy.v1.GetMemberInfoReply
+	90,  // 147: api.wxproxy.v1.Mpproxy.BatchGetMemberInfo:output_type -> api.wxproxy.v1.BatchGetMemberInfoReply
+	88,  // 148: api.wxproxy.v1.Mpproxy.GetMemberTags:output_type -> api.wxproxy.v1.GetMemberTagsReply
+	86,  // 149: api.wxproxy.v1.Mpproxy.UpdateMemberRemark:output_type -> api.wxproxy.v1.WXErrorReply
+	83,  // 150: api.wxproxy.v1.Mpproxy.GetTagList:output_type -> api.wxproxy.v1.GetTagListReply
+	82,  // 151: api.wxproxy.v1.Mpproxy.CreateTag:output_type -> api.wxproxy.v1.CreateTagReply
+	86,  // 152: api.wxproxy.v1.Mpproxy.UpdateTag:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 153: api.wxproxy.v1.Mpproxy.DeleteTag:output_type -> api.wxproxy.v1.WXErrorReply
+	77,  // 154: api.wxproxy.v1.Mpproxy.GetTagMembers:output_type -> api.wxproxy.v1.GetTagMembersReply
+	86,  // 155: api.wxproxy.v1.Mpproxy.BatchTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 156: api.wxproxy.v1.Mpproxy.BatchUnTaggingMembers:output_type -> api.wxproxy.v1.WXErrorReply
+	73,  // 157: api.wxproxy.v1.Mpproxy.CreateTemporaryQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
+	73,  // 158: api.wxproxy.v1.Mpproxy.CreateLimitQRCode:output_type -> api.wxproxy.v1.CreateQRCodeReply
+	72,  // 159: api.wxproxy.v1.Mpproxy.GenShorten:output_type -> api.wxproxy.v1.GenShortenReply
+	70,  // 160: api.wxproxy.v1.Mpproxy.FetchShorten:output_type -> api.wxproxy.v1.FetchShortenReply
+	65,  // 161: api.wxproxy.v1.Mpproxy.GetMenuInfo:output_type -> api.wxproxy.v1.MenuInfoReply
+	64,  // 162: api.wxproxy.v1.Mpproxy.TryMatchMenu:output_type -> api.wxproxy.v1.TryMatchMenuReply
+	60,  // 163: api.wxproxy.v1.Mpproxy.PullMenu:output_type -> api.wxproxy.v1.SelfMenuReply
+	86,  // 164: api.wxproxy.v1.Mpproxy.CreateMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 165: api.wxproxy.v1.Mpproxy.CreateConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 166: api.wxproxy.v1.Mpproxy.DeleteConditionalMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 167: api.wxproxy.v1.Mpproxy.DeleteMenu:output_type -> api.wxproxy.v1.WXErrorReply
+	57,  // 168: api.wxproxy.v1.Mpproxy.GetIndustry:output_type -> api.wxproxy.v1.GetIndustryReply
+	55,  // 169: api.wxproxy.v1.Mpproxy.GetAllPrivateTpl:output_type -> api.wxproxy.v1.GetAllPrivateTplReply
+	86,  // 170: api.wxproxy.v1.Mpproxy.SetIndustry:output_type -> api.wxproxy.v1.WXErrorReply
+	54,  // 171: api.wxproxy.v1.Mpproxy.GetMessageTplId:output_type -> api.wxproxy.v1.AddMessageTplReply
+	86,  // 172: api.wxproxy.v1.Mpproxy.DeleteMessageTpl:output_type -> api.wxproxy.v1.WXErrorReply
+	49,  // 173: api.wxproxy.v1.Mpproxy.SendTplMsg:output_type -> api.wxproxy.v1.SendTplMsgReply
+	86,  // 174: api.wxproxy.v1.Mpproxy.SendSubscribeMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	47,  // 175: api.wxproxy.v1.Mpproxy.GetBlockedTplMsg:output_type -> api.wxproxy.v1.GetBlockedTplMsgReply
+	45,  // 176: api.wxproxy.v1.Mpproxy.AddSubscribeTpl:output_type -> api.wxproxy.v1.AddSubscribeTplReply
+	86,  // 177: api.wxproxy.v1.Mpproxy.DelSubscribeTpl:output_type -> api.wxproxy.v1.WXErrorReply
+	42,  // 178: api.wxproxy.v1.Mpproxy.GetSubscribeCategory:output_type -> api.wxproxy.v1.GetSubscribeCategoryReply
+	40,  // 179: api.wxproxy.v1.Mpproxy.GetSubscribeTplKeywords:output_type -> api.wxproxy.v1.GetSubscribeTplKeywordsReply
+	38,  // 180: api.wxproxy.v1.Mpproxy.GetSubscribeTplTitles:output_type -> api.wxproxy.v1.GetSubscribeTplTitlesReply
+	37,  // 181: api.wxproxy.v1.Mpproxy.GetSubscribePrivateTpl:output_type -> api.wxproxy.v1.GetSubscribePrivateTplReply
+	86,  // 182: api.wxproxy.v1.Mpproxy.SendSubscribeMessage:output_type -> api.wxproxy.v1.WXErrorReply
+	34,  // 183: api.wxproxy.v1.Mpproxy.GetKFList:output_type -> api.wxproxy.v1.GetKFListReply
+	32,  // 184: api.wxproxy.v1.Mpproxy.GetKFOnlineList:output_type -> api.wxproxy.v1.GetKFOnlineListReply
+	29,  // 185: api.wxproxy.v1.Mpproxy.GetKFMsgHistory:output_type -> api.wxproxy.v1.GetKFMsgHistoryReply
+	86,  // 186: api.wxproxy.v1.Mpproxy.AddKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 187: api.wxproxy.v1.Mpproxy.UpdateKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 188: api.wxproxy.v1.Mpproxy.DelKFAccount:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 189: api.wxproxy.v1.Mpproxy.InviteKFWorker:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 190: api.wxproxy.v1.Mpproxy.UpdateKFAvatar:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 191: api.wxproxy.v1.Mpproxy.UpdateKFTyping:output_type -> api.wxproxy.v1.WXErrorReply
+	20,  // 192: api.wxproxy.v1.Mpproxy.GetKFSessionList:output_type -> api.wxproxy.v1.GetKFSessionListReply
+	18,  // 193: api.wxproxy.v1.Mpproxy.GetKFSessionStatus:output_type -> api.wxproxy.v1.GetKFSessionStatusReply
+	17,  // 194: api.wxproxy.v1.Mpproxy.GetKFSessionUnaccepted:output_type -> api.wxproxy.v1.GetKFSessionUnacceptedReply
+	86,  // 195: api.wxproxy.v1.Mpproxy.CloseKFSession:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 196: api.wxproxy.v1.Mpproxy.NewKFSession:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 197: api.wxproxy.v1.Mpproxy.SendKFTextMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 198: api.wxproxy.v1.Mpproxy.SendKFImageMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 199: api.wxproxy.v1.Mpproxy.SendKFVoiceMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 200: api.wxproxy.v1.Mpproxy.SendKFVideoMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 201: api.wxproxy.v1.Mpproxy.SendKFMusicMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 202: api.wxproxy.v1.Mpproxy.SendKFNewsCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 203: api.wxproxy.v1.Mpproxy.SendKFNewsPageMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 204: api.wxproxy.v1.Mpproxy.SendKFToArticleMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 205: api.wxproxy.v1.Mpproxy.SendKFMenuMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 206: api.wxproxy.v1.Mpproxy.SendKFCardMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 207: api.wxproxy.v1.Mpproxy.SendKFMiniProgramMsg:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 208: api.wxproxy.v1.Mpproxy.BlockMember:output_type -> api.wxproxy.v1.WXErrorReply
+	86,  // 209: api.wxproxy.v1.Mpproxy.UnBlockMember:output_type -> api.wxproxy.v1.WXErrorReply
+	1,   // 210: api.wxproxy.v1.Mpproxy.GetBlacklist:output_type -> api.wxproxy.v1.GetBlacklistReply
+	141, // [141:211] is the sub-list for method output_type
+	71,  // [71:141] is the sub-list for method input_type
+	71,  // [71:71] is the sub-list for extension type_name
+	71,  // [71:71] is the sub-list for extension extendee
+	0,   // [0:71] is the sub-list for field type_name
 }
 
 func init() { file_v1_wxproxy_proto_init() }
@@ -8849,7 +9161,7 @@ func file_v1_wxproxy_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_wxproxy_proto_rawDesc), len(file_v1_wxproxy_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   135,
+			NumMessages:   139,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -7,6 +7,9 @@ import (
 	v1 "github.com/seth16888/wxproxy/api/v1"
 	"github.com/seth16888/wxproxy/internal/biz"
 	"go.uber.org/zap"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type MPProxyService struct {
@@ -20,15 +23,15 @@ func NewMPProxyService(uc *biz.MPProxyUsecase, logger *zap.Logger) *MPProxyServi
 }
 
 func (m *MPProxyService) BlockMember(ctx context.Context, req *v1.BlockMemberReq) (*v1.WXErrorReply, error) {
-  wxErr := m.uc.BlockMember(ctx, req.AccessToken, req.OpenIds)
+	wxErr := m.uc.BlockMember(ctx, req.AccessToken, req.OpenIds)
 
-  return wxErr, nil
+	return wxErr, nil
 }
 
 func (m *MPProxyService) UnBlockMember(ctx context.Context, req *v1.BlockMemberReq) (*v1.WXErrorReply, error) {
-  wxErr := m.uc.UnBlockMember(ctx, req.AccessToken, req.OpenIds)
+	wxErr := m.uc.UnBlockMember(ctx, req.AccessToken, req.OpenIds)
 
-  return wxErr, nil
+	return wxErr, nil
 }
 
 func (m *MPProxyService) GetMaterialCount(ctx context.Context, req *v1.AccessTokenParam) (*v1.GetMaterialCountReply, error) {
@@ -44,27 +47,129 @@ func (m *MPProxyService) GetMaterialCount(ctx context.Context, req *v1.AccessTok
 	}, nil
 }
 
-func (m *MPProxyService) GetMaterialList(ctx context.Context, req *v1.GetMaterialListRequest) (*v1.GetMaterialListReply, error) {
-	res, err := m.uc.GetMaterialList(ctx, req.GetAccessToken(), req.GetType(), req.GetOffset(), req.GetCount())
-	if err != nil {
-		return nil, err
+// func (v1.UnimplementedMpproxyServer) GetMaterialList(*v1.GetMaterialListRequest, grpc.ServerStreamingServer[v1.GetMaterialListReply]) error
+
+func (m *MPProxyService) GetMaterialNewsList(req *v1.GetMaterialListRequest, stream grpc.ServerStreamingServer[v1.GetMaterialNewsListReply]) error {
+	if req.GetType() != "news" {
+		return status.Error(codes.InvalidArgument, "type must be news")
 	}
 
-	var items []*v1.MaterialItem
-	for _, item := range res.Item {
-		items = append(items, &v1.MaterialItem{
-			MediaId:    item.MediaId,
-			Name:       item.Name,
-			UpdateTime: item.UpdateTime,
-			Url:        item.Url,
-		})
+	currentOffset := req.GetOffset()
+	for {
+		ctx := context.Background()
+		res, err := m.uc.GetMaterialNewsList(ctx, req.GetAccessToken(), req.Type, currentOffset, req.GetCount())
+		if err != nil {
+			return status.Error(codes.Unknown, err.Error())
+		}
+		m.log.Debug("GetMaterialNewsList", zap.Int64("total", res.TotalCount), zap.Int64("item_count", res.ItemCount))
+		var items []*v1.MaterialNewsItem
+		var newsItem *v1.MaterialNewsItem
+		if res.Item == nil {
+			break
+		}
+		for _, item := range res.Item {
+			var articles []*v1.NewsArticle
+			for _, article := range item.Content.NewsItem {
+				articles = append(articles, &v1.NewsArticle{
+					Title:            article.Title,
+					Author:           article.Author,
+					Digest:           article.Digest,
+					Content:          article.Content,
+					ContentSourceUrl: article.ContentSourceUrl,
+					Url:              article.Url,
+					ShowCoverPic:     article.ShowCoverPic,
+					ThumbMediaId:     article.ThumbMediaId,
+				})
+			}
+			newsItem = &v1.MaterialNewsItem{
+				MediaId:    item.MediaId,
+				UpdateTime: item.UpdateTime,
+				Articles:   articles,
+			}
+			items = append(items, newsItem)
+		}
+		if len(items) == 0 {
+			break
+		}
+
+		for range items {
+			reply := v1.GetMaterialNewsListReply{
+				TotalCount: res.TotalCount,
+				ItemCount:  res.ItemCount,
+				Item:       items,
+			}
+			err = stream.Send(&reply)
+			if err != nil {
+				return err
+			}
+		}
+
+		currentOffset += res.ItemCount
+		// 结束条件: 返回的素材数量小于请求的数量
+		if res.ItemCount < req.GetCount() {
+			break
+		}
+	}
+	return nil
+}
+
+// GetMaterialList 获取素材列表(图片、视频、语音)
+func (m *MPProxyService) GetMaterialList(req *v1.GetMaterialListRequest, stream grpc.ServerStreamingServer[v1.GetMaterialListReply]) error {
+	if req.GetType() != "image" && req.GetType() != "video" && req.GetType() != "voice" {
+		return status.Error(codes.InvalidArgument, "type must be image, video or voice")
 	}
 
-	return &v1.GetMaterialListReply{
-		TotalCount: res.TotalCount,
-		ItemCount:  res.ItemCount,
-		Item:       items,
-	}, nil
+	currentOffset := req.GetOffset()
+	for {
+		ctx := context.Background()
+		res, err := m.uc.GetMaterialList(ctx, req.GetAccessToken(), req.GetType(), currentOffset, req.GetCount())
+		if err != nil {
+			return status.Error(codes.Unknown, err.Error())
+		}
+		m.log.Debug("GetMaterialList", zap.Int64("total", res.TotalCount), zap.Int64("item_count", res.ItemCount))
+		var items []*v1.MaterialItem
+		if res.Item == nil {
+			break
+		}
+		for _, item := range res.Item {
+			items = append(items, &v1.MaterialItem{
+				MediaId:    item.MediaId,
+				Name:       item.Name,
+				UpdateTime: item.UpdateTime,
+				Url:        item.Url,
+			})
+		}
+		if len(items) == 0 {
+			break
+		}
+
+		for range items {
+			reply := v1.GetMaterialListReply{
+				TotalCount: res.TotalCount,
+				ItemCount:  res.ItemCount,
+				Item:       items,
+			}
+			err = stream.Send(&reply)
+			if err != nil {
+				return err
+			}
+		}
+
+		currentOffset += res.ItemCount
+		// 结束条件: 返回的素材数量小于请求的数量
+		if res.ItemCount < req.GetCount() {
+			break
+		}
+	}
+	return nil
+}
+
+func (m *MPProxyService) DeleteMaterial(ctx context.Context, req *v1.DeleteMaterialReq) (*v1.WXErrorReply, error) {
+	wxErr := m.uc.DeleteMaterial(ctx, req.GetAccessToken(), req.GetMediaId())
+	if wxErr != nil {
+		return wxErr, nil
+	}
+	return nil, nil
 }
 
 func (m *MPProxyService) GetMemberList(ctx context.Context, req *v1.GetMemberListRequest) (*v1.GetMemberListReply, error) {
@@ -152,6 +257,7 @@ func (m *MPProxyService) GetMemberTags(ctx context.Context, req *v1.GetMemberTag
 		TagidList: res,
 	}, nil
 }
+
 // BatchTaggingMembers 批量为用户打标签
 // TODO: biz层应该返回v1.WXErrorReply, 这里判断code是否为0=微信API错误
 func (m *MPProxyService) UpdateMemberRemark(ctx context.Context, req *v1.UpdateMemberRemarkRequest) (*v1.WXErrorReply, error) {
@@ -264,7 +370,8 @@ func (m *MPProxyService) BatchUnTaggingMembers(ctx context.Context, req *v1.Batc
 }
 
 func (m *MPProxyService) CreateTemporaryQRCode(ctx context.Context,
-	req *v1.CreateQRCodeRequest) (*v1.CreateQRCodeReply, error) {
+	req *v1.CreateQRCodeRequest,
+) (*v1.CreateQRCodeReply, error) {
 	// TODO: scene根据数据类型同时支持数字、字符串两种类型
 	res, err := m.uc.CreateTemporaryQRCode(ctx, req.AccessToken, req.Scene, req.ExpireSeconds)
 	if err != nil {
@@ -277,8 +384,10 @@ func (m *MPProxyService) CreateTemporaryQRCode(ctx context.Context,
 		URL:           res.Url,
 	}, nil
 }
+
 func (m *MPProxyService) CreateLimitQRCode(ctx context.Context,
-	req *v1.CreateQRCodeRequest) (*v1.CreateQRCodeReply, error) {
+	req *v1.CreateQRCodeRequest,
+) (*v1.CreateQRCodeReply, error) {
 	// TODO: scene根据数据类型同时支持数字、字符串两种类型
 	res, err := m.uc.CreateLimitQRCode(ctx, req.AccessToken, req.Scene, req.ExpireSeconds)
 	if err != nil {
@@ -291,8 +400,10 @@ func (m *MPProxyService) CreateLimitQRCode(ctx context.Context,
 		URL:           res.Url,
 	}, nil
 }
+
 func (m *MPProxyService) GenShorten(ctx context.Context,
-	req *v1.GenShortenRequest) (*v1.GenShortenReply, error) {
+	req *v1.GenShortenRequest,
+) (*v1.GenShortenReply, error) {
 	res, err := m.uc.GenShorten(ctx, req.AccessToken, req.LongData, req.ExpireSeconds)
 	if err != nil {
 		return nil, err
@@ -302,8 +413,10 @@ func (m *MPProxyService) GenShorten(ctx context.Context,
 		ShortKey: *res,
 	}, nil
 }
+
 func (m *MPProxyService) FetchShorten(ctx context.Context,
-	req *v1.FetchShortenRequest) (*v1.FetchShortenReply, error) {
+	req *v1.FetchShortenRequest,
+) (*v1.FetchShortenReply, error) {
 	res, err := m.uc.FetchShorten(ctx, req.AccessToken, req.ShortKey)
 	if err != nil {
 		return nil, err
@@ -315,14 +428,16 @@ func (m *MPProxyService) FetchShorten(ctx context.Context,
 		ExpireSeconds: res.ExpireSeconds,
 	}, nil
 }
+
 func (m *MPProxyService) GetMenuInfo(ctx context.Context,
-	req *v1.AccessTokenParam) (*v1.MenuInfoReply, error) {
+	req *v1.AccessTokenParam,
+) (*v1.MenuInfoReply, error) {
 	res, err := m.uc.GetMenuInfo(ctx, req.AccessToken)
 	if err != nil {
 		return nil, err
 	}
 
-	var rt = &v1.MenuInfoReply{
+	rt := &v1.MenuInfoReply{
 		Menu: &v1.MenuInfoReply_MenuType{
 			Menuid: res.Menu.MenuID,
 			Button: []*v1.MenuButton{},
@@ -382,14 +497,18 @@ func (m *MPProxyService) GetMenuInfo(ctx context.Context,
 
 	return rt, nil
 }
+
 func (m *MPProxyService) TryMatchMenu(ctx context.Context, req *v1.TryMatchMenuRequest) (*v1.TryMatchMenuReply, error) {
 	return nil, nil
 }
+
 func (m *MPProxyService) PullMenu(ctx context.Context, req *v1.AccessTokenParam) (*v1.SelfMenuReply, error) {
 	return nil, nil
 }
+
 func (m *MPProxyService) CreateMenu(ctx context.Context,
-	req *v1.CreateMenuRequest) (*v1.WXErrorReply, error) {
+	req *v1.CreateMenuRequest,
+) (*v1.WXErrorReply, error) {
 	err := m.uc.CreateMenu(ctx, req.AccessToken, req.Button)
 	if err != nil {
 		m.log.Error("CreateMenu", zap.Error(err))
@@ -398,12 +517,15 @@ func (m *MPProxyService) CreateMenu(ctx context.Context,
 
 	return &v1.WXErrorReply{Errcode: 0, Errmsg: "ok"}, nil
 }
+
 func (m *MPProxyService) CreateConditionalMenu(ctx context.Context, req *v1.CreateMenuRequest) (*v1.WXErrorReply, error) {
 	return nil, nil
 }
+
 func (m *MPProxyService) DeleteConditionalMenu(ctx context.Context, req *v1.DeleteConditionalMenuRequest) (*v1.WXErrorReply, error) {
 	return nil, nil
 }
+
 func (m *MPProxyService) DeleteMenu(ctx context.Context, req *v1.AccessTokenParam) (*v1.WXErrorReply, error) {
 	err := m.uc.DeleteMenu(ctx, req.AccessToken)
 	if err != nil {
@@ -430,13 +552,14 @@ func (m *MPProxyService) GetIndustry(ctx context.Context, req *v1.AccessTokenPar
 		},
 	}, nil
 }
+
 func (m *MPProxyService) GetAllPrivateTpl(ctx context.Context, req *v1.AccessTokenParam) (*v1.GetAllPrivateTplReply, error) {
 	res, err := m.uc.GetAllPrivateTpl(ctx, req.AccessToken)
 	if err != nil {
 		return nil, err
 	}
 
-	var rt = &v1.GetAllPrivateTplReply{
+	rt := &v1.GetAllPrivateTplReply{
 		TemplateList: []*v1.GetAllPrivateTplReply_TplInfo{},
 	}
 	for _, item := range res.TemplateList {
@@ -452,6 +575,7 @@ func (m *MPProxyService) GetAllPrivateTpl(ctx context.Context, req *v1.AccessTok
 
 	return rt, nil
 }
+
 func (m *MPProxyService) SetIndustry(ctx context.Context, req *v1.SetIndustryRequest) (*v1.WXErrorReply, error) {
 	res, err := m.uc.SetIndustry(ctx, req.AccessToken, req.IndustryId1, req.IndustryId2)
 	if err != nil {
@@ -460,6 +584,7 @@ func (m *MPProxyService) SetIndustry(ctx context.Context, req *v1.SetIndustryReq
 
 	return &v1.WXErrorReply{Errcode: int64(res.ErrCode), Errmsg: res.ErrMsg}, nil
 }
+
 func (m *MPProxyService) GetMessageTplId(ctx context.Context, req *v1.AddTemplateRequest) (*v1.AddMessageTplReply, error) {
 	res, err := m.uc.GetMessageTplId(ctx, req.AccessToken, req.TemplateIdShort, req.KeywordNameList)
 	if err != nil {
@@ -468,6 +593,7 @@ func (m *MPProxyService) GetMessageTplId(ctx context.Context, req *v1.AddTemplat
 
 	return &v1.AddMessageTplReply{TemplateId: res.TemplateId}, nil
 }
+
 func (m *MPProxyService) DeleteMessageTpl(ctx context.Context, req *v1.DeleteMessageTplRequest) (*v1.WXErrorReply, error) {
 	res, err := m.uc.DeleteMessageTpl(ctx, req.AccessToken, req.TemplateId)
 	if err != nil {
@@ -476,6 +602,7 @@ func (m *MPProxyService) DeleteMessageTpl(ctx context.Context, req *v1.DeleteMes
 
 	return &v1.WXErrorReply{Errcode: int64(res.ErrCode), Errmsg: res.ErrMsg}, nil
 }
+
 func (m *MPProxyService) SendTplMsg(ctx context.Context, req *v1.SendTplMsgRequest) (*v1.SendTplMsgReply, error) {
 	res, err := m.uc.SendTplMsg(ctx, req.AccessToken, req)
 	if err != nil {
@@ -484,6 +611,7 @@ func (m *MPProxyService) SendTplMsg(ctx context.Context, req *v1.SendTplMsgReque
 
 	return &v1.SendTplMsgReply{Msgid: res.MsgID}, nil
 }
+
 func (m *MPProxyService) SendSubscribeMsg(ctx context.Context, req *v1.SendSubscribeMsgRequest) (*v1.WXErrorReply, error) {
 	res, err := m.uc.SendSubscribeMsg(ctx, req.AccessToken, req)
 	if err != nil {
@@ -492,6 +620,7 @@ func (m *MPProxyService) SendSubscribeMsg(ctx context.Context, req *v1.SendSubsc
 
 	return &v1.WXErrorReply{Errcode: int64(res.ErrCode)}, nil
 }
+
 func (m *MPProxyService) GetBlockedTplMsg(ctx context.Context, req *v1.GetBlockedTplRequest) (*v1.GetBlockedTplMsgReply, error) {
 	res, err := m.uc.GetBlockedTplMsg(ctx, req.AccessToken, req.TmplMsgId, req.LargestId, req.Limit)
 	if err != nil {
@@ -523,6 +652,7 @@ func (m *MPProxyService) AddSubscribeTpl(ctx context.Context, req *v1.AddSubscri
 		TemplateId: res,
 	}, nil
 }
+
 func (m *MPProxyService) DelSubscribeTpl(ctx context.Context, req *v1.DelSubscribeTplRequest) (*v1.WXErrorReply, error) {
 	err := m.uc.DelSubscribeTpl(ctx, req.AccessToken, req.TemplateId)
 	if err != nil {
@@ -531,13 +661,14 @@ func (m *MPProxyService) DelSubscribeTpl(ctx context.Context, req *v1.DelSubscri
 
 	return &v1.WXErrorReply{Errcode: 0, Errmsg: "ok"}, nil
 }
+
 func (m *MPProxyService) GetSubscribeCategory(ctx context.Context, req *v1.AccessTokenParam) (*v1.GetSubscribeCategoryReply, error) {
 	res, err := m.uc.GetSubscribeCategory(ctx, req.AccessToken)
 	if err != nil {
 		return nil, err
 	}
 
-	var rt = &v1.GetSubscribeCategoryReply{}
+	rt := &v1.GetSubscribeCategoryReply{}
 	for _, item := range res.Data {
 		rt.Data = append(rt.Data, &v1.GetSubscribeCategoryReply_Category{
 			Id:   item.Id,
@@ -546,12 +677,13 @@ func (m *MPProxyService) GetSubscribeCategory(ctx context.Context, req *v1.Acces
 	}
 	return rt, nil
 }
+
 func (m *MPProxyService) GetSubscribeTplKeywords(ctx context.Context, req *v1.GetSubscribeTplKeywordsRequest) (*v1.GetSubscribeTplKeywordsReply, error) {
 	res, err := m.uc.GetSubscribeTplKeywords(ctx, req.AccessToken, req.TemplateId)
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetSubscribeTplKeywordsReply{
+	rt := &v1.GetSubscribeTplKeywordsReply{
 		Count: int64(res.Count),
 		Data:  []*v1.GetSubscribeTplKeywordsReply_Item{},
 	}
@@ -566,13 +698,14 @@ func (m *MPProxyService) GetSubscribeTplKeywords(ctx context.Context, req *v1.Ge
 
 	return rt, nil
 }
+
 func (m *MPProxyService) GetSubscribeTplTitles(ctx context.Context, req *v1.GetSubscribeTplTitlesRequest) (*v1.GetSubscribeTplTitlesReply, error) {
 	res, err := m.uc.GetSubscribeTplTitles(ctx, req.AccessToken, req.Ids, req.Start, req.Limit)
 	if err != nil {
 		return nil, err
 	}
 
-	var rt = &v1.GetSubscribeTplTitlesReply{
+	rt := &v1.GetSubscribeTplTitlesReply{
 		Count: int64(res.Count),
 		Data:  []*v1.GetSubscribeTplTitlesReply_Item{},
 	}
@@ -587,12 +720,13 @@ func (m *MPProxyService) GetSubscribeTplTitles(ctx context.Context, req *v1.GetS
 
 	return rt, nil
 }
+
 func (m *MPProxyService) GetSubscribePrivateTpl(ctx context.Context, req *v1.AccessTokenParam) (*v1.GetSubscribePrivateTplReply, error) {
 	res, err := m.uc.GetSubscribePrivateTpl(ctx, req.AccessToken)
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetSubscribePrivateTplReply{
+	rt := &v1.GetSubscribePrivateTplReply{
 		Data: []*v1.GetSubscribePrivateTplReply_Item{},
 	}
 	for _, item := range res.Data {
@@ -607,6 +741,7 @@ func (m *MPProxyService) GetSubscribePrivateTpl(ctx context.Context, req *v1.Acc
 
 	return rt, nil
 }
+
 func (m *MPProxyService) SendSubscribeMessage(ctx context.Context, req *v1.SendSubscribeMessageRequest) (*v1.WXErrorReply, error) {
 	err := m.uc.SendSubscribeMessage(ctx, req)
 	if err != nil {
@@ -623,7 +758,7 @@ func (m *MPProxyService) GetKFList(ctx context.Context, req *v1.AccessTokenParam
 		return nil, err
 	}
 
-	var rt = &v1.GetKFListReply{
+	rt := &v1.GetKFListReply{
 		KfList: []*v1.KeFuInfo{},
 	}
 	for _, item := range res.KfList {
@@ -652,7 +787,7 @@ func (m *MPProxyService) GetKFOnlineList(ctx context.Context, req *v1.AccessToke
 		return nil, err
 	}
 
-	var rt = &v1.GetKFOnlineListReply{
+	rt := &v1.GetKFOnlineListReply{
 		KfOnlineList: []*v1.KFOnlineInfo{},
 	}
 	for _, item := range res.KfOnlineList {
@@ -674,7 +809,7 @@ func (m *MPProxyService) GetKFMsgHistory(ctx context.Context, req *v1.GetKFMsgHi
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetKFMsgHistoryReply{
+	rt := &v1.GetKFMsgHistoryReply{
 		RecordList: []*v1.KFMsgHistory{},
 		MsgId:      res.MsgId,
 		Number:     res.Number,
@@ -752,7 +887,7 @@ func (m *MPProxyService) GetKFSessionList(ctx context.Context, req *v1.GetKFSess
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetKFSessionListReply{
+	rt := &v1.GetKFSessionListReply{
 		SessionList: []*v1.KFSession{},
 	}
 	for _, item := range res.SessionList {
@@ -769,7 +904,7 @@ func (m *MPProxyService) GetKFSessionStatus(ctx context.Context, req *v1.GetKFSe
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetKFSessionStatusReply{
+	rt := &v1.GetKFSessionStatusReply{
 		KfAccount:  res.KfAccount,
 		CreateTime: res.CreateTime,
 	}
@@ -781,7 +916,7 @@ func (m *MPProxyService) GetKFSessionUnaccepted(ctx context.Context, req *v1.Acc
 	if err != nil {
 		return nil, err
 	}
-	var rt = &v1.GetKFSessionUnacceptedReply{
+	rt := &v1.GetKFSessionUnacceptedReply{
 		Count:        int64(res.Count),
 		WaitCaseList: []*v1.GetKFSessionUnacceptedReply_WaitCase{},
 	}
@@ -904,8 +1039,8 @@ func (m *MPProxyService) SendKFMiniProgramMsg(ctx context.Context, req *v1.SendK
 }
 
 func (m *MPProxyService) GetBlacklist(ctx context.Context, req *v1.GetBlacklistReq) (*v1.GetBlacklistReply, error) {
-	reply,err:= m.uc.GetBlacklist(ctx, req.AccessToken, req.NextOpenid)
-	if err!= nil {
+	reply, err := m.uc.GetBlacklist(ctx, req.AccessToken, req.NextOpenid)
+	if err != nil {
 		return nil, err
 	}
 

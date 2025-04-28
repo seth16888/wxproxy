@@ -1411,7 +1411,7 @@ func (m *MPProxyUsecase) DeleteMenu(ctx context.Context, token string) error {
 	return nil
 }
 
-// PullMenu 从查询接口get_current_selfmenu_info拉取官网设置的菜单
+// PullMenu 从查询接口get_current_selfmenu_info拉取官网设置的菜单或API设置的菜单.
 //
 // 官网菜单.
 // 返回: 数据库ID

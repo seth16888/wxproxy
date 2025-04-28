@@ -517,9 +517,7 @@ func (m *MPProxyService) PullMenu(ctx context.Context, req *v1.AccessTokenParam)
   return resp, nil
 }
 
-func (m *MPProxyService) CreateMenu(ctx context.Context,
-	req *v1.CreateMenuRequest,
-) (*v1.WXErrorReply, error) {
+func (m *MPProxyService) CreateMenu(ctx context.Context,req *v1.CreateMenuRequest) (*v1.WXErrorReply, error) {
 	err := m.uc.CreateMenu(ctx, req.AccessToken, req.Button)
 	if err != nil {
 		m.log.Error("CreateMenu", zap.Error(err))

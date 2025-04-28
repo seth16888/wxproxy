@@ -12,6 +12,7 @@ import (
 	"github.com/seth16888/wxcommon/hc"
 	"github.com/seth16888/wxcommon/helpers"
 	. "github.com/seth16888/wxcommon/logger"
+	"github.com/seth16888/wxcommon/mp"
 	"github.com/seth16888/wxcommon/paths"
 	v1 "github.com/seth16888/wxproxy/api/v1"
 	"go.uber.org/zap"
@@ -180,6 +181,141 @@ type MPProxyUsecase struct {
 	hc  *hc.Client
 }
 
+func (m *MPProxyUsecase) TryMatchMenu(ctx context.Context, token string, userId string) (*v1.TryMatchMenuReply, error) {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Try_MatchMenu,
+		token,
+	)
+	m.log.Debug("TryMatchMenu", zap.String("url", url))
+
+	type TryMatchMenuReq struct {
+		UserID string `json:"user_id"`
+	}
+	reader, err := helpers.BuildRequestBody(TryMatchMenuReq{UserID: userId})
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return nil, err
+	}
+	resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[mp.MenuTryMatchRes](resp, err)
+	if wxErr != nil {
+		m.log.Error("TryMatchMenu error", zap.Error(err))
+		return nil, wxErr
+	}
+
+	reply := &v1.TryMatchMenuReply{
+		Button: []*v1.MenuButton{},
+	}
+	mpBtns := rt.Button
+	reply.Button = convertToMenuButton(mpBtns)
+
+	return reply, nil
+}
+
+func convertToMenuButton(mpBtns []*mp.Button) []*v1.MenuButton {
+	buttons := make([]*v1.MenuButton, 0)
+	for _, b := range mpBtns {
+		btn := &v1.MenuButton{
+			Type:      b.Type,
+			Name:      b.Name,
+			Key:       b.Key,
+			Url:       b.URL,
+			MediaId:   b.MediaID,
+			AppId:     b.AppID,
+			PagePath:  b.PagePath,
+			SubButton: convertToMenuButton(b.SubButtons),
+		}
+		buttons = append(buttons, btn)
+	}
+	return buttons
+}
+
+func (m *MPProxyUsecase) CreateConditionalMenu(ctx context.Context, token string,
+	button []*v1.MenuButton, matchrule *v1.ConditionalMatchRule,
+) *v1.WXErrorReply {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Create_ConditionalMenu,
+		token,
+	)
+	m.log.Debug("CreateConditionalMenu", zap.String("url", url))
+
+	menu := mp.CreateMenuReq{
+		Button: []*mp.Button{},
+		MatchRule: &mp.MatchRule{
+			TagId:              matchrule.TagId,
+			ClientPlatformType: matchrule.ClientPlatformType,
+		},
+	}
+	btns := make([]*mp.Button, 0)
+	btns = append(btns, buttonToMPButtons(button)...)
+	menu.Button = btns
+
+	reader, err := helpers.BuildRequestBody(menu)
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: err.Error()}
+	}
+	resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+	if wxErr != nil {
+		m.log.Error("CreateConditionalMenu error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: wxErr.ErrMsg}
+	}
+	return &v1.WXErrorReply{Errcode: rt.ErrCode, Errmsg: rt.ErrMsg}
+}
+
+func buttonToMPButtons(buttons []*v1.MenuButton) []*mp.Button {
+	btns := make([]*mp.Button, 0)
+	for _, b := range buttons {
+		btn := &mp.Button{
+			Type:       b.Type,
+			Name:       b.Name,
+			Key:        b.Key,
+			URL:        b.Url,
+			MediaID:    b.MediaId,
+			AppID:      b.AppId,
+			PagePath:   b.PagePath,
+			ArticleID:  "",
+			SubButtons: buttonToMPButtons(b.SubButton),
+		}
+		btns = append(btns, btn)
+	}
+
+	return btns
+}
+
+func (m *MPProxyUsecase) DeleteConditionalMenu(ctx context.Context, token string, menuid int64) *v1.WXErrorReply {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Del_ConditionalMenu,
+		token,
+	)
+	m.log.Debug("DeleteConditionalMenu", zap.String("url", url))
+
+	type req struct {
+		Menuid int64 `json:"menuid"`
+	}
+	params := &req{
+		Menuid: menuid,
+	}
+	reader, err := helpers.BuildRequestBody(params)
+	if err != nil {
+		m.log.Error("build request body error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: err.Error()}
+	}
+
+	resp, err := m.hc.Post(url, "application/json", reader)
+	rt, wxErr := helpers.BuildHttpResponse[wxError.WXError](resp, err)
+	if wxErr != nil {
+		m.log.Error("DeleteConditionalMenu error", zap.Error(err))
+		return &v1.WXErrorReply{Errcode: 500, Errmsg: wxErr.ErrMsg}
+	}
+
+	return &v1.WXErrorReply{Errcode: rt.ErrCode, Errmsg: rt.ErrMsg}
+}
+
 func (m *MPProxyUsecase) DeleteMaterial(ctx context.Context, token string, mediaId string) *v1.WXErrorReply {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
@@ -340,7 +476,7 @@ func (m *MPProxyUsecase) GetMaterialCoount(ctx context.Context, token string) (*
 }
 
 func (m *MPProxyUsecase) GetMaterialNewsList(ctx context.Context, token string, mediaType string, offset int64, count int64) (*GetMaterialNewsListRes, error) {
-  url := fmt.Sprintf("https://%s%s?access_token=%s",
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
 		paths.Path_Batch_Get_Material,
 		token,
@@ -354,13 +490,13 @@ func (m *MPProxyUsecase) GetMaterialNewsList(ctx context.Context, token string, 
 	}
 	m.log.Debug("body", zap.Any("body", body))
 	bodyJson, err := json.Marshal(body)
-	if err!= nil {
+	if err != nil {
 		m.log.Error("GetMaterialNewsList error", zap.Error(err))
 		return nil, err
 	}
 	bodyReader := bytes.NewReader(bodyJson)
 	resp, err := m.hc.Post(url, "application/json", bodyReader)
-	if err!= nil {
+	if err != nil {
 		m.log.Error("GetMaterialNewsList error", zap.Error(err))
 		return nil, err
 	}
@@ -370,12 +506,12 @@ func (m *MPProxyUsecase) GetMaterialNewsList(ctx context.Context, token string, 
 		GetMaterialNewsListRes
 	}
 	result, wxErr := helpers.BuildHttpResponse[resultT](resp, err)
-	if wxErr!= nil {
+	if wxErr != nil {
 		m.log.Error("GetMaterialNewsList error", zap.Error(err))
 		return nil, fmt.Errorf("GetMaterialNewsList error: %d %s", wxErr.ErrCode, wxErr.Error())
 	}
 
-	if result.ErrCode!= 0 {
+	if result.ErrCode != 0 {
 		m.log.Error("GetMaterialNewsList error", zap.Error(err))
 		return nil, fmt.Errorf("GetMaterialNewsList error: %d %s", result.ErrCode, result.ErrMsg)
 	}
@@ -1136,7 +1272,7 @@ func (m *MPProxyUsecase) FetchShorten(ctx context.Context, token string, shortKe
 	return &result.FetchShortenRes, nil
 }
 
-// GetMenuInfo
+// GetMenuInfo 获取API设置的菜单
 func (m *MPProxyUsecase) GetMenuInfo(ctx context.Context, token string) (*MenuRes, error) {
 	url := fmt.Sprintf("https://%s%s?access_token=%s",
 		domain.GetWXAPIDomain(),
@@ -1273,4 +1409,88 @@ func (m *MPProxyUsecase) DeleteMenu(ctx context.Context, token string) error {
 	}
 
 	return nil
+}
+
+// PullMenu 从查询接口get_current_selfmenu_info拉取官网设置的菜单
+//
+// 官网菜单.
+// 返回: 数据库ID
+func (m *MPProxyUsecase) PullMenu(ctx context.Context, token string) (*v1.SelfMenuReply, error) {
+	url := fmt.Sprintf("https://%s%s?access_token=%s",
+		domain.GetWXAPIDomain(),
+		paths.Path_Get_Current_SelfMenu,
+		token,
+	)
+	m.log.Debug("PullMenu", zap.String("url", url))
+
+	resp, err := m.hc.Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	rt, wxErr := helpers.BuildHttpResponse[mp.SelfMenuInfoRes](resp, err)
+	if wxErr != nil {
+		return nil, fmt.Errorf("PullMenu error: %d %s", wxErr.ErrCode, wxErr.Error())
+	}
+	if rt.ErrCode != 0 {
+		return nil, fmt.Errorf("PullMenu error: %d %s", rt.ErrCode, rt.ErrMsg)
+	}
+
+	reply := m.convertToReply(rt)
+
+	return reply, nil
+}
+
+func (m *MPProxyUsecase) convertToReply(selfMenu *mp.SelfMenuInfoRes) *v1.SelfMenuReply {
+	rt := &v1.SelfMenuReply{
+		IsMenuOpen: int64(selfMenu.IsMenuOpen),
+		SelfmenuInfo: &v1.SelfMenuReply_MenuInfoType{
+			Button: []*v1.SelfMenuButton{},
+		},
+	}
+	for _, btn := range selfMenu.SelfMenuInfo.Button {
+		button := m.convertToButton(btn)
+		rt.SelfmenuInfo.Button = append(rt.SelfmenuInfo.Button, button)
+	}
+
+	return rt
+}
+
+func (m *MPProxyUsecase) convertToButton(btn mp.SelfMenuButton) *v1.SelfMenuButton {
+	menuItem := &v1.SelfMenuButton{
+		Type:  btn.Type,
+		Name:  btn.Name,
+		Key:   btn.Key,
+		Url:   btn.URL,
+		Value: btn.Value,
+		SubButton: &v1.SelfMenuButton_SubButtonType{
+			List: []*v1.SelfMenuButton{},
+		},
+		NewsInfo: &v1.SelfMenuButton_NewsButtonType{
+			List: []*v1.NewsButton{},
+		},
+	}
+	if len(btn.NewsInfo.List) > 0 {
+		for _, news := range btn.NewsInfo.List {
+			newsItem := &v1.NewsButton{
+				Title:      news.Title,
+				Author:     news.Author,
+				Digest:     news.Digest,
+				CoverUrl:   news.CoverURL,
+				ContentUrl: news.ContentURL,
+				SourceUrl:  news.SourceURL,
+				ShowCover:  int64(news.ShowCover),
+			}
+			menuItem.NewsInfo.List = append(menuItem.NewsInfo.List, newsItem)
+		}
+	}
+
+	if len(btn.SubButton.List) > 0 {
+		for _, subBtn := range btn.SubButton.List {
+			subMenuItem := m.convertToButton(subBtn)
+			menuItem.SubButton.List = append(menuItem.SubButton.List, subMenuItem)
+		}
+	}
+
+	return menuItem
 }

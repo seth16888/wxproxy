@@ -47,8 +47,6 @@ func (m *MPProxyService) GetMaterialCount(ctx context.Context, req *v1.AccessTok
 	}, nil
 }
 
-// func (v1.UnimplementedMpproxyServer) GetMaterialList(*v1.GetMaterialListRequest, grpc.ServerStreamingServer[v1.GetMaterialListReply]) error
-
 func (m *MPProxyService) GetMaterialNewsList(req *v1.GetMaterialListRequest, stream grpc.ServerStreamingServer[v1.GetMaterialNewsListReply]) error {
 	if req.GetType() != "news" {
 		return status.Error(codes.InvalidArgument, "type must be news")
@@ -429,6 +427,7 @@ func (m *MPProxyService) FetchShorten(ctx context.Context,
 	}, nil
 }
 
+// GetMenuInfo 获取API设置的菜单
 func (m *MPProxyService) GetMenuInfo(ctx context.Context,
 	req *v1.AccessTokenParam,
 ) (*v1.MenuInfoReply, error) {
@@ -499,11 +498,23 @@ func (m *MPProxyService) GetMenuInfo(ctx context.Context,
 }
 
 func (m *MPProxyService) TryMatchMenu(ctx context.Context, req *v1.TryMatchMenuRequest) (*v1.TryMatchMenuReply, error) {
-	return nil, nil
+  reply, err := m.uc.TryMatchMenu(ctx, req.AccessToken, req.UserId)
+  if err != nil {
+    return nil, err
+  }
+
+	return reply, nil
 }
 
+// PullMenu 从查询接口get_current_selfmenu_info拉取官网设置的菜单
+//
+// 官网菜单
 func (m *MPProxyService) PullMenu(ctx context.Context, req *v1.AccessTokenParam) (*v1.SelfMenuReply, error) {
-	return nil, nil
+	resp,err:= m.uc.PullMenu(ctx, req.AccessToken)
+  if err != nil {
+    return nil, err
+  }
+  return resp, nil
 }
 
 func (m *MPProxyService) CreateMenu(ctx context.Context,
@@ -519,11 +530,15 @@ func (m *MPProxyService) CreateMenu(ctx context.Context,
 }
 
 func (m *MPProxyService) CreateConditionalMenu(ctx context.Context, req *v1.CreateMenuRequest) (*v1.WXErrorReply, error) {
-	return nil, nil
+  wxErr := m.uc.CreateConditionalMenu(ctx, req.AccessToken, req.Button, req.Matchrule)
+
+	return wxErr, nil
 }
 
 func (m *MPProxyService) DeleteConditionalMenu(ctx context.Context, req *v1.DeleteConditionalMenuRequest) (*v1.WXErrorReply, error) {
-	return nil, nil
+  wxErr := m.uc.DeleteConditionalMenu(ctx, req.AccessToken, req.Menuid)
+
+	return wxErr, nil
 }
 
 func (m *MPProxyService) DeleteMenu(ctx context.Context, req *v1.AccessTokenParam) (*v1.WXErrorReply, error) {
